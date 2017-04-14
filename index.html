@@ -1,30 +1,404 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Jamie Vaughn, Web Dev + Javascript Enthusiast</title>
-		<!-- link to main stylesheet -->
-		<link rel="stylesheet" type="text/css" href="/main.css">
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Hi there, I'm Jamie Vaughn!</h1>
-				<p>I love javascript, python, HTML, CSS and SQL. I also like making canvas games and writing about energy. <a href="/about">Read more about my life...</a></p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
-		<footer>
-    		<ul>
-        		<li><a href="mailto:wxv6@case.edu">email</a></li>
-        		<li><a href="https://github.com/JamieVaughn">github.com/JamieVaughn</a></li>
-			</ul>
-		</footer>
-	</body>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Jamie Vaughn - Programmer - Engineer - Writer</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-144x144-precomposed.png">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+  <script src="js/vendor/jquery.hashchange.min.js"></script>
+  <script src="js/vendor/jquery.easytabs.min.js"></script>
+
+  <script src="js/main.js"></script>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+      <![endif]-->
+</head>
+  <body class="bg-fixed bg-1">
+<!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+   <div class="main-container">
+    <div class="main wrapper clearfix">
+      <!-- Header Start -->
+        <header id="header">
+            <div id="logo">
+                <h2>
+                    Jamie Vaughn
+                </h2>
+                <h4>
+                    Web Developer / Designer
+                </h4>
+            </div>
+        </header>
+        <!-- Header End -->
+        <!-- Main Tab Container -->
+        <div id="tab-container" class="tab-container">
+          <!-- Tab List -->
+            <ul class='etabs'>
+                <li class='tab' id="tab-about">
+                  <a href="#about"><i class="icon-user"></i><span> About Me</span></a>
+                </li>
+                <li class='tab'>
+                  <a href="#resume"><i class="icon-file-text"></i><span> Resume</span></a>
+                </li>
+                <li class='tab'>
+                  <a href="#portfolio"><i class="icon-heart"></i><span> Portfolio</span></a>
+                </li>
+                <li class='tab'>
+                  <a href="#contact"><i class="icon-envelope"></i><span> Contact</span></a>
+                </li>
+            </ul>
+          <!-- End Tab List -->
+            <div id="tab-data-wrap">
+              <!-- About Tab Data -->
+                <div id="about">
+                    <section class="clearfix">
+                        <div class="g2">
+                            <div class="photo" style="border-radius: 50%;">
+                                <img src="https://pbs.twimg.com/profile_images/578708736/n15504467_30773263_5427.jpg" alt="Jamie Vaughn">
+                            </div>
+                            <div class="info">
+                                <h2>
+                                    Jamie Vaughn
+                                </h2>
+                                <h4>
+                                    Web Developer / Designer
+                                </h4>
+                                <p>
+                                    I'm a web developer & engineer using HTML5/CSS/Javascript, Node.js, Python and SQL. I love designing websites and adding elegant UI with JavaScript. I also manage a farm and write about energy on the side!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="g1">
+                            <div class="main-links sidebar">
+                                <ul>
+                                    <li>
+                                        <a href="#resume">View My Resume</a>
+                                    </li>
+                                    <li>
+                                        <a href="#portfolio">My Portfolio</a>
+                                    </li>
+                                    <li>
+                                        <a href="#contact">Hire me for your next project!</a>
+                                    </li>
+                                    <li>
+                                        <a href="#features">Download My Resume</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="break"></div>
+                        <div class="contact-info">
+                          <div class="g1">
+                            <div class="item-box clearfix">
+                              <i class="icon-envelope"></i>
+                              <div class="item-data">
+                                <h3><a href="mailto:wxv6@case.edu">wxv6@case.edu</a></h3>
+                                <p>Email Address</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="g1">
+                            <div class="item-box clearfix">
+                              <i class="icon-facebook"></i>
+                              <div class="item-data">
+                                <h3><a href="http://www.linkedin.com/in/wjamievaughn">LinkedIn Profile</a></h3>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="g1">
+                            <div class="item-box clearfix">
+                              <i class="icon-twitter"></i>
+                              <div class="item-data">
+                                <h3><a href="https://github.com/JamieVaughn">Github Profile</a></h3>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </section><!-- content -->
+                </div>
+              <!-- End About Tab Data -->
+              <!-- Resume Tab Data -->
+                <div id="resume">
+                    <section class="clearfix">
+                        <div class="g2">
+                            <h3>
+                                Work Experience
+                            </h3>
+                            <ul class="no-list work">
+                                <li>
+                                    <h5>
+                                        Freelance Web Developer
+                                    </h5><span class="label label-info">Since Aug 2016</span>
+                                    <p>
+                                        Successfully developing websites and copywriting content for clients on Upwork.com<br>
+                                        Designed with HTML5, CSS, and Javascript for UI-centered results.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h5>
+                                        Solar Site Analyst | NRG Home Solar
+                                    </h5><span class="label label-info">Nov 2015 - Aug 2016</span>
+                                    <p>
+                                        Forecasted solar energy yield using GIS imaging/shading apps & data from 300+ sites.<br>
+                                        Maintained customer data within database and dis-qualified non-conforming structures.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h5>
+                                        Applications Engineer | Ambrell
+                                    </h5><span class="label label-info">May 2014 - Nov 2015</span>
+                                    <p>
+                                        Developed applications in a manufacturing setting to improve process efficiency<br>
+                                        Met with customers to gather problems/requirements & develop technical solutions<br>
+                                        Automated quoting/ordering process using Excel VB, Python and Javascript.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h5>
+                                        Sustainability Analyst | Bausch + Lomb
+                                    </h5><span class="label label-info">2011 - 2012</span>
+                                    <p>
+                                        Developed Excel spreadsheet tracking manufacturing KPI metrics<br>
+                                        Analyzed data on defect rates and material efficiency; implemented linear optimization
+                                    </p>
+                                </li>
+                            </ul>
+                            <h3>
+                                Education
+                            </h3>
+                            <ul class="no-list work">
+                                <li>
+                                    <h5>
+                                        B.S. Materials Engineering | <span style="font-size: 16px">Case Western Reserve University</span>
+                                    </h5><span class="label label-success">2004-2009</span>
+                                    <p>
+                                        Internship with General Electric working on Halogen Lamp technology<br>
+                                        Internship with Logos Energy, Inc working on Fuel Cell prototypes<br>
+                                        Thesis on chemical deposition of thin film solar cells
+                                    </p>
+                                </li>
+                                <li>
+                                    <h5>
+                                        Software & Front-End Development | <span style="font-size: 16px">FreeCodeCamp.com</span>
+                                    </h5><span class="label label-success">2016-2017</span>
+                                    <p>
+                                        Covered HTML, CSS, Javascript, jQuery, Bootstrap, Node.js <br>
+                                        Covered algorithms, Object Oriented and Functional programming
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="g1">
+                            <div class="sidebar">
+                                <h3>
+                                    Skills
+                                </h3>
+                                <h5>
+                                    Programming Languages
+                                </h5>
+                                <div class="meter sunflower">
+                                    <span style="width: 93.3%"><span>Javascript, ES6, jQuery</span></span>
+                                </div>
+                                <div class="meter carrot">
+                                    <span style="width: 88%"><span>HTML/HTML5</span></span>
+                                </div>
+                                <div class="meter wisteria">
+                                    <span style="width: 80%"><span>CSS</span></span>
+                                </div>
+                                <div class="meter emerald">
+                                    <span style="width: 60%"><span>Node.js</span></span>
+                                </div>
+                                <div class="meter sunflower">
+                                    <span style="width: 75%"><span>Python (Pandas, Numpy, Seaborne)</span></span>
+                                </div>
+                                <div class="meter asbestos">
+                                    <span style="width: 98%"><span>Excel and Microsoft Office</span></span>
+                                </div>
+                                <div class="meter midnight">
+                                    <span style="width: 55%"><span>SQL</span></span>
+                                </div>
+                                <div class="meter wisteria">
+                                    <span style="width: 65%"><span>AMPL and NLOpt</span></span>
+                                </div>
+                                <div class="break"></div>
+                                <h5>
+                                    Auxiliary
+                                </h5>
+                                <div class="meter wisteria">
+                                    <span style="width: 83.3%"><span>Functional Programming</span></span>
+                                </div>
+                                <div class="meter asbestos">
+                                    <span style="width: 57%"><span>Object Oriented Prog.</span></span>
+                                </div>
+                                <div class="meter carrot">
+                                    <span style="width: 75%"><span>Data Analysis/Visualization</span></span>
+                                </div>
+                                 <div class="meter emerald">
+                                    <span style="width: 65%"><span>Web Apps</span></span>
+                                </div>
+                                <div class="meter sunflower">
+                                    <span style="width: 93.3%"><span>Writing</span></span>
+                                </div>
+                                <div class="meter pomengrate">
+                                    <span style="width: 81%"><span>Customer Service & Success</span></span>
+                                </div>
+                                <div class="break"></div>
+                                <h5>
+                                    <hr>
+                                    Volunteering
+                                </h5>
+                                <div class="label label-danger">
+                                    <span style="width: 53.3%;">Code for America Brigade<br> | Rochester Chapter</span>
+                                </div><br><br>
+                                <div class="label label-success">
+                                    <span style="width: 80%">Teaching Assistance<br> | MCC Front-End Development Certification Course</span>
+                                </div><br><br>
+                                <div class="label label-warning">
+                                    <span style="width: 95%">Rochester AmeriCorps Alumni    <br> | 2009-2010</span>
+                                </div><br>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+              <!-- End Resume Tab Data -->
+              <!-- Portfolio Tab Data -->
+                <div id="portfolio">
+                    <section class="clearfix">
+                        <div class="g1">
+                            <div class="image">
+                                <img src="#" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-link">
+                                        <a href="http://lorempixel.com/606/606/sports/1" class="btn"><span class="label label-info">Flock Roster</span><br><br>Full View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g1">
+                            <div class="image">
+                                <img src="#" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-link">
+                                        <a href="http://lorempixel.com/606/606/sports/2" class="btn"><span class="label label-info">Feed Optimization</span><br><br>Full View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g1">
+                            <div class="image">
+                                <img src="#" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-link">
+                                        <a href="http://lorempixel.com/606/606/sports/3" class="btn"><span class="label label-info">Grazing Tycoon</span><br><br>Full View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="break"></div>
+                        <div class="g1">
+                            <div class="image">
+                                <img src="#" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-link">
+                                        <a href="http://lorempixel.com/606/606/sports/4" class="btn"><span class="label label-info">Petrolio</span><br><br>Full View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g1">
+                            <div class="image">
+                                <img src="#" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-link">
+                                        <a href="http://www.codepen.io/heliocrat" class="btn"><span class="label label-info">My Code Pen Demos</span><br><br>Full View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g1">
+                            <div class="image">
+                                <img src="#" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-link">
+                                        <a href="http://www.heliocrat.com" class="btn"><span class="label label-info"><span class="label label-info">Heliocrat</span><br><br>Full View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                </div>
+              <!-- End Portfolio Data -->
+              <!-- Contact Tab Data -->
+                <div id="contact">
+                    <section class="clearfix">
+                       <div class="g1">
+                         <div class="sny-icon-box">
+                           <div class="sny-icon">
+                              <i class="icon-globe"></i>
+                            </div>
+                            <div class="sny-icon-content">
+                              <h4>Location</h4>
+                              <p>Scottsville, NY 14546</p>
+                            </div>
+                         </div>
+                       </div>
+                       <div class="g1">
+                         <div class="sny-icon-box">
+                           <div class="sny-icon">
+                              <i class="icon-phone"></i>
+                            </div>
+                            <div class="sny-icon-content">
+                              <h4>Mobile Number</h4>
+                              <p>585-773-3268<br/></p>
+                            </div>
+                         </div>
+                       </div>
+                       <div class="g1">
+                         <div class="sny-icon-box">
+                           <div class="sny-icon">
+                              <i class="icon-user"></i>
+                            </div>
+                            <div class="sny-icon-content">
+                              <h4>About Me</h4>
+                              <p>I love diving into new web design projects! So get in touch with me to get your next web app idea up and running fast! I am just an email away.</p>
+                            </div>
+                         </div>
+                       </div>
+                       <div class="break"></div>
+                       
+                    </section>
+                </div>
+              <!-- End Contact Data -->
+            </div>
+        </div>
+        <!-- End Tab Container --><!--
+        <footer>
+            <p>
+                Designed with lots of love at <a href="http://www.mrova.com" title="Pune web designing company">mRova</a>. Just <a href="http://www.mrova.com/free-one-page-responsive-html-resume-template/">Click me to download</a> this template for free :).
+            </p>
+        </footer>-->
+    </div><!-- #main -->
+</div><!-- #main-container -->
+
+
+
+</body>
 </html>
