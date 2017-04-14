@@ -163,6 +163,7 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 /* Backgrounds */
 
 .bg-1{
+  background-color: firebrick;
   background-image: url('JamieVaughn.github.io/assets/Autumn.jpg');
 }
 
