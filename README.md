@@ -2,13 +2,13 @@
 My Web Development Portfolio site
 
 
-###About Me
+### About Me  
 Summary about myself and what I do! You can find my contact info and resume in html and pdf form.
 
-###Resume
+### Resume
 My resume in HTML format featuring my prior work experience, education and my web dev skillset!
 
-###Portfolio
+### Portfolio
 My web development projects:
 * Flock Roster App
 * Feed Cost Minimization App
@@ -17,5 +17,5 @@ My web development projects:
 * My Codepen.io site with more Javascript Apps
 * Personal Blog about energy at heliocrat.com
 
-###Contact
+### Contact
 How to find me and get in touch with me and even hire me for your web development project!
