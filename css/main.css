@@ -168,6 +168,9 @@ body {width: 92%; margin: 0 auto} /* Center page without wrapper */
 }
 
 /* Header */
+#logo{
+  font-family: Raleway;
+}
 #header{
   margin-bottom: 2em;
 }
