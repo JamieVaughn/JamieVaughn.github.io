@@ -3,18 +3,18 @@ My Web Development Portfolio site
 
 
 ### About Me  
-Summary about myself and what I do! You can find my contact info and resume in html and pdf form.
+Summary about myself and what I do! You can download my contact info and resume in pdf form.
 
 ### Resume
-My resume in HTML format featuring my prior work experience, education and my web dev skillset!
+My HTML resume featuring my prior work experience, education and my web dev skillset!
 
 ### Portfolio
 My web development projects:
+* Todo App coded with Vue.js
 * Flock Roster App
 * Feed Cost Minimization App
 * Graze Management Canvas game
 * Variation on Classic Tic Tac Toe Game
-* My Codepen.io site with more Javascript Apps
 * Personal Blog about energy at heliocrat.com
 
 ### Contact
