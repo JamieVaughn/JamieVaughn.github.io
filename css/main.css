@@ -699,9 +699,9 @@ Change widths as necessary
 .tab a.active{
   padding-top: 20px;
 }
-  /* 3 COLUMN GRID */
-  .g1 {width:31.333%}
-  .g2 {width:64.667%;}
+  /* 2 COLUMN GRID */
+  .g1 {width:48.0%}
+  .g2 {width:48.0%}
   .g3 {width:98.0%}
 }
 
