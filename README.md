@@ -10,11 +10,14 @@ My HTML resume featuring my prior work experience, education and my web dev skil
 
 ### Portfolio
 My web development projects:
-* Todo App coded with Vue.js
-* Flock Roster App
-* Feed Cost Minimization App
-* Graze Management Canvas game
 * Variation on Classic Tic Tac Toe Game
+* Todo App coded with Vue.js
+* Searchable Blog Post Landing Page
+* Javascript Calculator
+* SVG data viz design concepts
+* Searchable Map using ESRI ArcGIS API
+* Mobile App Responsive Design Mockup
+* Flock Roster App
 * Personal Blog about energy at heliocrat.com
 
 ### Contact
