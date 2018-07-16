@@ -2,11 +2,11 @@
 My Web Development Portfolio site
 
 
-### About Me  
-Summary about myself and what I do! You can download my contact info and resume in pdf form.
+### Contact Card  
+Summary about myself and what I do! You can get in touch with me via my contact info and download my resume in pdf form.
 
-### Resume
-My HTML resume featuring my prior work experience, education and my web dev skillset!
+### Resume Cards: Experience, Education, Skills
+My HTML resume featuring my prior work experience, education and my web dev core competencies!
 
 ### Portfolio
 My web development projects:
@@ -19,6 +19,4 @@ My web development projects:
 * Mobile App Responsive Design Mockup
 * Flock Roster App
 * Personal Blog about energy at heliocrat.com
-
-### Contact
-How to find me and get in touch with me and even hire me for your web development project!
+* Some of the Websites I've developed for Businesses
