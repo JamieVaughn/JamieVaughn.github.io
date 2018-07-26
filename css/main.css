@@ -16,6 +16,9 @@ nav a {
     text-decoration: none;
     white-space: nowrap;
 }
+main {
+    padding: 3rem;
+}
 section.business-card {
     position: relative;
     margin: 0 auto;
@@ -68,6 +71,7 @@ div.details {
     text-align: left;
 }
 div.details h2 {
+    margin-left: 3rem;
     margin-bottom: 0;
 }
 div.details a {
@@ -79,6 +83,13 @@ div.details a {
     margin: 0.5rem auto;
     padding: 0.1rem 0.5rem;
     letter-spacing: 2px;
+    color: steelblue;
+}
+div.details a:visited {
+    color: coral;
+}
+div.details a:hover {
+    background: lightblue;
 }
 div.details p {
     margin: 0 auto;
