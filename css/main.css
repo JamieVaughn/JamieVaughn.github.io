@@ -20,7 +20,6 @@ nav .breadcrumbs {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    flex-wrap: wrap;
     font-size: 20px;
 }
 nav .breadcrumbs a {
@@ -76,7 +75,7 @@ div.me {
     left: 0.75rem;
     max-width: 33%;
 }
-div.me div.potrait {
+div.me div.portrait {
     border-radius: 50%;
     height: 185px;
     width: 180px;
@@ -88,7 +87,8 @@ div.me h1 {
     margin: 0.5rem auto;
     text-align: center;
 }
-div.me h2 {
+div.me h2, div.me h3 {
+    text-align: center;
     font-size: 22px;
     font-weight: 200;
 }
@@ -211,6 +211,9 @@ ul h3 {
 #Education .emphasize {
     font-size: 13px;
 }
+footer {
+    padding: 2rem 1rem;
+}
 footer form {
     display: flex;
     flex-direction: column;
@@ -222,6 +225,12 @@ footer form {
 
 
 @media (max-width: 767px) {
+    nav .breadcrumbs {
+        font-size: 14px;
+    }
+    nav .breadcrumbs a {
+        padding: 0.5rem;
+    }
     section.business-card {
         width: auto;
         height: 360px;
@@ -230,5 +239,41 @@ footer form {
     }
     div.details {
         width: 60%;
+    }
+}
+@media (max-width: 550px) {
+    main {
+        padding: 0.5rem;
+    }
+    section.business-card {
+        height: auto;
+        border-top-right-radius: 100px;
+    }
+    .business-card hr {
+        width: 650px;
+    }
+    div.me {
+        position: static;
+        margin: 1rem auto;
+        width: 100%;
+        max-width: 100%;
+    }
+    div.me div.portrait {
+        margin: 0 auto;
+    }
+    div.details h2 {
+        text-align: left;
+        margin-left: 6rem;
+    }
+    div.details {
+        position: static;
+        width: 100%;
+    }
+    div.details > * {
+        margin: 0 auto;
+    }
+
+    footer form {
+        width: 90%;
     }
 }
