@@ -55,13 +55,14 @@ body {
 }
 
 .stacked-cards li:nth-child(4) {
-    border-right: 25px solid #f4b251;
+    border-right: 25px solid rgb(250, 200, 42);
 }
 
 .stacked-cards {
     position: relative;
 }
 .stacked-cards ul {
+    height: 550px;
     position: relative;
     max-width: 60%;
     margin: 0 auto;
@@ -70,7 +71,7 @@ body {
 
 .stacked-cards li {
     margin-top: 5px;
-    padding: 1rem;
+    padding: 1rem 0 1rem 1rem;
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0 3px 6px 0px #333;
