@@ -21,25 +21,23 @@ section.business-card {
     margin: 0 auto;
     height: 300px;
     width: 535px;
-    border-radius: 90px 5px 5px;
-    background:  linear-gradient(0deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.75)),
-     center / contain no-repeat 
-     url(https://images.pexels.com/photos/753869/pexels-photo-753869.jpeg?cs=srgb\u0026dl=aerial-aerial-shot-aerial-view-753869.jpg\u0026fm=jpg);
-    color: #2d2d4d;
+    border-radius: 100px 5px 5px;
+    background: linear-gradient(0deg, rgba(1, 17, 51, 0.9), rgba(0, 0, 0, 0.45)),
+                center / cover no-repeat url('/assets/flatgrid.jpeg');
+    color: white;
     overflow: hidden;
 }
 div.me {
     position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
+    top: 0.65rem;
+    left: 0.75rem;
     max-width: 33%;
 }
 div.me div.potrait {
     border-radius: 50%;
     height: 185px;
     width: 180px;
-    border: 1px solid #2d2d4d;
-    background: center bottom / contain no-repeat url('/assets/HDprofile.jpeg');
+    background: center bottom / contain no-repeat url('/assets/HDprofile.jpeg'), rgb(216, 206, 212);
 }
 div.me h1 {
     font-weight: 500;
@@ -56,8 +54,11 @@ div.me h2 {
     width: 500px;
     /* height: 0px; */
     border: 0;
-    box-shadow: 0 0 10px 1px black;
+    box-shadow: 0 0 10px 1px steelblue;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+hr.hr-right {
+    transform: translate(200px, 170px) rotate(-70deg);
 }
 div.details {
     position: absolute;
@@ -66,26 +67,47 @@ div.details {
     width: 55%;
     text-align: left;
 }
-div.details div:nth-child(2){
-    margin-left: 4rem;
+div.details h2 {
+    margin-bottom: 0;
 }
-div.details div:nth-child(3){
-    margin-left: 7rem;
+div.details a {
+    display: block;
+    line-height: 1.5rem;
+    width: 115px;
+    border: 1px solid steelblue;
+    border-radius: 18px;
+    margin: 0.5rem auto;
+    padding: 0.1rem 0.5rem;
+    letter-spacing: 2px;
 }
-div.details div:nth-child(4){
-    margin-left: 6rem;
+div.details p {
+    margin: 0 auto;
+    letter-spacing: 2px;
 }
-div.details div:nth-child(5){
+div.details p:nth-child(2){
     margin-left: 5rem;
 }
-div.details div:nth-child(6){
+div.details p:nth-child(3){
+    margin-left: 4.5rem;
+}
+div.details p:nth-child(4){
     margin-left: 4rem;
 }
-div.details div:nth-child(7){
+div.details p:nth-child(5){
+    margin-left: 3.5rem;
+}
+div.details a:nth-child(6){
+    margin-top: 1rem;
     margin-left: 3rem;
 }
-div.details div:nth-child(8){
+div.details a:nth-child(7){
     margin-left: 2rem;
+}
+div.details a:nth-child(8){
+    margin-left: 1rem;
+}
+div.details a:nth-child(9){
+    margin-left: 0;
 }
 main > hr {
     border: 0;
