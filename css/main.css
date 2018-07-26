@@ -13,7 +13,7 @@ nav {
     background: steelblue;
     position: sticky;
     top: 0;
-    z-index: 9;
+    z-index: 30;
 }
 nav .breadcrumbs {
     flex-grow: 2;
@@ -84,10 +84,11 @@ div.me div.portrait {
 div.me h1 {
     font-weight: 500;
     font-size: 28px;
-    margin: 0.5rem auto;
+    margin: 0.25rem auto;
     text-align: center;
 }
 div.me h2, div.me h3 {
+    margin: 0 auto;
     text-align: center;
     font-size: 22px;
     font-weight: 200;
@@ -112,7 +113,8 @@ div.details {
 }
 div.details h2 {
     margin-left: 3rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    top: 0;
 }
 div.details a {
     display: block;
