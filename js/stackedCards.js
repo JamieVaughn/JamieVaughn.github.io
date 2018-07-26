@@ -39,6 +39,7 @@
             var els = this.els;
             this.parent = els[0].parentNode;
             var getItemHeight = me.getHeight().max; //els[0].getBoundingClientRect().height;
+            console.log(me.getHeight().max)
             els[0].parentNode.style.height = parseInt(getItemHeight) + "px";
             var lenAdjust = els.length % 2 == 0 ? -2 : -1;
             var oneHalf = (els.length + lenAdjust) / 2;
@@ -107,7 +108,7 @@
                             scale = scale + 100 / (maxCntDivisor + 1) / 100
                         }
                         translateX = -50 - prevDivisor * (prevCnt - i);
-                        translateY = vertOffsets[i];
+                        translateY = vertOffsets[i] / 2;
                         rotate = "rotate(0deg)";
                         break;
                     case "fanOut":

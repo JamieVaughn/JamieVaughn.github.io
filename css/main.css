@@ -113,8 +113,11 @@ div.details {
     width: 55%;
     text-align: left;
 }
+div.details span {
+    text-align: left;
+    width: 55%
+}
 div.details h2 {
-    margin-left: 3rem;
     margin-bottom: 1rem;
     top: 0;
 }
@@ -158,17 +161,17 @@ div.details p:nth-child(4){
 div.details p:nth-child(5){
     margin-left: 3.5rem;
 }
-div.details a:nth-child(6){
+div.details span a:nth-child(1){
     margin-top: 1rem;
     margin-left: 3rem;
 }
-div.details a:nth-child(7){
+div.details span a:nth-child(2){
     margin-left: 2rem;
 }
-div.details a:nth-child(8){
+div.details span a:nth-child(3){
     margin-left: 1rem;
 }
-div.details a:nth-child(9){
+div.details span a:nth-child(4){
     margin-left: 0;
 }
 main > hr {
@@ -251,7 +254,7 @@ footer form {
     }
     section.business-card {
         height: auto;
-        border-top-right-radius: 100px;
+        border-top-left-radius: 5px;
     }
     .business-card hr {
         width: 650px;
@@ -272,6 +275,21 @@ footer form {
     div.details {
         position: static;
         width: 100%;
+    }
+    div.details p:nth-child(5) {
+        margin-bottom: 1rem;
+    }
+    div.details span {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+    div.details a {
+        display: inline;
+        white-space: nowrap;
+        letter-spacing: 0;
+        margin: 0 auto !important;
     }
     div.details > * {
         margin: 0 auto;
