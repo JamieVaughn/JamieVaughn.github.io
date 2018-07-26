@@ -26,13 +26,19 @@
                 document.addEventListener("DOMContentLoaded", this.draw)
             }
         };
+        stackedCards.prototype.getHeight = function() {
+            var els = this.nodelistToArray(this.els);
+            var elHeights = els.map(item => item.scrollHeight).sort((a, b)=>b-a);
+            var maxHeight = elHeights[0];
+            return {heights: elHeights, max: maxHeight};
+        }
         stackedCards.prototype.draw = function() {
             var me = this;
             var selector = this.config.selector;
             this.els = document.querySelectorAll(selector + " li");
             var els = this.els;
             this.parent = els[0].parentNode;
-            var getItemHeight = els[0].getBoundingClientRect().height;
+            var getItemHeight = me.getHeight().max; //els[0].getBoundingClientRect().height;
             els[0].parentNode.style.height = parseInt(getItemHeight) + "px";
             var lenAdjust = els.length % 2 == 0 ? -2 : -1;
             var oneHalf = (els.length + lenAdjust) / 2;
@@ -69,10 +75,14 @@
             els[oneHalf].click()
         };
         stackedCards.prototype.reCalculateTransformsOnClick = function(nextCnt, prevCnt) {
+            var me = this;
             var z = 10;
             var els = this.nodelistToArray(this.els);
+            var maxHeight = me.getHeight().max;
+            var vertOffsets = me.getHeight().heights.map(item=> Math.round((( 1 - ( item / maxHeight )) * -100) ));
             var scale = 1,
                 translateX = 0,
+                translateY = 0,
                 rotateVal = 0,
                 rotate = "";
             var rotateNegStart = 0;
@@ -97,6 +107,7 @@
                             scale = scale + 100 / (maxCntDivisor + 1) / 100
                         }
                         translateX = -50 - prevDivisor * (prevCnt - i);
+                        translateY = vertOffsets[i];
                         rotate = "rotate(0deg)";
                         break;
                     case "fanOut":
@@ -112,7 +123,7 @@
                         translateX = (150 - prevDivisor * 2 * i) * -1;
                         rotate = "rotate(0deg)"
                 }
-                var styleStr = "translate(" + translateX + "%, 0%)  scale(" + scale + ") " + rotate;
+                var styleStr = "translate(" + translateX + "%, " + translateY + "%)  scale(" + scale + ") " + rotate;
                 z = z + 1;
                 els[i].style.transform = styleStr;
                 els[i].style.zIndex = z
@@ -127,6 +138,7 @@
                     case "slide":
                         scale = scale - 100 / (maxCntDivisor + 1) / 100;
                         translateX = (50 - nextDivisor * j) * -1;
+                        translateY = vertOffsets[i] / 2;
                         rotate = "rotate(0deg)";
                         break;
                     case "fanOut":
@@ -141,7 +153,7 @@
                         rotate = "rotate(0deg)"
                 }
                 z = z - 1;
-                var styleStr = "translate(" + translateX + "%, 0%)  scale(" + scale + ") " + rotate;
+                var styleStr = "translate(" + translateX + "%, "+ translateY + "%)  scale(" + scale + ") " + rotate;
                 els[i].style.transform = styleStr;
                 els[i].style.zIndex = z
             }

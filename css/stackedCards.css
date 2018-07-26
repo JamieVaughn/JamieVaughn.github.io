@@ -48,12 +48,20 @@ body {
 
 .stacked-cards li:nth-child(2) {
     border-left: 25px solid #e61b77;
+    border-right: 25px solid #e61b77;
 }
-
+.stacked-cards li:nth-child(2).active {
+    border-left: 25px solid #e61b77;
+    border-right: none;
+}
 .stacked-cards li:nth-child(3) {
+    border-left: 25px solid #8E4497;
     border-right: 25px solid #8E4497;
 }
-
+.stacked-cards li:nth-child(3).active {
+    border-left: none;
+    border-right: 25px solid #8E4497;
+}
 .stacked-cards li:nth-child(4) {
     border-right: 25px solid rgb(250, 200, 42);
 }
@@ -62,9 +70,9 @@ body {
     position: relative;
 }
 .stacked-cards ul {
-    height: 550px;
+    height: 650px;
     position: relative;
-    max-width: 60%;
+    max-width: 80%;
     margin: 0 auto;
     padding-left: 0;
 }
@@ -79,7 +87,7 @@ body {
     width: 95%;
     position: absolute;
     left: 50%;
-    transition: 0.5s ease transform;
+    transition: 0.5s ease transform, 0.5s ease border;
 }
 
 .stacked-cards li:after {
@@ -100,7 +108,7 @@ body {
 .stacked-cards li.active {
     cursor: default;
     box-shadow: 0 5px 10px 0px #333;
-    transition: 0.5s ease transform;
+    transition: 0.5s ease transform, 0.5s ease border;
 }
 @media (max-width: 767px) {
     .stacked-cards ul {

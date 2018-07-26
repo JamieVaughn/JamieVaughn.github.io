@@ -3,6 +3,7 @@ html, body {
 }
 body {
     background:  linear-gradient(0deg, #4286b400, #4286b4f0);
+    overflow: hidden;
 }
 nav {
     display: flex;
@@ -10,6 +11,9 @@ nav {
     align-items: center;
     flex-wrap: wrap;
     background: steelblue;
+    position: sticky;
+    top: 0;
+    z-index: 9;
 }
 nav .breadcrumbs {
     flex-grow: 2;
@@ -40,6 +44,7 @@ main {
     letter-spacing: 2px;
     padding: 0.5rem;
     text-decoration: none;
+    margin: 0 auto;
 }
 .resume a {
     border: 2px solid white; /* rgb(250, 200, 42); */
@@ -126,8 +131,12 @@ div.details a:visited {
     color: steelblue;
     border: 1px solid steelblue;
 }
-div.details a:hover, .resume a:hover {
+div.details a:visited:hover {
     background: lightblue;
+}
+div.details a:hover, .resume a:hover {
+    background: lightyellow;
+    color: coral;
 }
 div.details p {
     margin: 0 auto;
@@ -202,10 +211,15 @@ ul h3 {
 #Education .emphasize {
     font-size: 13px;
 }
-
-.content-cards {
-    height: 240px;
+footer form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 33%;
+    margin: 0 auto;
+    /* align-items: center; */
 }
+
 
 @media (max-width: 767px) {
     section.business-card {
