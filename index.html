@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Jamie Vaughn Front End Web Developer Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/normalize.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/stackedCards.css"/>
@@ -83,56 +84,53 @@
                         <div>CMP Tech, <span>Rochester, NY</span></div>
                         <div class="role">Front End Software Developer, <span>Sept 2017 - Present</span></div>
                         <p>
-                        Compose performant, maintainable code for consumer, 
-                        subscription-based web products/apps. 
-                        Use HTML/CSS/Javascript & modern web development tools.
+                        Develop subscription-based HTML/CSS/JS web products & apps
                         </p>
                     </div>
                     <div>
                         <div>NR-Systems Ltd, <span>Remote</span></div>
-                        <div class="role">Web Developer/Designer, <span>2018 - Present</span></div>
+                        <div class="role">Web Developer/Designer, <span>Jan 2018 - Present</span></div>
                         <p>
-                        Maintain web presence and develop new web product designs
+                        Design new vectorized product imagery
                         </p>
                     </div>
                     <div>
                         <div>via Upwork.com, <span>Remote</span></div>
                         <div class="role">Freelance Web Developer, <span>Jan 2017 - Sept 2017</span></div>
                         <p>
-                        Use HTML/CSS/JS to make pixel perfect products for clients 
+                        Build HTML/CSS/JS products for clients 
                         </p>
                     </div>
                     <div>
                         <div>Ambrell Induction Heating, <span>Scottsville, NY</span></div>
                         <div class="role">Applications Engineer, <span>May 2014 - Oct 2015</span></div>
                         <p>
-                        Develop applications in a manufacturing setting to improve 
-                        process efficiency and help automate customer fulfillment.
+                        Develop thermal induction applications
                         </p>
                     </div>
                     <div>
                         <div>Bausch + Lomb, <span>Rochester, NY</span></div>
                         <div class="role">Environmental Engineer, <span>Jun 2011 - Jun 2012</span></div>
                         <p>
-                        Develop database to track product KPI's in manufacturing process
+                        Track product KPI's using database
                         </p>
                     </div>
     
                 </li>
                 <li id="Education" class="tile">
                     <h3><i class="fa fa-certificate"></i> Professional Certifications</h3>
-                    <div>Monroe Community College, <span>July - Dec 2017</span></div>
+                    <div>Monroe Community College, <span>July 2017 - Dec 2017</span></div>
                     <p class="emphasize">Sofware Engineering</p>
                     <div><i class="fa fa-free-code-camp"></i> FreeCodeCamp.com, <span>2016 - 2017</span></div>
                     <p class="emphasize">Front End Development</p>
                     
                     <h3><i class="fa fa-graduation-cap"></i> Education</h3>
                     <div>Rochester Institute of Technology, <span>2010 - 2012</span></div>
-                    <p>Finished course requirments for M.S., Systems Engineering</p>
+                    <p>Finished course requirements for M.S., Systems Engineering</p>
                     <div>Case Western Reserve, <span>2004 - 2009</span></div>
                     <p>
                         B.S., Materials Engineering<br>
-                        Fuel Cell Student Researcher - 2005
+                        Fuel Cell Student Researcher during 2005
                     </p>
                     <p></p>
 
@@ -145,14 +143,18 @@
             </ul>
         </section>
     </main>
+    <hr>
     <footer>
         
         <form action="">
             <h3>Need a Developer? Let's Connect!</h3>
-            <label for="email">Email:</label>
-            <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-            <label for="message">What's your project:</label>
+            
+            <input type="email" id="email" pattern=".+@+.+\.[a-z]{2,5}$" required>
+            <label class="email" for="email">Your Email:</label>
+            
             <textarea name="message" id="message" cols="30" rows="3" required></textarea>
+            <label class="message" for="message">Tell me about your project:</label>
+
             <input type="submit" onsubmit="postMsg">
         </form>
         
@@ -169,6 +171,12 @@
             });
         stackedCardSlide.init();
         // Form Handler
+        var email = document.querySelector('#email');
+        var msg = document.querySelector('#message');
+        var handler = () => email.style.visibility = "hidden";
+        if(email.value && !email.activeElement) {
+            handler();
+        }
         function postMsg() {
             return;
         }
