@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Jamie Vaughn Front End Web Developer Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="../assets/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="../css/stackedCards.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Signika:300,400,700" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </head>
+</head>
+<body>
+    <main>
+        <h1>Portfolio Gallery</h1>
+        <ul>
+            <li>
+                <a href="https://Moaroffers.com">Moaroffers.com</a>
+            </li>
+            <li>
+                <a href="https://Moartraffic.com">Moartraffic.com</a>
+            </li>
+            <li>
+                <a href="https://Partners.SeekVerify.com">Partners.SeekVerify.com</a>
+            </li>
+            <li>
+                <a href="https://SeekVerify.com">Some search subpages on SeekVerify.com</a>
+            </li>
+            <li>
+                <a href="Heliocrat.com">My blog site at Heliocrat.com</a>
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </main>
+    <hr>
+    <footer>
+        
+        <form action="">
+            <h3>Need a Developer? Let's Connect!</h3>
+
+            <input type="name" id="name" required>
+            <label class="name" for="name">Your Name:</label>
+            
+            <input type="email" id="email" pattern=".+@+.+\.[a-z]{2,5}$" required>
+            <label class="email" for="email">Your Email:</label>
+            
+            <textarea name="message" id="message" cols="30" rows="3" required></textarea>
+            <label class="message" for="message">Tell me about your project:</label>
+
+            <input type="submit" onsubmit="postMsg">
+        </form>
+</body>
+</html>
