@@ -39,8 +39,8 @@
             var els = this.els;
             this.parent = els[0].parentNode;
             var getItemHeight = me.getHeight().max; //els[0].getBoundingClientRect().height;
-            console.log(me.getHeight().max)
-            els[0].parentNode.style.height = parseInt(getItemHeight) + "px";
+            els.forEach(item => item.style.height = parseInt(getItemHeight) + "px");
+            // els[0].parentNode.style.height = parseInt(getItemHeight) + "px";
             var lenAdjust = els.length % 2 == 0 ? -2 : -1;
             var oneHalf = (els.length + lenAdjust) / 2;
             var activeTransform = "translate(" + -50 + "%, 0%)  scale(1)";
@@ -215,7 +215,7 @@
                 startX = touchobj.pageX;
                 startY = touchobj.pageY;
                 startTime = (new Date).getTime();
-                e.preventDefault()
+                // e.preventDefault()
             }, false);
             touchsurface.addEventListener("touchmove", function(e) {}, false);
             touchsurface.addEventListener("touchend", function(e) {

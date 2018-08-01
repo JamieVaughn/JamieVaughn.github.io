@@ -55,19 +55,20 @@
             <ul>
                 <li id="Skills" class="tile">
                     <h3><i class="fa fa-code"></i> Technologies</h3>
-                    <p>HTML5, CSS, Javascript, ES 2018, Git, jQuery, Vue.js, Node.js, D3.js, Handlebars.js</p>
-                    <p>GraphQL, Firebase, SQL</p>
-                    <p>Python, Pandas, Numpy, Seaborn, AMPL, NLOpt</p>
+                    <p><span class="subtitle">Languages: </span>HTML5, CSS, Javascript, ES 2018, GraphQL, Python, SQL, Node.js</p>
+                    <p><span class="subtitle">Frameworks: </span>Vue.js, D3.js, Firebase, jQuery, Pandas, Seaborn, Bootstrap</p>
+                    <p><span class="subtitle">Tools: </span>Git, Gulp, Handlebars, Google Analytics, AMPL, NLOpt </p>
+                    <p><span class="subtitle">Operating Systems: </span>MacOS, Linux Mint, Windows</p>
                     <h3><i class="fa fa-tasks"></i>  Skills</h3>
-                    <p>Single Page Apps with JS and VueJS</p>
-                    <p>Functional Programming and MVC/MV* Patterns</p>
+                    <p>Single Page App with MVC/MV* Architecture using VueJS</p>
+                    <p>Functional Programming and Progressive Web Apps</p>
                     <p>Computer Science Concepts: Algorithms, Databases, HTTP/2, REST, ACID and AJAX</p>
                     <p>Mobile Responsiveness, UI/UX, Animations, Design</p>
                     <p>Data Analysis, Statistics and Linear Optimization</p>
                 </li>
                 <li id="Portfolio" class="tile">
                     <h3><i class="fa fa-briefcase"></i> Portfolio Projects</h3>
-                    <a href="/portfolio">Visit My Portfolio Gallery <i class="fa fa-external-link"></i></a>
+                    <a href="jamievaughn.github.io/portfolio">Visit My Portfolio Gallery <i class="fa fa-external-link"></i></a>
                     <h4>Flock Roster</h4>
                     <h4>Heliocrat.com</h4>
                     <h4>Weather App</h4>
@@ -148,6 +149,9 @@
         
         <form action="">
             <h3>Need a Developer? Let's Connect!</h3>
+
+            <input type="name" id="name" required>
+            <label class="name" for="name">Your Name:</label>
             
             <input type="email" id="email" pattern=".+@+.+\.[a-z]{2,5}$" required>
             <label class="email" for="email">Your Email:</label>
@@ -162,25 +166,6 @@
     
 
     <script src="/js/stackedCards.js"></script>  
-    <script>
-        // Courtesy of https://github.com/junedchhipa/stacked-cards
-        var stackedCardSlide = new stackedCards({
-                selector: '.stacked-cards-slide',
-                layout: "slide",
-                transformOrigin: "center",
-            });
-        stackedCardSlide.init();
-        // Form Handler
-        var email = document.querySelector('#email');
-        var msg = document.querySelector('#message');
-        var handler = () => email.style.visibility = "hidden";
-        if(email.value && !email.activeElement) {
-            handler();
-        }
-        function postMsg() {
-            return;
-        }
-    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
