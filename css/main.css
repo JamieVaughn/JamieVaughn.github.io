@@ -214,6 +214,7 @@ ul li {
     /* display: block; */
 }
 #Portfolio a {
+    cursor: pointer;
     text-align: center;
     width: 200px;
     background: #f9f9fa;
