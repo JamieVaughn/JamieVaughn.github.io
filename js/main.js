@@ -26,8 +26,10 @@ function resetBreadcrumbs() {
     })
     return window.location.hash;
 }
+
+var scrollDest = window.innerWidth < 820 ? "end" : "center";
 window.addEventListener('hashchange', function(){
-    var obj = {block: "center"};
+    var obj = {block: scrollDest};
     switch(resetBreadcrumbs()){
         case "#Skills":
         navLinks[0].classList.add('selected');
@@ -72,7 +74,6 @@ pageLinks.forEach(item => item.addEventListener('click', function() {
         break;
     }
 }))
-
  // Form Handler
  var email = document.querySelector('#email');
  var msg = document.querySelector('#message');

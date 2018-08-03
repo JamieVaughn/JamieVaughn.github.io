@@ -38,26 +38,24 @@
             this.els = document.querySelectorAll(selector + " li");
             var els = this.els;
             this.parent = els[0].parentNode;
-            var getItemHeight = me.getHeight().max; //els[0].getBoundingClientRect().height;
+            var getItemHeight = me.getHeight().max; 
             els.forEach(item => item.style.height = parseInt(getItemHeight) + "px");
-            // els[0].parentNode.style.height = parseInt(getItemHeight) + "px";
             var lenAdjust = els.length % 2 == 0 ? -2 : -1;
             var oneHalf = (els.length + lenAdjust) / 2;
             var activeTransform = "translate(" + -50 + "%, 0%)  scale(1)";
-            this.detectSwipe();
+            this.detectSwipe();            
             Array.prototype.forEach.call(els, function(el) {
                 el.style.transformOrigin = me.config.transformOrigin;
                 el.addEventListener("click", function() {
+                    console.log(el);
                     var clickedEl = el;
                     var nextCnt = 0;
                     var prevCnt = 0;
                     do {
-                        var next = clickedEl.nextElementSibling;
                         nextCnt = nextCnt + 1
                     } while (clickedEl = clickedEl.nextElementSibling);
                     clickedEl = el;
                     do {
-                        var prev = clickedEl.previousElementSibling;
                         prevCnt = prevCnt + 1
                     } while (clickedEl = clickedEl.previousElementSibling);
                     me.reCalculateTransformsOnClick(nextCnt - 1, prevCnt - 1);
@@ -73,6 +71,7 @@
                     }
                 })
             });
+            
             els[oneHalf].click()
         };
         stackedCards.prototype.reCalculateTransformsOnClick = function(nextCnt, prevCnt) {
@@ -81,15 +80,12 @@
             var els = this.nodelistToArray(this.els);
             var maxHeight = me.getHeight().max;
             var vertOffsets = me.getHeight().heights.map(item=> Math.round((( 1 - ( item / maxHeight )) * -100) ));
+            els[0].parentNode.style.height = parseInt(me.getHeight().max) + "px";
             var scale = 1,
                 translateX = 0,
                 translateY = 0,
                 rotateVal = 0,
                 rotate = "";
-            var rotateNegStart = 0;
-            var transformArr = [];
-            var zIndexArr = [];
-            var relArr = [];
             var layout = this.config.layout;
             var maxCntDivisor = Math.max(prevCnt, nextCnt);
             var prevDivisor = 100 / maxCntDivisor;
@@ -195,10 +191,9 @@
                 callback.call(scope, els[i])
             }
         };
-        stackedCards.prototype.scrolledIn = function(el, offset) {
+        stackedCards.prototype.scrolledIn = function(el) {
             if (typeof el == "undefined") return;
             var elemTop = el.getBoundingClientRect().top;
-            var elemBottom = el.getBoundingClientRect().bottom;
             var scrolledInEl = elemTop >= 0 && elemTop <= window.innerHeight;
             return scrolledInEl
         };
@@ -215,7 +210,6 @@
                 startX = touchobj.pageX;
                 startY = touchobj.pageY;
                 startTime = (new Date).getTime();
-                // e.preventDefault()
             }, false);
             touchsurface.addEventListener("touchmove", function(e) {}, false);
             touchsurface.addEventListener("touchend", function(e) {
@@ -231,7 +225,7 @@
                     }
                 }
                 handleswipe(swipedir);
-                e.preventDefault()
+                // e.preventDefault()
             }, false)
         };
         return stackedCards

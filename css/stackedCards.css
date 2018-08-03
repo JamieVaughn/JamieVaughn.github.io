@@ -89,14 +89,14 @@ body {
     transition: 0.5s ease transform, 0.5s ease border;
 }
 
-.stacked-cards li:after {
+/* .stacked-cards li:after {
     bottom: 0;
     content: "";
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
-}
+} */
 .stacked-cards li img {
     position: relative;
     display: block;

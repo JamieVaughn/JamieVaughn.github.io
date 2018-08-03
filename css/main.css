@@ -221,7 +221,9 @@ ul li {
     color: #e61b77;
     border: 1px solid #e61b77;
 }
-
+#Portfolio a:hover {
+    transform: scale(1.5);
+}
 #Experience h1,
 #Experience h2,
 #Experience h4,
@@ -331,6 +333,7 @@ footer form textarea {
     }
     nav .breadcrumbs a {
         margin: 0;
+        padding: 25px 3px;
     }
     section.business-card {
         width: auto;
@@ -350,6 +353,9 @@ footer form textarea {
         height: auto;
         margin: 8.5rem auto 2rem;
         border-top-left-radius: 5px;
+    }
+    section.business-card:hover {
+        transform: scale(1);
     }
     .business-card hr {
         width: 650px;
@@ -393,7 +399,7 @@ footer form textarea {
     footer form {
         width: 90%;
     }
-    footer form label {
+    footer form input[type="email"] +label {
         background: #e2ebf2;
     }
 }
