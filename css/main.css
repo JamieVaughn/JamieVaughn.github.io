@@ -220,9 +220,10 @@ ul li {
     background: #f9f9fa;
     color: #e61b77;
     border: 1px solid #e61b77;
+    transition: transform 300ms;
 }
 #Portfolio a:hover {
-    transform: scale(1.5);
+    transform: scale(1.15);
 }
 #Experience h1,
 #Experience h2,
