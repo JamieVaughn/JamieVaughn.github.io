@@ -145,10 +145,13 @@
         </section>
     </main>
     <hr>
-    <footer>
+    <footer href="#ContactMe">
         
-        <form action="">
+        <form id="ajax-contact" method="post" 
+        action="https://getsimpleform.com/messages?form_api_token=8d73f78e270ace7eeda7529329d6a348">
+        <input type='hidden' name='redirect_to' value='https://jamievaughn.githun.io/?submit=success#ContactMe' />
             <h3>Need a Developer? Let's Connect!</h3>
+            <div id="form-feedback" class="hidden">Thank you for your submission!</div>
 
             <input type="name" id="name" required>
             <label class="name" for="name">Your Name:</label>

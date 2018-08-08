@@ -267,6 +267,12 @@ footer form {
     width: 40%;
     margin: 0 auto;
 }
+.hidden {
+    display: none;
+}
+#form-message {
+    color: #4dac86;
+}
 footer form label {
     transform: translate(5px, -25px);
     transition: transform 350ms;
