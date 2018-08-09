@@ -150,14 +150,14 @@
         
         <form id="ajax-contact" method="post" 
         action="https://getsimpleform.com/messages?form_api_token=8d73f78e270ace7eeda7529329d6a348">
-        <input type='hidden' name='redirect_to' value='https://jamievaughn.githun.io/?submit=success#ContactMe' />
+        <input type='hidden' name='redirect_to' value='https://jamievaughn.github.io/?submit=success#ContactMe' />
             <h3>Need a Developer? Let's Connect!</h3>
             <div id="form-feedback" class="hidden">Submitted successfully! Thank you! I'll be in touch shortly.</div>
 
-            <input type="name" id="name" required>
+            <input name="name" type="name" id="name" required>
             <label class="name" for="name">Your Name:</label>
             
-            <input type="email" id="email" pattern=".+@+.+\.[a-z]{2,5}$" required>
+            <input name="email" type="email" id="email" pattern=".+@+.+\.[a-z]{2,5}$" required>
             <label class="email" for="email">Your Email:</label>
             
             <textarea name="message" id="message" cols="30" rows="3" required></textarea>
