@@ -270,8 +270,9 @@ footer form {
 .hidden {
     display: none;
 }
-#form-message {
+#form-feedback {
     color: #4dac86;
+    margin-bottom: 0.5rem;
 }
 footer form label {
     transform: translate(5px, -25px);
