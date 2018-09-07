@@ -3,28 +3,14 @@ const ctx = canvas.getContext('2d')
 const scoreEl = document.getElementById('score')
 let score = 0;
 let gameOver = false;
-
-const board = {
-    row: 22,
-    col: 10,
-    size: 20,
-    empty: 'white',
-    init () {
-       return Array(this.row).fill(false).map(i => {
-           var y = 0
-           return Array(this.col).fill(false).map(i => y++)
-       }) 
-    }, 
-    draw (brd) {
-        brd.forEach((r, index) => {
-            r.forEach(c => {
-                drawSquare(c, index, this.empty)
-            })
-        })
-    }
-}
+let start = Date.now()
 const gameBoard = board.init()
 board.draw(gameBoard)
+let proto = getTetromino(randType())
+let origin = {x: 5, y: -3}
+let current = initTetromino(proto, origin)
+draw(current)
+driftIO()
 
 function drawSquare( x, y, color) {
     ctx.fillStyle = color
@@ -38,10 +24,6 @@ function randType() {
     return types[Math.floor(Math.random() * types.length)]
 }
 
-let proto = getTetromino(randType())
-let origin = {x: 5, y: 0}
-let current = initTetromino(proto, origin)
-
 function initTetromino(tetromino, pos){
     return {
         type: tetromino.type,
@@ -53,21 +35,22 @@ function initTetromino(tetromino, pos){
     } 
 }
 
-const draw = function(tetromino, flag = 0){
+function draw(tetromino, flag = 0){
     // if(didCollide(tetromino)) return;
     tetromino.position.forEach(i => {
         drawSquare([i[0]], [i[1]], flag ? 'white' : tetromino.color)
     })
     return;
 }
+
 function move(tetromino, nudge = 0) {
+    if(gameOver) return tetromino;
     if(didCollide(tetromino) === true) {
-        didCollide(tetromino)
         return current = initTetromino(getTetromino(randType()), origin)
     } else {
         let increment = nudge ? [0, 0] : [0, 1]
         increment[0] += nudge; // nudge will be 0 by default, -1 for left; +1 for right
-        console.log(increment[0])
+        // console.log(increment[0])
         draw(tetromino, 1) // erase old tetromino
         tetromino = {
             type: tetromino.type,
@@ -87,8 +70,17 @@ function rotate(tetromino) {
     let rotateTo = next === 4 ? 'up' : directions[next]
     draw(tetromino, 1)
     tetromino.direction = rotateTo;
-    let posAdjustment = getTetromino(tetromino.type)[rotateTo]
-    tetromino.position = posAdjustment.map(i => [tetromino.position[2][0]+i[0], tetromino.position[2][1]+i[1]])
+    let posAdjustment = getTetromino(tetromino.type)[rotateTo].map(i => [tetromino.position[2][0]+i[0], tetromino.position[2][1]+i[1]])
+    
+    if(posAdjustment.map(i=> i[0]).some((i=> i < 0) )) {
+        console.log('bounds', tetromino.position);
+        posAdjustment = posAdjustment.map((i,index) => [i[index][0]+1, i[index][1]])
+    }
+    if(posAdjustment.map(i=> i[0]).some((i=> i > 9) )) {
+        console.log('bounds', tetromino.position);
+        posAdjustment = posAdjustment.map((i,index) => [i[index][0]-1, i[index][1]])
+    }
+    tetromino.position = posAdjustment
     draw(tetromino)
     return tetromino;
 }
@@ -96,21 +88,47 @@ function rotate(tetromino) {
 function didCollide(tetromino) {
     let sliced = tetromino.position.filter(i=> i[0]<=0 )
     let hooked = tetromino.position.filter(i=> i[0]>=9)
+    // tetromino.position.forEach(i=>console.log(i, board.occupied))
     let floored = tetromino.position.filter(i=> i[1]>=21)
-    console.log(sliced, hooked, floored)
-    if (sliced.length > 0) {
-        return 'sliced'
-    } else if (hooked.length > 0) {
-        return 'hooked'
-    } else if (floored.length > 0) {
+    let stuck = false;
+    board.occupied.forEach(i => {
+        if( tetromino.position[0][0] === i[0] && tetromino.position[0][1]+1 === i[1] ||
+            tetromino.position[1][0] === i[0] && tetromino.position[1][1]+1 === i[1] ||
+            tetromino.position[2][0] === i[0] && tetromino.position[2][1]+1 === i[1] ||
+            tetromino.position[3][0] === i[0] && tetromino.position[3][1]+1 === i[1] ) {
+                stuck = true
+            }
+    }) 
+    // stuck = tuplesInMatrix(tetromino.position, board.occupied)
+    let spilled = tetromino.position.filter(i=> i[1]<0)
+    if (spilled.length > 0 && stuck) {
+        gameOver = true;
+    } else if (floored.length > 0 || stuck) {
+        floored = [];
+        tetromino.position.forEach(i => board.occupied.push(i))
+        console.log(board.occupied)
         return true
+    } else if (hooked.length > 0) {
+        hooked = []
+        return 'hooked'
+    } else if (sliced.length > 0) {
+        sliced = []
+        return 'sliced'
     }
     return false;
 }
 
-draw(current)
-
-let start = Date.now()
+function tuplesInMatrix(tuples, matrix) {
+    matrix.forEach(i => {
+        if( tuples[0][0] === i[0] && tuples[0][1]+1 === i[1] ||
+            tuples[1][0] === i[0] && tuples[1][1]+1 === i[1] ||
+            tuples[2][0] === i[0] && tuples[2][1]+1 === i[1] ||
+            tuples[3][0] === i[0] && tuples[3][1]+1 === i[1] ) {
+                stuck = true
+            }
+    }) 
+    return false
+};
 
 function driftIO() {
     let now = Date.now()
@@ -119,11 +137,11 @@ function driftIO() {
         start = Date.now()
         current = move(current)
     }
-    requestAnimationFrame(driftIO)
+    if(!gameOver) {
+        requestAnimationFrame(driftIO)
+    }
+    
 }
-
-driftIO()
-
 
 document.addEventListener('keydown', function(e){    
     let negate = didCollide(current) // negate nudge if tetromino didCollide
@@ -133,7 +151,7 @@ document.addEventListener('keydown', function(e){
     } else if (e.which === 39 && negate !== 'hooked') {
         current = move(current, 1)
        
-    } else if (e.which === 38) {
+    } else if (e.which === 38 && negate !== 'sliced' && negate !== 'hooked') {
         current = rotate(current)
        
     } else if (e.which === 40) {

@@ -71,3 +71,24 @@ const getTetromino = function(type){                        // Array values desc
         }
     }
 }
+
+const board = {
+    row: 22,
+    col: 10,
+    size: 20,
+    empty: 'white',
+    occupied: [],
+    init () {
+       return Array(this.row).fill(false).map(i => {
+           var y = 0
+           return Array(this.col).fill(false).map(i => y++)
+       }) 
+    }, 
+    draw (brd) {
+        brd.forEach((r, index) => {
+            r.forEach(c => {
+                drawSquare(c, index, this.empty)
+            })
+        })
+    }
+}
