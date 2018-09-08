@@ -77,7 +77,7 @@ const board = {
     col: 10,
     size: 20,
     empty: 'white',
-    occupied: [],
+    occupied: Array(22).fill(0),
     init () {
        return Array(this.row).fill(false).map(i => {
            var y = 0
@@ -89,6 +89,13 @@ const board = {
             r.forEach(c => {
                 drawSquare(c, index, this.empty)
             })
+        })
+    },
+    sweep () {
+        this.occupied.forEach(i => {
+            if(i.length === 10) {
+                i.length = 0;
+            }
         })
     }
 }

@@ -36,7 +36,6 @@ function initTetromino(tetromino, pos){
 }
 
 function draw(tetromino, flag = 0){
-    // if(didCollide(tetromino)) return;
     tetromino.position.forEach(i => {
         drawSquare([i[0]], [i[1]], flag ? 'white' : tetromino.color)
     })
@@ -46,6 +45,10 @@ function draw(tetromino, flag = 0){
 function move(tetromino, nudge = 0) {
     if(gameOver) return tetromino;
     if(didCollide(tetromino) === true) {
+       let indices = tetromino.position.map(i=>i[1]);
+       let vals = tetromino.position.map(i=>i[0]);
+       [0,1,2,3].forEach(i => board.occupied[indices[i]] += (vals[i]));
+        console.log(board.occupied);
         return current = initTetromino(getTetromino(randType()), origin)
     } else {
         let increment = nudge ? [0, 0] : [0, 1]
@@ -105,8 +108,6 @@ function didCollide(tetromino) {
         gameOver = true;
     } else if (floored.length > 0 || stuck) {
         floored = [];
-        tetromino.position.forEach(i => board.occupied.push(i))
-        console.log(board.occupied)
         return true
     } else if (hooked.length > 0) {
         hooked = []
@@ -136,6 +137,7 @@ function driftIO() {
     if((now - start) > 1000) {
         start = Date.now()
         current = move(current)
+        
     }
     if(!gameOver) {
         requestAnimationFrame(driftIO)
@@ -154,7 +156,7 @@ document.addEventListener('keydown', function(e){
     } else if (e.which === 38 && negate !== 'sliced' && negate !== 'hooked') {
         current = rotate(current)
        
-    } else if (e.which === 40) {
+    } else if (e.which === 40 && negate !== true) {
         current = move(current)
         
     }
