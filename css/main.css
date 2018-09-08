@@ -78,7 +78,7 @@ section.business-card {
     width: 535px;
     border-radius: 100px 5px 5px;
     background: linear-gradient(0deg, rgba(1, 17, 51, 0.9), rgba(0, 0, 0, 0.45)),
-                center / cover no-repeat url('/assets/flatgrid.jpeg');
+                center / cover no-repeat url('/assets/img/flatgrid.jpeg');
     color: white;
     overflow: hidden;
     box-shadow: 0 3px 6px 0px steelblue;
@@ -101,7 +101,7 @@ div.me div.portrait {
     border-radius: 50%;
     height: 185px;
     width: 180px;
-    background: center bottom / contain no-repeat url('/assets/HDprofile.jpeg'), rgb(216, 206, 212);
+    background: center bottom / contain no-repeat url('/assets/img/HDprofile.jpeg'), rgb(216, 206, 212);
 }
 div.me h1 {
     font-weight: 500;
