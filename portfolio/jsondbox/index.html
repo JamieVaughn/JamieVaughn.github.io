@@ -5,16 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JSONdbox - A sandbox for exploring json data</title>
+
+    <link rel="stylesheet" href="css/main.css">
     <script src='../../assets/lib/vue.js'></script>
 </head>
 <body>
-    
-<h1>JSONdbox</h1>
-<input type="text" id='fetch'>
-<label for="fetch">Fetch URL</label>
+ <header>
+    <h1>JSONdbox</h1>
+    <input type="text" id='fetch'>
+    <label for="fetch">Fetch URL</label>
+ </header>   
 
-<main>
-    <span class='line-num'></span> <input type="text" class='line'>
-</main>
+
+<aside id='json'>
+    <span class='line'><span class='num'>1</span> <input type="text" class='text' autocomplete="off" spellcheck="false"></span> 
+    <span class='line'><span class='num'>2</span> <input type="text" class='text' autocomplete="off" spellcheck="false"></span> 
+</aside>
+
+<aside class='output'>
+    <span class='line'><span class='num'>1</span> <input type="text" class='text' autocomplete="off" spellcheck="false"></span> 
+    <span class='line'><span class='num'>2</span> <input type="text" class='text' autocomplete="off" spellcheck="false"></span> 
+</aside>
+
+<section>
+    <label for="function">Transform your data on the left and see the output on the right:</label>
+    <input type="text" id='function' class='text'>
+</section>
+
+
 </body>
 </html>
