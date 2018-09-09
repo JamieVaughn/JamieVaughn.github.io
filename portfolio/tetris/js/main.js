@@ -46,9 +46,9 @@ function move(tetromino, nudge = 0) {
     if(gameOver) return tetromino;
     if(didCollide(tetromino) === true) {
        let indices = tetromino.position.map(i=>i[1]);
-       let vals = tetromino.position.map(i=>i[0]);
-       [0,1,2,3].forEach(i => board.occupied[indices[i]] += (vals[i]));
-        console.log(board.occupied);
+       let vals = tetromino.position.map(i=>i[0]+1);
+       [0,1,2,3].forEach(i => board.rowSum[indices[i]] += (vals[i]));
+        console.log(board.rowSum);
         return current = initTetromino(getTetromino(randType()), origin)
     } else {
         let increment = nudge ? [0, 0] : [0, 1]
@@ -106,8 +106,13 @@ function didCollide(tetromino) {
     let spilled = tetromino.position.filter(i=> i[1]<0)
     if (spilled.length > 0 && stuck) {
         gameOver = true;
+        return;
     } else if (floored.length > 0 || stuck) {
         floored = [];
+        tetromino.position.forEach(i => {
+            board.occupied.push(i)
+            gameBoard[i[1]][i[0]] = tetromino.color;
+        })
         return true
     } else if (hooked.length > 0) {
         hooked = []
@@ -131,18 +136,35 @@ function tuplesInMatrix(tuples, matrix) {
     return false
 };
 
+function checkRowFull(array) { 
+     let winRow = array.map((i, index) => i == 55 ? index : false).filter(j => j);
+    return winRow.length > 0 ? winRow : false;
+}
+
 function driftIO() {
     let now = Date.now()
     if(gameOver) { return }
-    if((now - start) > 1000) {
+    if((now - start) > 750) {
+        var check = checkRowFull(board.rowSum)
+        if(check) {
+            score += board.rowSum[check[0]];
+            scoreEl.innerHTML = score;
+            board.rowSum = board.rowSum.filter(i => i!==55)
+            board.rowSum.unshift(0);
+            check.forEach(i => {
+            board.occupied = board.occupied.filter(j=> j[1] !== i).map(k => [k[0],k[1]+1])
+            board.sweep(gameBoard, i); 
+            
+        })
+    }
+    check = false;
+    
         start = Date.now()
         current = move(current)
-        
     }
     if(!gameOver) {
         requestAnimationFrame(driftIO)
-    }
-    
+    } 
 }
 
 document.addEventListener('keydown', function(e){    

@@ -77,25 +77,24 @@ const board = {
     col: 10,
     size: 20,
     empty: 'white',
-    occupied: Array(22).fill(0),
+    occupied: [],
+    rowSum: Array(22).fill(0),
     init () {
-       return Array(this.row).fill(false).map(i => {
+       return Array(this.row).fill([]).map(i => {
            var y = 0
-           return Array(this.col).fill(false).map(i => y++)
+           return Array(this.col).fill(this.empty)
        }) 
     }, 
     draw (brd) {
         brd.forEach((r, index) => {
-            r.forEach(c => {
-                drawSquare(c, index, this.empty)
+            r.forEach((c, ind) => {
+                drawSquare(ind, index, c)
             })
         })
     },
-    sweep () {
-        this.occupied.forEach(i => {
-            if(i.length === 10) {
-                i.length = 0;
-            }
-        })
+    sweep (brd, key) {
+        brd.slice(key, key+1)
+        brd.unshift(Array(10).fill(this.empty))
+        board.draw(gameBoard);
     }
 }
