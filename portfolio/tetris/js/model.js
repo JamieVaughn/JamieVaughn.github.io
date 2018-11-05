@@ -72,7 +72,7 @@ const getTetromino = function(type){                        // Array values desc
     }
 }
 
-const board = {
+const boardObj = {
     row: 22,
     col: 10,
     size: 20,

@@ -7,13 +7,16 @@
     <title>JSONdbox - A sandbox for exploring json data</title>
 
     <link rel="stylesheet" href="css/main.css">
-    <script src='../../assets/lib/vue.js'></script>
+    <!-- <script src='../assets/lib/vue.js'></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'></script>
 </head>
 <body>
+<div id='app'>
  <header>
-    <h1>JSONdbox</h1>
-    <input type="text" id='fetch'>
-    <label for="fetch">Fetch URL</label>
+    <h1>JSON box</h1>
+    <input type="text" id='fetch' v-model='fetchUrl'>
+    <button id='fetchBtn' @click='fetchData'><label for="fetch">Fetch URL</label></button>   
  </header>   
 
 
@@ -27,11 +30,14 @@
     <span class='line'><span class='num'>2</span> <input type="text" class='text' autocomplete="off" spellcheck="false"></span> 
 </aside>
 
+<pre id='fetchResult'></pre>
+
 <section>
     <label for="function">Transform your data on the left and see the output on the right:</label>
     <input type="text" id='function' class='text'>
 </section>
+</div> 
 
-
+<script src="js/main.js"></script>
 </body>
 </html>
