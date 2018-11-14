@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Warcraft Character App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesystem.css" />
+</head>
+<body>
+    <div id="app">
+        <header>
+            <img src="" v-bind:alt="logoAlt">
+            <searchform></searchform>
+        </header>
+        <main>
+            <section class='stats'>
+                <datagrid title='Strength'></datagrid>
+            </section>
+            <section class='items'>
+
+            </section>
+        </main>
+    </div>
+
+     <!-- Vue and Axios Libraries -->
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+    <!-- Custom Vue Components -->
+    <script src='./components/searchform.vue.js'></script>
+    <script src='./components/datagrid.vue.js'></script>
+
+    <!-- Initialize Vue Instance -->
+    <script src="init.vue.js"></script>
+
+    
+</body>
+</html>
