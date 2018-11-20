@@ -1,0 +1,46 @@
+#datamodal {
+    color: white;
+    background: rgba(11, 18, 47, 0.5);
+    width: 100vw;
+    display: grid;
+    grid-template-areas: 'header header' 'stats items';
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 1rem;
+    padding: 2rem;
+}
+#datamodal header {
+    display: flex;
+    grid-area: header;
+}
+#datamodal header img {
+    width: auto;
+    height: 2.5rem;
+}
+#datamodal button {
+    background: none;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+}
+#datamodal h2 {
+    margin: auto;
+}
+
+#datamodal section {
+    background: rgba(11, 18, 47, 0.5);
+    border: 1px solid #fafafa;
+    border-radius: 8px;
+}
+#datamodal .stats-grid {
+    grid-area: stats;
+}
+#datamodal .items-grid {
+    grid-area: items;
+}
+
+#datamodal .attribute {
+    color: #d6a131;
+ }
+ #datamodal .mastery {
+    color: #1a8b85;
+ } 

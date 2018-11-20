@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/appshell.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/searchform.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/datagrid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/datamodal.css" />
 </head>
 <body>
     <div id="app" class='flex-col'>
@@ -16,12 +16,7 @@
             <searchform></searchform>
         </header>
         <main>
-            <section class='stats'>
-                <datagrid title='Strength'></datagrid>
-            </section>
-            <section class='items'>
-
-            </section>
+            <datamodal char='Regex' realm='Dalaran'></datamodal>
         </main>
     </div>
 
@@ -31,7 +26,7 @@
 
     <!-- Custom Vue Components -->
     <script src='./components/searchform.vue.js'></script>
-    <script src='./components/datagrid.vue.js'></script>
+    <script src='./components/datamodal.vue.js'></script>
 
     <!-- Initialize Vue Instance -->
     <script src="init.vue.js"></script>

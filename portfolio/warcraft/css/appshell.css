@@ -20,7 +20,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
-header img {
+#app > header img {
     width: 50%;
     margin: 1.5rem auto;
 }
