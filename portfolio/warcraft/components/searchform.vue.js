@@ -1,9 +1,17 @@
 Vue.component('searchform', {
     template: `
-    <form>
-        <input type="text" id='query-char' ref='char'>
-        <input type="text" id='query-realm' ref='realm'>
-        <button id='query-go' @click='fetchData()'>Search</button>
+    <form id='searchform' class='flex-col'>
+        <input type="text" id='query-char' 
+        v-model='char' autocomplete='off'
+        pattern='[A-z0-9À-ž\\s]{2,}' required>
+        <label for='query-char'>Character Name</label>
+
+        <input type="text" id='query-realm' 
+        v-model='realm' autocomplete='off'
+        pattern='[A-z0-9À-ž\\s]{2,}' required>
+        <label for='query-realm'>Realm Name</label>
+
+        <button id='query-go' @click.stop.prevent='fetchData()'>Search</button>
     </form>
     `,
     data: function () {
@@ -21,6 +29,7 @@ Vue.component('searchform', {
     },
     methods: {
         fetchData() {
+            console.log(this.getUrl)
             axios.get(this.getUrl)
                 .then(function (response) {
                     // handle success
@@ -37,7 +46,7 @@ Vue.component('searchform', {
     },
     computed: {
         getUrl() {
-            return this.getUrl+this.realm+'/'+this.char+'/'+this.locale+this.key;
+            return this.baseUrl+this.realm+'/'+this.char+'?'+this.locale+this.key;
         }
     }
 })

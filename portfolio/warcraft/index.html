@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Warcraft Character App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesystem.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/appshell.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/searchform.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/datagrid.css" />
 </head>
 <body>
-    <div id="app">
-        <header>
-            <img src="" v-bind:alt="logoAlt">
+    <div id="app" class='flex-col'>
+        <header class='flex-col'>
+            <img src="img/logo.png" v-bind:alt="logoAlt">
             <searchform></searchform>
         </header>
         <main>

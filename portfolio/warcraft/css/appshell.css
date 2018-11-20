@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    transition: all 300ms;
+}
+html, body {
+    background: black;
+    padding: 0;
+    margin: 0;
+}
+#app {
+    background: center / cover no-repeat url('../img/bg-lg.jpg');
+    height: 100vh;
+    width: 100vw;
+    max-width: 850px;
+    justify-content: flex-start;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+header img {
+    width: 50%;
+    margin: 1.5rem auto;
+}
