@@ -11,42 +11,48 @@ Vue.component('searchform', {
         pattern='[A-z0-9À-ž\\s]{2,}' required>
         <label for='query-realm'>Realm Name</label>
 
-        <button id='query-go' @click.stop.prevent='fetchData()'>Search</button>
+        <button id='query-go' ref='query-go' 
+        @mouseover='hovered=true' @mouseout='hovered=false'
+        @click.stop.prevent='fetchData()'>
+            {{prompt}}
+        </button>
+        <p v-show='hovered'>{{tooltip}}</p>
     </form>
     `,
     data: function () {
         return {
             response: {},
-            testRealm: 'Dalaran',
-            testChar: 'Regex',
             baseUrl: 'https://us.api.battle.net/wow/character/',
             realm: '',
             char: '',
+            field: 'stats,items',
             // + :realm/:charName?<field>
             locale: '&locale=en_US',
-            key: '&apikey=a2dnsby9tf7qxv95cwxd9vybnpanpjwh'
+            key: '&apikey=a2dnsby9tf7qxv95cwxd9vybnpanpjwh',
+            tooltip: 'Click for an example search',
+            hovered: false,
+            prompt: 'Search'
         }
     },
     methods: {
-        fetchData() {
+        async fetchData() {
             console.log(this.getUrl)
-            axios.get(this.getUrl)
-                .then(function (response) {
-                    // handle success
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .then(function () {
-                    // always executed
-                });
+            try {
+                let response = await axios.get(this.getUrl)
+                let feedback = await response.statusText == 'OK' ? this.prompt = 'OK!' : false
+                let data = await response.data
+                var emission = this.$bus.$emit('CharFound', await data);
+                setTimeout(()=>this.prompt='Search',2000);
+            } catch (error) {
+                this.prompt = 'Error :( Try another search.'
+                console.log(error)
+            }
         }
     },
     computed: {
         getUrl() {
-            return this.baseUrl+this.realm+'/'+this.char+'?'+this.locale+this.key;
+            return this.baseUrl+(this.realm || 'dalaran') +'/'
+            +(this.char || 'regex')+'?fields='+this.field+this.locale+this.key;
         }
     }
 })
