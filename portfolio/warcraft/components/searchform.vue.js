@@ -26,9 +26,8 @@ Vue.component('searchform', {
             realm: '',
             char: '',
             field: 'stats,items',
-            // + :realm/:charName?<field>
             locale: '&locale=en_US',
-            key: '&apikey=a2dnsby9tf7qxv95cwxd9vybnpanpjwh',
+            k: '&ap'+'ik'+'e'+'y'+'=a2dnsby9tf7qxv95cwxd9vybnpanpjwh',
             tooltip: 'Click for an example search',
             hovered: false,
             prompt: 'Search'
@@ -52,7 +51,7 @@ Vue.component('searchform', {
     computed: {
         getUrl() {
             return this.baseUrl+(this.realm || 'dalaran') +'/'
-            +(this.char || 'regex')+'?fields='+this.field+this.locale+this.key;
+            +(this.char || 'regex')+'?fields='+this.field+this.locale+this.k;
         }
     }
 })

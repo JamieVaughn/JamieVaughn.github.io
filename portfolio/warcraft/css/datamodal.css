@@ -33,8 +33,24 @@
 }
 #datamodal .stats-grid {
     grid-area: stats;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
-#datamodal .items-grid {
+#datamodal .stats-block {
+    text-align: center;
+    text-transform: capitalize;
+    border: 1px solid #eeba6e;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 3px;
+    min-width: 120px;
+}
+#datamodal .stats-list, #datamodal .item-icon {
+    list-style: none;
+    padding: 0;
+}
+#datamodal .item-grid {
     grid-area: items;
 }
 

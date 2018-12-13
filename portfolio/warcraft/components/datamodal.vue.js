@@ -9,15 +9,20 @@ Vue.component('datamodal', {
             </button>
         </header>
         <section class='stats-grid' @charfound='display=true'>
-            <div v-for="(attr, key) in stats">
+            <div class='stats-block' v-for="(attr, key) in stats">
                 <h3>{{key}}</h3>
-                <ul v-for='(item, key) in attr'>
-                    <li>{{key}}: {{item}}</li>
+                <ul class='stats-list' v-for='(i, key) in attr'>
+                    <li>{{key}}: {{i}}</li>
                 </ul>
             </div>
         </section>
-        <section class='items-grid'>
-            items
+        <section class='item-grid' @charfound='display=true'>
+            <div class='item-list' v-for='(item, key) in items'>
+                <h3>{{key}}</h3>
+                <ul class='item-icon'>
+                    <li>{{item.name}}: <img v-bind:src='item.icon' v-bind:alt='item.icon'></li>
+                </ul>
+            </div>
         </section>
     </div>
     `,
@@ -30,33 +35,29 @@ Vue.component('datamodal', {
             thumb: '',
             items: {},
             stats: {
-                attributes: {
-                    strength: 1206,
-                    agility: 4922,
-                    intellect: 711,
-                    stamina: 5995
-                },
-                attack: {
-                    damage: 4076,
-                    speed: 1.62
-                },
-                spell: {
-                    mana: 0,
-                    spellCrit: 0
-                },
-                defense: {
-                    armor: 1246,
-                    dodge: 12.62,
-                    parry: 3,
-                    block: 0
-                },
-                enhancements: {
-                    crit: 33.41,
-                    haste: 11.2,
-                    mastery: 77.99,
-                    leech: 0,
-                    versatility: 7.58
-                }
+                attributes: {},
+                attack: {},
+                spell: {},
+                defense: {},
+                enhancements: {}
+            },
+            items: {
+                head: {},
+                neck: {},
+                shoulder: {},
+                back: {},
+                chest: {},
+                shirt: {},
+                wrist: {},
+                hands: {},
+                waist: {},
+                legs: {},
+                feet: {},
+                finger1: {},
+                finger2: {},
+                trinket1: {},
+                trinket2: {},
+                mainHand: {}
             }
         }
     },
@@ -94,7 +95,10 @@ Vue.component('datamodal', {
             stat.enhancements.leech = obj.stats.leech;
             stat.enhancements.versatility = obj.stats.versatility;
 
-
+            for(key in this.items){
+                this.items[key].name= obj.items[key].name
+                this.items[key].icon= 'https://wow.zamimg.com/images/wow/icons/medium/' + obj.items[key].icon + '.jpg'
+            }
         }
     },
     created: function() {

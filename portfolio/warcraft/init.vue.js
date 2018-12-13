@@ -1,4 +1,4 @@
-//bind the event bus
+//bind the event bus to the Vue prototype
 Vue.prototype.$bus = new Vue({})
 //Instantiate the main vue instance
 const app = new Vue({
