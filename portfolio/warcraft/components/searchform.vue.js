@@ -15,8 +15,8 @@ Vue.component('searchform', {
         @mouseover='hovered=true' @mouseout='hovered=false'
         @click.stop.prevent='fetchData()'>
             {{prompt}}
+            <p v-show='useDefault'>{{tooltip}}</p>
         </button>
-        <p v-show='hovered'>{{tooltip}}</p>
     </form>
     `,
     data: function () {
@@ -52,6 +52,9 @@ Vue.component('searchform', {
         getUrl() {
             return this.baseUrl+(this.realm || 'dalaran') +'/'
             +(this.char || 'regex')+'?fields='+this.field+this.locale+this.k;
+        },
+        useDefault() {
+            return this.hovered && !(this.realm || this.char);
         }
     }
 })

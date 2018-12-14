@@ -1,12 +1,16 @@
 #datamodal {
     color: white;
     background: rgba(11, 18, 47, 0.5);
-    width: 100vw;
     display: grid;
     grid-template-areas: 'header header' 'stats items';
     grid-template-columns: 2fr 1fr;
     grid-gap: 1rem;
     padding: 2rem;
+}
+@media screen and (max-width: 850px) {
+    #datamodal {
+        grid-template-areas: 'header header' 'stats stats' 'items items';
+    }
 }
 #datamodal header {
     display: flex;
@@ -46,17 +50,47 @@
     margin: 3px;
     min-width: 120px;
 }
-#datamodal .stats-list, #datamodal .item-icon {
-    list-style: none;
-    padding: 0;
-}
-#datamodal .item-grid {
-    grid-area: items;
-}
-
 #datamodal .attribute {
     color: #d6a131;
  }
  #datamodal .mastery {
     color: #1a8b85;
  } 
+#datamodal .stats-block h3 {
+    text-decoration: underline;
+}
+#datamodal .stats-list, #datamodal .item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#datamodal .item-grid {
+    grid-area: items;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-image: url('../img/wow-human-silhouette.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#datamodal .item-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+}
+#datamodal .item-list li {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+}
+#datamodal .item-list li.full {
+    width: 100%;
+}
+#datamodal .item-list li.half {
+    width: 50%;
+}
+#datamodal .item-title {
+    position: absolute;
+    left: 50%;
+}

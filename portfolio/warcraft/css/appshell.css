@@ -9,10 +9,24 @@ html, body {
 }
 #app {
     background: center / cover no-repeat url('../img/bg-lg.jpg');
+    margin: 0 auto;
     height: 100vh;
     width: 100vw;
     max-width: 850px;
     justify-content: flex-start;
+    display: grid;
+    grid-template-areas: 'header' 'modal';
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+#app > header {
+    grid-area: header;
+    max-width: 850px;
+}
+#app > main {
+    grid-area: modal;
+    max-width: 850px;
+
 }
 .flex-col {
     display: flex;

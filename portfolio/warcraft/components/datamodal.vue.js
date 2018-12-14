@@ -11,27 +11,30 @@ Vue.component('datamodal', {
         <section class='stats-grid' @charfound='display=true'>
             <div class='stats-block' v-for="(attr, key) in stats">
                 <h3>{{key}}</h3>
-                <ul class='stats-list' v-for='(i, key) in attr'>
-                    <li>{{key}}: {{i}}</li>
+                <ul class='stats-list'>
+                    <li v-for='(i, key) in attr'>{{key}}: {{i}}</li>
                 </ul>
             </div>
         </section>
         <section class='item-grid' @charfound='display=true'>
-            <div class='item-list' v-for='(item, key) in items'>
-                <h3>{{key}}</h3>
-                <ul class='item-icon'>
-                    <li>{{item.name}}: <img v-bind:src='item.icon' v-bind:alt='item.icon'></li>
-                </ul>
-            </div>
+            <ul class='item-list'>
+                <li v-for='(item, key) in items' :class='item.class'>
+                    <span v-show='inspect === key' class='item-title'>{{item.name}}</span>
+                    <img class='item-icon' v-bind:src='item.icon' v-bind:alt='item.icon' 
+                    @mouseover='inspect = key' @mouseout='inspect = null'>
+                </li>
+            </ul>
         </section>
     </div>
     `,
     data: function() {
         return {
             display: false,
+            inspect: null,
             char: '',
             realm: '',
             thumbPrefix: 'https://render-us.worldofwarcraft.com/character/',
+            iconPrefix: 'https://wow.zamimg.com/images/wow/icons/medium/',
             thumb: '',
             items: {},
             stats: {
@@ -95,9 +98,13 @@ Vue.component('datamodal', {
             stat.enhancements.leech = obj.stats.leech;
             stat.enhancements.versatility = obj.stats.versatility;
 
+            var single = ['head', 'neck', 'wasit', 'legs', 'feet']
+            var paired = ['chest', 'shoulder', 'back', 'shirt']
             for(key in this.items){
                 this.items[key].name= obj.items[key].name
-                this.items[key].icon= 'https://wow.zamimg.com/images/wow/icons/medium/' + obj.items[key].icon + '.jpg'
+                this.items[key].icon= this.iconPrefix + obj.items[key].icon + '.jpg'
+                if(single.includes(key)) this.items[key].class = 'full';
+                if(paired.includes(key)) this.items[key].class = 'half';
             }
         }
     },
