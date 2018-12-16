@@ -67,15 +67,27 @@
 #datamodal .item-grid {
     grid-area: items;
     background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+#datamodal .item-list {
     background-image: url('../img/wow-human-silhouette.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-}
-#datamodal .item-list {
-    display: flex;
+    display: grid;
+    grid-template-areas:'. . head . .' 
+                        '. . neck shoulder .'
+                        '. shirt chest back .'
+                        '. mainHand hands wrist trinket2'
+                        '. finger1 waist finger2 trinket1'
+                        '. . . . .'
+                        '. . legs . .'
+                        '. . feet . .';
+    grid-template-columns: 1fr 36px 36px 36px 1fr;
+    grid-row: repeat(36px, 8);
+    grid-gap: 1px 1rem;
     flex-wrap: wrap;
-    width: 50%;
+    height: 375px;
     margin: 0 auto;
 }
 #datamodal .item-list li {
@@ -83,14 +95,12 @@
     width: fit-content;
     margin: 0 auto;
     text-align: center;
-}
-#datamodal .item-list li.full {
-    width: 100%;
-}
-#datamodal .item-list li.half {
-    width: 50%;
+    cursor: help;
 }
 #datamodal .item-title {
     position: absolute;
-    left: 50%;
+    bottom: -2px;
+    left: -100%;
+    white-space: nowrap;
+    z-index: 9;
 }

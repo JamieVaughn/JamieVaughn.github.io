@@ -16,7 +16,7 @@ Vue.component('datamodal', {
                 </ul>
             </div>
         </section>
-        <section class='item-grid' @charfound='display=true'>
+        <section class='item-grid' @charfound='display=true'><h3>Equipped Items:</h3>
             <ul class='item-list'>
                 <li v-for='(item, key) in items' :class='item.class'>
                     <span v-show='inspect === key' class='item-title'>{{item.name}}</span>
@@ -97,15 +97,15 @@ Vue.component('datamodal', {
             stat.enhancements.mastery = obj.stats.mastery;
             stat.enhancements.leech = obj.stats.leech;
             stat.enhancements.versatility = obj.stats.versatility;
-
-            var single = ['head', 'neck', 'wasit', 'legs', 'feet']
-            var paired = ['chest', 'shoulder', 'back', 'shirt']
+            var styles = document.querySelector('style');
+            var css = '';
             for(key in this.items){
                 this.items[key].name= obj.items[key].name
                 this.items[key].icon= this.iconPrefix + obj.items[key].icon + '.jpg'
-                if(single.includes(key)) this.items[key].class = 'full';
-                if(paired.includes(key)) this.items[key].class = 'half';
+                this.items[key].class = key;
+                css += `.${key} { grid-area: ${key};}`
             }
+            styles.innerHTML = css;
         }
     },
     created: function() {
