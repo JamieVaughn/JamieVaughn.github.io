@@ -1,5 +1,5 @@
 # JamieVaughn.github.io
-My Web Development Portfolio site
+This is the repo for my personal website and portfolio. You can visit my web development portfolio site [here](https://wjv.io).
 
 
 ### Contact Card  
@@ -9,11 +9,13 @@ Summary about myself and what I do! You can get in touch with me via my contact 
 My HTML resume featuring my prior work experience, education and my web dev core competencies!
 
 ### List of Portfolio Items:
+[See the portfolio here](https://wjv.io/porfolio)
 * Variation on Classic Tic Tac Toe Game
 * Todo App coded with Vue.js
 * Searchable Blog Post Landing Page
 * Javascript Calculator
 * JS Canvas Tetris Game
+* Whiteboard Javascript Exercises
 * SVG data viz design concepts
 * Searchable Map using ESRI ArcGIS API
 * Mobile App Responsive Design Mockup

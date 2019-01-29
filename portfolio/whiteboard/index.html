@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Whiteboard Javascript Problems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>Whiteboard Problems</h1>
+
+    <label for="isPalindrome" >
+    <input type="text" id='isPalindrome' placeholder='Given a string, is it a Palindrome?'>
+    <span>result:</span>
+    </label>
+
+    <label for="clipRansomNote" >
+    <input type="text" id='clipRansomNote' placeholder='Can given string be clipped from text?'>
+    <span>result:</span>
+    </label>
+
+
+    <label for="strMode" >
+    <input type="text" id='strMode' placeholder='Find most used char in string (mode)'>
+    <span>result:</span>
+    </label>
+
+    <label for="getRange" >
+    <input type="text" id='getRange' placeholder='Show range from 0 to a given number'>
+    <span>result:</span>
+    </label>
+
+    <label for="reverseArray" >
+    <input type="text" id='reverseArray' placeholder='Reverse given space separated list'>
+    <span>result:</span>
+    </label>
+
+    <label for="caesarCypher" >
+    <input type="text" id='caesarCypher' placeholder='Caesar Cypher a sentence'>
+    <span>result:</span>
+    </label>
+
+    <label for="fizzBuzz" >
+    <input type="text" id='fizzBuzz' placeholder='FizzBuzz from 0 to given number'>
+    <span>result:</span>
+    </label>
+
+    <label for="sumMultsOf3n5" >
+    <input type="text" id='sumMultsOf3n5' placeholder='Sum multiples of 3 & 5 up to given number'>
+    <span>result:</span>
+    </label>
+
+    <label for="maxSumNonAdjacent" >
+    <input type="text" id='maxSumNonAdjacent' placeholder='Max sum of non-adjacent numbers (comma sep list)'>
+    <span>result:</span>
+    </label>
+
+    <label for="twoSum" >
+    <input type="text" id='twoSum' placeholder='Find num pairs in list that sum to 10'>
+    <span>result:</span>
+    </label>
+
+    <label for="fibonacci" >
+    <input type="text" id='fibonacci' placeholder='Show fibonacci sequence up to given number'>
+    <span>result:</span>
+    </label>
+
+    <label for="pascalsTriangle" >
+    <input type="text" id='pascalsTriangle' placeholder="Show Pascal's Triangle up to given row">
+    <span>result:</span>
+    </label>
+
+    <label for="isPrime" >
+    <input type="text" id='isPrime' placeholder='Is a given number prime?'>
+    <span>result:</span>
+    </label>
+
+    <label for="listPrimes" >
+    <input type="text" id='listPrimes' placeholder='List primes from 0 to given number'>
+    <span>result:</span>
+    </label>
+
+    <label for="makeChange" >
+    <input type="text" id='makeChange' placeholder='Compute change for a given price'>
+    <span>result:</span>
+    </label>
+
+    <label for="maxStockProfit" >
+    <input type="text" id='maxStockProfit' placeholder='Given space separated list, find max profit'>
+    <span>result:</span>
+    </label>
+
+    <label for="binarySearch" >
+    <input type="text" id='binarySearch' placeholder='Given space separated list, find 20 with Binary Search'>
+    <span>result:</span>
+    </label>
+
+    <label for="bubbleSort" >
+    <input type="text" id='bubbleSort' placeholder='Given space separated list, bubble sort it'>
+    <span>result:</span>
+    </label>
+
+    <label for="mergeSort" >
+    <input type="text" id='mergeSort' placeholder='Given space separated list, merge sort it'>
+    <span>result:</span>
+    </label>
+
+
+    <script>
+    // view layer - this just renders a function's result to the DOM
+    // And logs the execution time to the console
+    document.querySelectorAll('input')
+    .forEach(i => i.addEventListener('keypress', (e) => {
+    if(e.keyCode == 13) {
+    var args = i.value; i.nextElementSibling.classList.add('refresh')
+        console.time(i.id + ' performance');
+        let result = whiteboard[i.id](args);
+        console.timeEnd(i.id + ' performance');
+        i.nextElementSibling.innerHTML = `
+        <span onclick="this.parentNode.innerHTML='result:'">⊗</span> result:  
+        ${result}`;
+        setTimeout(() => i.nextElementSibling.classList.remove('refresh'), 350)
+    } 
+    }))
+    
+    //prime clipRansomNote with Magazine text
+    var articleExcerpt = `The Gettysburg Address is a speech that U.S. President Abraham Lincoln delivered during the American Civil War at the dedication of the Soldiers' National Cemetery in Gettysburg, Pennsylvania, on the afternoon of Thursday, November 19, 1863, four and a half months after the Union armies defeated those of the Confederacy at the Battle of Gettysburg. It is one of the best-known speeches in American history.Although not the day's primary speech, Lincoln's carefully crafted address came to be seen as one of the greatest and most influential statements of American national purpose. In just 271 words, beginning with the now iconic phrase "Four score and seven years ago,"‍ referring to the signing of the Declaration of Independence eighty-seven years earlier‍, Lincoln described the USA as a nation "conceived in Liberty, and dedicated to the proposition that all men are created equal," and represented the Civil War as a test that would decide whether such a nation, the Union sundered by the secession crisis, could endure.  He extolled the sacrifices of those who died at Gettysburg in defense of those principles, and exhorted his listeners to resolve
+
+    that these dead shall not have died in vain — that this nation, under God, shall have a new birth of freedom"  — and that government of the people, by the people, for the people, shall not perish from the earth.Despite the speech's prominent place in the history and popular culture of the United States, its exact wording is disputed. The five known manuscripts of the Gettysburg Address in Lincoln's hand differ in a number of details, and also differ from contemporary newspaper reprints of the speech. Neither is it clear just where stood the platform from which Lincoln delivered the address.  Modern scholarship locates the speakers' platform 40 yards (or more) away from the traditional site in Soldiers' National Cemetery at the Soldiers' National Monument, which means that it stood entirely within the private, adjacent Evergreen Cemetery.`;
+    // fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&origin=*&prop=extracts&exintro&explaintext&redirects=1&titles=Gettysburg%20Address')
+    //       .then(resp => resp.json())
+    //       .then(data => data.query.pages['12384'].extract)
+    </script>
+</body>
+</html>
