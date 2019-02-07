@@ -9,16 +9,22 @@
 </head>
 <body>
     <h1>Tetris</h1>
-    <canvas id="tetris" width="200" height="440"></canvas>
+    <main>
+        <aside></aside>
+        <canvas id="tetris" width="200" height="440"></canvas>
+        <canvas id="next"width="80" height="80"></canvas>
+    </main>
+    
     <div>
-        Score: <div id="score">0</div>
+        <span>Score: </span><div id="score">0</div>
     </div>
     <script>
         //Lose condtion
-        //show next tetromino
         //swipe animation broken
         const cvs = document.getElementById("tetris");
+        const nextcvs = document.getElementById("next");
         const ctx = cvs.getContext("2d");
+        const nextCtx = nextcvs.getContext("2d");
         const scoreElement = document.getElementById("score");
     </script>
     <script src="js/index.js"></script>

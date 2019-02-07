@@ -50,7 +50,16 @@ const Pieces = {
 }
 
 const Piece = {}
-Piece.rand = () => Random.pick(Object.values(Pieces))
+Piece.pick = xs => xs[Math.floor(Math.random() * xs.length)]
+Piece.cache = [Piece.pick(Object.keys(Pieces))]
+Piece.rand = () => {
+    let next = Piece.pick(Object.keys(Pieces))
+    console.log(Piece.cache, next)
+    Piece.cache[0] === next ? 
+        Piece.cache.push(next = Piece.pick(Object.keys(Pieces))) :
+        Piece.cache.push(next);
+    return Pieces[Piece.cache.shift()];
+}
 Piece.toStr = n => {
   switch (n) {
     case 0: return ' '; break
@@ -82,14 +91,6 @@ Matrix.mount  = f => pos => m1 => m2 =>
       : m2[y][x]
     )(row)
   )(m2)
-
-const Random = {}
-Random.cache = [Math.floor(Math.random() * Object.keys(Pieces).length)]
-Random.pick = xs => {
-    let next = Math.floor(Math.random() * xs.length)
-    Random.cache[0] === next ? next = Math.floor(Math.random() * xs.length) : Random.cache.push(next);
-    return xs[Random.cache.shift()]
-} 
 
 const Player = {}
 Player.move   = d => p => ({ ...p, x:p.x+(d.x||0), y:p.y+(d.y||0) })
@@ -188,17 +189,20 @@ Board.valid = b1 => b2 => Matrix.sum(b1) == Matrix.sum(b2)
 
 //Render to canvas
 const SQ = 20;
-const drawSquare = (x,y,letter) => {
-    ctx.fillStyle = Color[letter];
-    ctx.fillRect(x*SQ,y*SQ,SQ,SQ);
-    ctx.strokeStyle = "#777";
-    ctx.strokeRect(x*SQ,y*SQ,SQ,SQ);
+const drawSquare = (x,y,letter, flag) => {
+    var context = flag ? ctx : nextCtx;
+    context.fillStyle = Color[letter];
+    context.fillRect(x*SQ,y*SQ,SQ,SQ);
+    context.strokeStyle = "#777";
+    context.strokeRect(x*SQ,y*SQ,SQ,SQ);
 }
-const drawBoard= (board) => {
+const drawBoard= (board, flag = 1) => {
   board.forEach((row,y) => {
-    row.forEach((col,x) => drawSquare(x,y,col))
+    row.forEach((col,x) => drawSquare(x,y,col, flag))
   })
 }
+//init next tetro display
+[0,1,2,3].forEach(i => [0,1,2,3].forEach(j => drawSquare(j,i, ' ')));
 // Key events
 document.addEventListener('keydown', (e) => {
   if (e.which === 113) process.quit()
@@ -216,6 +220,8 @@ const step = () => STATE = State.next(STATE)
 const show = () => {
   let boardState = pipe(State.toMatrix,map(map(Piece.toStr)),Matrix.frame)(STATE);
   drawBoard(boardState);
+  let nextTetro = Pieces[Piece.cache].map(i => i.map(j => Piece.toStr(j)))
+  drawBoard(nextTetro, 0);
 }
 setInterval(() => { step(); show() }, 50)
 
