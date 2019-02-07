@@ -1,290 +1,213 @@
-const cvs = document.getElementById("tetris");
-const ctx = cvs.getContext("2d");
-const scoreElement = document.getElementById("score");
+// General functions
+const id = x => x
+const add = x => y => x + y
+const transpose = xsxs => xsxs[0].map((col, i) => xsxs.map(row => row[i]));
+const mirror = xsxs => xsxs.map(xs => xs.reverse())
+const pipe = (...fs) => x => [...fs].reduce((acc, f) => f(acc), x)
+const map = f => xs => xs.map(f)
+const range = min => max => [...Array(max).keys()].map((_, i) => i + min)
+const k = x => _ => x
+const join = s => xs => xs.join(s)
+const rep = c => n => map(k(c))(range(0)(n))
+const concat = x1 => x2 => x1.concat(x2)
+const mapi = f => xs => xs.map((x, i) => f(x)(i))
+const ifelse = c => t => f => x => c(x) ? t(x) : f(x)
+const reduce = f => z => xs => xs.reduce((acc, x) => f(acc)(x), z)
+const eq = x => y => x == y
+const find = f => xs => xs.find(f)
+const append = x => xs => [...xs, x]
+const not = f => x => !f(x)
+const and = x => y => x && y
+const or = x => y => x || y
+const all = f => pipe(map(f), reduce(and)(true))
+const any = f => pipe(map(f), reduce(or)(false))
+const flip = f => x => y => f(y)(x)
+const filter = f => xs => xs.filter(f)
+const gt = x => y => x > y
+const lt = x => y => x < y
+const prop = p => o => o[p]
+const both = f => g => x => f(x) && g(x)
 
-const ROW = 20;
-const COL = COLUMN = 10;
-const SQ = squareSize = 20;
-const VACANT = "WHITE"; // color of an empty square
+const Color = {}
+Color['I'] = 'cornflowerblue';
+Color['O'] = 'crimson';
+Color['T'] = 'seagreen';
+Color['S'] = 'gold';
+Color['Z'] = 'mediumslateblue';
+Color['J'] = 'darkmagenta';
+Color['L'] = 'orangered';
+Color[' '] = 'white';
+Color['▔'] = 'white';
 
-// draw a square
-function drawSquare(x,y,color){
-    ctx.fillStyle = color;
+const Pieces = {
+  I: [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+  O: [[2,2],[2,2]],
+  T: [[0,3,0],[3,3,3],[0,0,0]],
+  S: [[0,4,4],[4,4,0],[0,0,0]],
+  Z: [[0,0,0],[5,5,0],[0,5,5]],
+  J: [[0,0,0],[6,6,6],[0,0,6]],
+  L: [[0,0,7],[7,7,7],[0,0,0]],
+}
+
+const Piece = {}
+Piece.rand = () => Random.pick(Object.values(Pieces))
+Piece.toStr = n => {
+  switch (n) {
+    case 0: return ' '; break
+    case 1: return 'I'; break
+    case 2: return 'O'; break
+    case 3: return 'T'; break
+    case 4: return 'S'; break
+    case 5: return 'Z'; break
+    case 6: return 'J'; break
+    case 7: return 'L'; break
+    case -1: return ' '; break
+    default: return ' '; break
+  }
+}
+
+const Matrix  = {}
+Matrix.sum    = pipe(map(reduce(add)(0)), reduce(add)(0))
+Matrix.toStr  = x => pipe(map(join(' ')), join('\r\n'))(x)
+Matrix.row    = x => m => rep(x)(m[0].length)
+Matrix.frame  = m => append(Matrix.row('▔')(m))(m)
+Matrix.rotate = pipe(transpose, mirror)
+Matrix.make   = rows => cols => rep(rep(0)(cols))(rows)
+Matrix.mount  = f => pos => m1 => m2 =>
+  mapi(row => y =>
+    mapi(val => x =>
+      (y >= pos.y && (y - pos.y < m1.length)) &&
+      (x >= pos.x && (x - pos.x < m1[0].length))
+      ? f(m1[y-pos.y][x-pos.x])(m2[y][x])
+      : m2[y][x]
+    )(row)
+  )(m2)
+
+const Random = {}
+Random.pick = xs => xs[Math.floor(Math.random() * xs.length)]
+
+const Player = {}
+Player.move   = d => p => ({ ...p, x:p.x+(d.x||0), y:p.y+(d.y||0) })
+Player.make   = () => ({ x: 3, y: 0 , piece: Piece.rand() }),
+Player.rotate = p  => ({ ...p, piece: Matrix.rotate(p.piece) })
+
+const State          = {}
+State.toMatrix       = s => Board.mount(s.player)(s.board)
+State.make           = k({
+  time:   0,
+  wait:   15,
+  board:  Matrix.make(22)(10),
+  player: Player.make(),
+})
+State.movePlayer = f => s => {
+  if (State.isAnimating(s)) return s
+  let pre  = Board.mount(s.player)(s.board)
+  let post = Board.mount(f(s.player))(s.board)
+  let valid = Matrix.sum(pre) == Matrix.sum(post)
+  return { ...s, player: valid ? f(s.player) : s.player }
+}
+State.moveLeft   = State.movePlayer(Player.move({ x: -1 }))
+State.moveRight  = State.movePlayer(Player.move({ x: 1 }))
+State.moveDown   = s => {
+  if (State.isAnimating(s)) return s
+  let s2 = State.movePlayer(Player.move({ y: 1 }))(s)
+  return s2.player != s.player
+    ? s2
+    : {
+      ...s,
+      board:  Board.mount(s.player)(s.board),
+      player: Player.make(),
+    }
+}
+State.rotate = s =>
+  State.isAnimating(s) ? s : ({
+    ...s,
+    player: (
+      find(f =>
+        Matrix.sum(Board.mount(f(s.player))(s.board)) ==
+        Matrix.sum(Board.mount(s.player)(s.board))
+      )([
+        Player.rotate,
+        pipe(Player.move({ x: 1 }), Player.rotate),
+        pipe(Player.move({ x:-1 }), Player.rotate),
+        pipe(Player.move({ x: 2 }), Player.rotate),
+        pipe(Player.move({ x:-2 }), Player.rotate),
+        id
+      ])
+    )(s.player)
+  })
+State.swipe = s => ({
+  ...s,
+  board: s.board.map(
+    ifelse(
+      all(both(flip(gt)(0))(flip(lt)(10)))
+    )(
+      k([10,12,14,16,18,18,16,14,12,10])
+    )(id)
+  )
+})
+State.clear = s => {
+  let remains = filter(any(not(eq(-1))))(s.board)
+  let count    = s.board.length - remains.length
+  let newlines = rep(Matrix.row(0)(remains))(count)
+  let board    = concat(newlines)(remains)
+  return { ...s, board }
+}
+State.isAnimating = pipe(prop('board'), any(any(flip(gt)(9))))
+State.animate = s => ({
+  ...s,
+  board: map(map(pipe(
+    ifelse(flip(gt)(7))(add(1))(id),
+    ifelse(flip(gt)(30))(k(-1))(id)
+  )))(s.board)
+})
+State.timeToMove     = s => s.time % s.wait == 0
+State.nextTime       = s => ({ ...s, time: s.time + 1})
+State.maybeMoveDown  = ifelse(State.isAnimating)(id)(ifelse(State.timeToMove)(State.moveDown)(id))
+State.next           = pipe(
+  State.animate,
+  State.nextTime,
+  State.maybeMoveDown,
+  State.clear,
+  State.swipe,
+)
+
+const Board = {}
+Board.mount = p => Matrix.mount(o => n => n != 0 ? n : o)(p)(p.piece)
+Board.valid = b1 => b2 => Matrix.sum(b1) == Matrix.sum(b2)
+
+//Render to canvas
+const SQ = 20;
+const drawSquare = (x,y,letter) => {
+    ctx.fillStyle = Color[letter];
     ctx.fillRect(x*SQ,y*SQ,SQ,SQ);
-
-    ctx.strokeStyle = "BLACK";
+    ctx.strokeStyle = "#777";
     ctx.strokeRect(x*SQ,y*SQ,SQ,SQ);
 }
-
-// create the board
-
-let board = [];
-for( r = 0; r <ROW; r++){
-    board[r] = [];
-    for(c = 0; c < COL; c++){
-        board[r][c] = VACANT;
-    }
+const drawBoard= (board) => {
+  board.forEach((row,y) => {
+    row.forEach((col,x) => drawSquare(x,y,col))
+  })
 }
+// Key events
+document.addEventListener('keydown', (e) => {
+  if (e.which === 113) process.quit()
+  switch (e.which) {
+    case 37:  STATE = State.moveLeft(STATE);  break
+    case 39: STATE = State.moveRight(STATE); break
+    case 40:  STATE = State.moveDown(STATE);  break
+    case 38:    STATE = State.rotate(STATE);    break
+  }
+});
 
-// draw the board
-function drawBoard(){
-    for( r = 0; r <ROW; r++){
-        for(c = 0; c < COL; c++){
-            drawSquare(c,r,board[r][c]);
-        }
-    }
+// Game loop
+let STATE = State.make()
+const step = () => STATE = State.next(STATE)
+const show = () => {
+  let boardState = pipe(State.toMatrix,map(map(Piece.toStr)),Matrix.frame)(STATE);
+  drawBoard(boardState);
 }
+setInterval(() => { step(); show() }, 50)
 
-drawBoard();
-
-// the pieces and their colors
-
-const PIECES = [
-    [Z,"red"],
-    [S,"green"],
-    [T,"yellow"],
-    [O,"blue"],
-    [L,"purple"],
-    [I,"cyan"],
-    [J,"orange"]
-];
-
-// generate random pieces
-
-function randomPiece(){
-    let r = randomN = Math.floor(Math.random() * PIECES.length) // 0 -> 6
-    return new Piece( PIECES[r][0],PIECES[r][1]);
-}
-
-let p = randomPiece();
-
-// The Object Piece
-
-function Piece(tetromino,color){
-    this.tetromino = tetromino;
-    this.color = color;
-    
-    this.tetrominoN = 0; // we start from the first pattern
-    this.activeTetromino = this.tetromino[this.tetrominoN];
-    
-    // we need to control the pieces
-    this.x = 3;
-    this.y = -2;
-}
-
-// fill function
-
-Piece.prototype.fill = function(color){
-    for( r = 0; r < this.activeTetromino.length; r++){
-        for(c = 0; c < this.activeTetromino.length; c++){
-            // we draw only occupied squares
-            if( this.activeTetromino[r][c]){
-                drawSquare(this.x + c,this.y + r, color);
-            }
-        }
-    }
-}
-
-// draw a piece to the board
-
-Piece.prototype.draw = function(){
-    this.fill(this.color);
-}
-
-// undraw a piece
-
-
-Piece.prototype.unDraw = function(){
-    this.fill(VACANT);
-}
-
-// move Down the piece
-
-Piece.prototype.moveDown = function(){
-    if(!this.collision(0,1,this.activeTetromino)){
-        this.unDraw();
-        this.y++;
-        this.draw();
-    }else{
-        // we lock the piece and generate a new one
-        this.lock();
-        p = randomPiece();
-    }
-    
-}
-
-// move Right the piece
-Piece.prototype.moveRight = function(){
-    if(!this.collision(1,0,this.activeTetromino)){
-        this.unDraw();
-        this.x++;
-        this.draw();
-    }
-}
-
-// move Left the piece
-Piece.prototype.moveLeft = function(){
-    if(!this.collision(-1,0,this.activeTetromino)){
-        this.unDraw();
-        this.x--;
-        this.draw();
-    }
-}
-
-// rotate the piece
-Piece.prototype.rotate = function(){
-    let nextPattern = this.tetromino[(this.tetrominoN + 1)%this.tetromino.length];
-    let kick = 0;
-    
-    if(this.collision(0,0,nextPattern)){
-        if(this.x > COL/2){
-            // it's the right wall
-            kick = -1; // we need to move the piece to the left
-        }else{
-            // it's the left wall
-            kick = 1; // we need to move the piece to the right
-        }
-    }
-    
-    if(!this.collision(kick,0,nextPattern)){
-        this.unDraw();
-        this.x += kick;
-        this.tetrominoN = (this.tetrominoN + 1)%this.tetromino.length; // (0+1)%4 => 1
-        this.activeTetromino = this.tetromino[this.tetrominoN];
-        this.draw();
-    }
-}
-
-let score = 0;
-
-Piece.prototype.lock = function(){
-    for( r = 0; r < this.activeTetromino.length; r++){
-        for(c = 0; c < this.activeTetromino.length; c++){
-            // we skip the vacant squares
-            if( !this.activeTetromino[r][c]){
-                continue;
-            }
-            // pieces to lock on top = game over
-            if(this.y + r < 0){
-                alert("Game Over");
-                // stop request animation frame
-                gameOver = true;
-                break;
-            }
-            // we lock the piece
-            board[this.y+r][this.x+c] = this.color;
-        }
-    }
-    // remove full rows
-    for(r = 0; r < ROW; r++){
-        let isRowFull = true;
-        for( c = 0; c < COL; c++){
-            isRowFull = isRowFull && (board[r][c] != VACANT);
-        }
-        if(isRowFull){
-            // if the row is full
-            // we move down all the rows above it
-            for( y = r; y > 1; y--){
-                for( c = 0; c < COL; c++){
-                    board[y][c] = board[y-1][c];
-                }
-            }
-            // the top row board[0][..] has no row above it
-            for( c = 0; c < COL; c++){
-                board[0][c] = VACANT;
-            }
-            // increment the score
-            score += 10;
-        }
-    }
-    // update the board
-    drawBoard();
-    
-    // update the score
-    scoreElement.innerHTML = score;
-}
-
-// collision fucntion
-
-Piece.prototype.collision = function(x,y,piece){
-    for( r = 0; r < piece.length; r++){
-        for(c = 0; c < piece.length; c++){
-            // if the square is empty, we skip it
-            if(!piece[r][c]){
-                continue;
-            }
-            // coordinates of the piece after movement
-            let newX = this.x + c + x;
-            let newY = this.y + r + y;
-            
-            // conditions
-            if(newX < 0 || newX >= COL || newY >= ROW){
-                return true;
-            }
-            // skip newY < 0; board[-1] will crush our game
-            if(newY < 0){
-                continue;
-            }
-            // check if there is a locked piece alrady in place
-            if( board[newY][newX] != VACANT){
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-// CONTROL the piece
-
-document.addEventListener("keydown",CONTROL);
-
-function CONTROL(event){
-    if(event.keyCode == 37){
-        p.moveLeft();
-        dropStart = Date.now();
-    }else if(event.keyCode == 38){
-        p.rotate();
-        dropStart = Date.now();
-    }else if(event.keyCode == 39){
-        p.moveRight();
-        dropStart = Date.now();
-    }else if(event.keyCode == 40){
-        p.moveDown();
-    }
-}
-
-// drop the piece every 1sec
-
-let dropStart = Date.now();
-let gameOver = false;
-function drop(){
-    let now = Date.now();
-    let delta = now - dropStart;
-    if(delta > 1000){
-        p.moveDown();
-        dropStart = Date.now();
-    }
-    if( !gameOver){
-        requestAnimationFrame(drop);
-    }
-}
-
-drop();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//just to show boardState for debugging
+// setInterval(() => { console.log(pipe(State.toMatrix,map(map(Piece.toStr)),Matrix.frame)(STATE)) }, 30000)
