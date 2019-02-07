@@ -1,17 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tetris (Fn Paradigm)</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
 <body>
-  <h1>Tetris</h1>
-  <canvas id="tetris" width="200" height="440"></canvas>
-  <div>
-      Score: <div id="score">0</div>
-  </div>
-  <script>
-    //score
-    //Lose condtion
-    //show next tetromino
-    //reduce probability of dupe tetromino
-    const cvs = document.getElementById("tetris");
-    const ctx = cvs.getContext("2d");
-    const scoreElement = document.getElementById("score");
-  </script>
-  <script src="js/index.js"></script>
+    <h1>Tetris</h1>
+    <canvas id="tetris" width="200" height="440"></canvas>
+    <div>
+        Score: <div id="score">0</div>
+    </div>
+    <script>
+        //Lose condtion
+        //show next tetromino
+        //swipe animation broken
+        const cvs = document.getElementById("tetris");
+        const ctx = cvs.getContext("2d");
+        const scoreElement = document.getElementById("score");
+    </script>
+    <script src="js/index.js"></script>
 </body>
+</html>

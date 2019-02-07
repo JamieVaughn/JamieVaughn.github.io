@@ -29,13 +29,13 @@ const prop = p => o => o[p]
 const both = f => g => x => f(x) && g(x)
 
 const Color = {}
-Color['I'] = 'cornflowerblue';
-Color['O'] = 'crimson';
-Color['T'] = 'seagreen';
-Color['S'] = 'gold';
-Color['Z'] = 'mediumslateblue';
-Color['J'] = 'darkmagenta';
-Color['L'] = 'orangered';
+Color.I = 'cornflowerblue';
+Color.O = 'tomato';
+Color.T = 'seagreen';
+Color.S = 'gold';
+Color.Z = 'mediumslateblue';
+Color.J = 'darkmagenta';
+Color.L = 'darkorange';
 Color[' '] = 'white';
 Color['▔'] = 'white';
 
@@ -50,7 +50,13 @@ const Pieces = {
 }
 
 const Piece = {}
-Piece.rand = () => Random.pick(Object.values(Pieces))
+Piece.cache = [0]
+Piece.rand = () => {
+    let piece = Random.pick(Object.keys(Pieces))
+    let dedupe = Piece.cache.pop() === piece ? Random.pick(Object.keys(Pieces)) : piece;
+    Piece.cache.push(piece)
+    return Pieces[dedupe]
+}
 Piece.toStr = n => {
   switch (n) {
     case 0: return ' '; break
@@ -146,11 +152,16 @@ State.swipe = s => ({
     )(id)
   )
 })
+State.score = 0
 State.clear = s => {
   let remains = filter(any(not(eq(-1))))(s.board)
   let count    = s.board.length - remains.length
   let newlines = rep(Matrix.row(0)(remains))(count)
   let board    = concat(newlines)(remains)
+  if(count) {
+      State.score += (count * 5) ** 2;
+      scoreElement.innerText = State.score
+  }
   return { ...s, board }
 }
 State.isAnimating = pipe(prop('board'), any(any(flip(gt)(9))))
@@ -193,10 +204,10 @@ const drawBoard= (board) => {
 document.addEventListener('keydown', (e) => {
   if (e.which === 113) process.quit()
   switch (e.which) {
-    case 37:  STATE = State.moveLeft(STATE);  break
+    case 37: STATE = State.moveLeft(STATE);  break
     case 39: STATE = State.moveRight(STATE); break
-    case 40:  STATE = State.moveDown(STATE);  break
-    case 38:    STATE = State.rotate(STATE);    break
+    case 40: STATE = State.moveDown(STATE);  break
+    case 38: STATE = State.rotate(STATE);    break
   }
 });
 
