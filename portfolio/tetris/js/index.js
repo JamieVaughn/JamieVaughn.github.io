@@ -35,7 +35,7 @@ Color.T = 'seagreen';
 Color.S = 'gold';
 Color.Z = 'mediumslateblue';
 Color.J = 'darkmagenta';
-Color.L = 'darkorange';
+Color.L = 'orange';
 Color[' '] = 'white';
 Color['▔'] = 'white';
 
@@ -50,13 +50,7 @@ const Pieces = {
 }
 
 const Piece = {}
-Piece.cache = [0]
-Piece.rand = () => {
-    let piece = Random.pick(Object.keys(Pieces))
-    let dedupe = Piece.cache.pop() === piece ? Random.pick(Object.keys(Pieces)) : piece;
-    Piece.cache.push(piece)
-    return Pieces[dedupe]
-}
+Piece.rand = () => Random.pick(Object.values(Pieces))
 Piece.toStr = n => {
   switch (n) {
     case 0: return ' '; break
@@ -90,7 +84,12 @@ Matrix.mount  = f => pos => m1 => m2 =>
   )(m2)
 
 const Random = {}
-Random.pick = xs => xs[Math.floor(Math.random() * xs.length)]
+Random.cache = [Math.floor(Math.random() * Object.keys(Pieces).length)]
+Random.pick = xs => {
+    let next = Math.floor(Math.random() * xs.length)
+    Random.cache[0] === next ? next = Math.floor(Math.random() * xs.length) : Random.cache.push(next);
+    return xs[Random.cache.shift()]
+} 
 
 const Player = {}
 Player.move   = d => p => ({ ...p, x:p.x+(d.x||0), y:p.y+(d.y||0) })
@@ -152,15 +151,15 @@ State.swipe = s => ({
     )(id)
   )
 })
-State.score = 0
+State.score = 0;
 State.clear = s => {
   let remains = filter(any(not(eq(-1))))(s.board)
   let count    = s.board.length - remains.length
   let newlines = rep(Matrix.row(0)(remains))(count)
   let board    = concat(newlines)(remains)
   if(count) {
-      State.score += (count * 5) ** 2;
-      scoreElement.innerText = State.score
+    State.score += (count * 5) ** 2;
+    scoreElement.innerText = State.score
   }
   return { ...s, board }
 }
