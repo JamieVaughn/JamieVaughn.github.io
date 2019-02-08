@@ -54,7 +54,6 @@ Piece.pick = xs => xs[Math.floor(Math.random() * xs.length)]
 Piece.cache = [Piece.pick(Object.keys(Pieces))]
 Piece.rand = () => {
     let next = Piece.pick(Object.keys(Pieces))
-    console.log(Piece.cache, next)
     Piece.cache[0] === next ? 
         Piece.cache.push(next = Piece.pick(Object.keys(Pieces))) :
         Piece.cache.push(next);
@@ -110,6 +109,7 @@ State.movePlayer = f => s => {
   let pre  = Board.mount(s.player)(s.board)
   let post = Board.mount(f(s.player))(s.board)
   let valid = Matrix.sum(pre) == Matrix.sum(post)
+  if(!valid && s.player.y == 0) endGame(playing);
   return { ...s, player: valid ? f(s.player) : s.player }
 }
 State.moveLeft   = State.movePlayer(Player.move({ x: -1 }))
@@ -196,13 +196,13 @@ const drawSquare = (x,y,letter, flag) => {
     context.strokeStyle = "#777";
     context.strokeRect(x*SQ,y*SQ,SQ,SQ);
 }
-const drawBoard= (board, flag = 1) => {
+const drawBoard = (board, flag = 1) => {
   board.forEach((row,y) => {
     row.forEach((col,x) => drawSquare(x,y,col, flag))
   })
 }
 //init next tetro display
-[0,1,2,3].forEach(i => [0,1,2,3].forEach(j => drawSquare(j,i, ' ')));
+const blankNext = () => [0,1,2,3].forEach(i => [0,1,2,3].forEach(j => drawSquare(j,i, ' ')));
 // Key events
 document.addEventListener('keydown', (e) => {
   if (e.which === 113) process.quit()
@@ -215,15 +215,37 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Game loop
-let STATE = State.make()
+var playing = true;
+var STATE = State.make()
 const step = () => STATE = State.next(STATE)
 const show = () => {
   let boardState = pipe(State.toMatrix,map(map(Piece.toStr)),Matrix.frame)(STATE);
   drawBoard(boardState);
   let nextTetro = Pieces[Piece.cache].map(i => i.map(j => Piece.toStr(j)))
+  blankNext();
   drawBoard(nextTetro, 0);
+// console.log(State.movePlayer(STATE)())
+  
 }
-setInterval(() => { step(); show() }, 50)
+setInterval(() => playing ? step() && show() : {}, 30)
 
 //just to show boardState for debugging
 // setInterval(() => { console.log(pipe(State.toMatrix,map(map(Piece.toStr)),Matrix.frame)(STATE)) }, 30000)
+
+const endGame = (p) => {
+    if(!p) return;
+    console.log('Game Over.');
+    var msg = document.createElement("div");
+    msg.classList.add('end');
+    msg.innerHTML =  '<h4>Game Over! Play again?</h4><button onclick="restart()">Restart</button>'
+    document.querySelector('.score').append(msg);
+    playing = false;
+}
+
+const restart = () => {
+    STATE = State.make();
+    let boardState = pipe(State.toMatrix,map(map(Piece.toStr)),Matrix.frame)(STATE);
+    drawBoard(boardState);
+    document.querySelector('.end').remove();
+    playing = true;
+}
