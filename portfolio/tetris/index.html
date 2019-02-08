@@ -10,7 +10,7 @@
 <body>
     <h1>Tetris</h1>
     <main>
-        <aside></aside>
+        <aside>[p] pauses</aside>
         <canvas id="tetris" width="200" height="440"></canvas>
         <canvas id="next"width="80" height="80"></canvas>
     </main>
@@ -19,7 +19,6 @@
         <span>Score: </span><div id="score">0</div>
     </div>
     <script>
-        //swipe animation broken
         const cvs = document.getElementById("tetris");
         const nextcvs = document.getElementById("next");
         const ctx = cvs.getContext("2d");

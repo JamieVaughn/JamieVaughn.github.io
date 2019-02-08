@@ -31,11 +31,12 @@ const both = f => g => x => f(x) && g(x)
 const Color = {}
 Color.I = 'cornflowerblue';
 Color.O = 'tomato';
-Color.T = 'seagreen';
+Color.T = 'mediumseagreen';
 Color.S = 'gold';
 Color.Z = 'mediumslateblue';
 Color.J = 'darkmagenta';
 Color.L = 'orange';
+Color.swipe = 'deeppink';
 Color[' '] = 'white';
 Color['▔'] = 'white';
 
@@ -69,7 +70,7 @@ Piece.toStr = n => {
     case 5: return 'Z'; break
     case 6: return 'J'; break
     case 7: return 'L'; break
-    case -1: return ' '; break
+    case -1: return 'swipe'; break
     default: return ' '; break
   }
 }
@@ -148,7 +149,7 @@ State.swipe = s => ({
     ifelse(
       all(both(flip(gt)(0))(flip(lt)(10)))
     )(
-      k([10,12,14,16,18,18,16,14,12,10])
+      k([18,17,16,15,14,12,14,15,16,17,18])
     )(id)
   )
 })
@@ -205,7 +206,7 @@ const drawBoard = (board, flag = 1) => {
 const blankNext = () => [0,1,2,3].forEach(i => [0,1,2,3].forEach(j => drawSquare(j,i, ' ')));
 // Key events
 document.addEventListener('keydown', (e) => {
-  if (e.which === 113) process.quit()
+  if (e.which === 80) playing = !playing;
   switch (e.which) {
     case 37: STATE = State.moveLeft(STATE);  break
     case 39: STATE = State.moveRight(STATE); break

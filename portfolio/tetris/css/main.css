@@ -2,6 +2,8 @@ html, body {
     height: 100%;
     overflow: hidden;
     background: lightslategray;
+    margin: 0;
+    padding: 0;
   }
   #score {
       display: inline-block;
@@ -26,7 +28,7 @@ html, body {
       text-align: center;
   }
   aside {
-      color: lightslategray;
+      color: linen;
       height: 80px;
       width: 80px;
   }
@@ -35,4 +37,13 @@ html, body {
       border: 2px solid #555;
       padding: 0.25rem;
       background: #d1d1d1;
+  }
+  button {
+    background: firebrick;
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: calc(12px + 2vmin);
+    border-radius: 5px;
+    cursor: pointer;
   }
