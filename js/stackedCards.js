@@ -78,9 +78,9 @@
             var me = this;
             var z = 10;
             var els = this.nodelistToArray(this.els);
-            var maxHeight = me.getHeight().max;
+            var maxHeight = parseInt(me.getHeight().max);
             var vertOffsets = me.getHeight().heights.map(item=> Math.round((( 1 - ( item / maxHeight )) * -100) ));
-            els[0].parentNode.style.height = parseInt(me.getHeight().max) + "px";
+            els[0].parentNode.style.height = String(maxHeight) + "px";
             var scale = 1,
                 translateX = 0,
                 translateY = 0,
