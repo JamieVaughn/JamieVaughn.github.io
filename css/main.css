@@ -225,6 +225,14 @@ ul li {
 #Portfolio a:hover {
     transform: scale(1.15);
 }
+#Portfolio section {
+    columns: 2;
+    padding: 1rem;
+}
+#Portfolio section h4 {
+    text-align: center;
+    margin-top: 0;
+}
 #Experience h1,
 #Experience h2,
 #Experience h4,
@@ -279,9 +287,6 @@ footer form label {
     transition: transform 350ms;
     margin: 0 0.4rem 0 0;
     background: none;
-}
-footer form label.email {
-    background: #e1eaf1;
 }
 footer form label.message {
     transform: translate(5px, -30px);
