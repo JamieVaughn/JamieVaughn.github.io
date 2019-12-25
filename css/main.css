@@ -272,8 +272,15 @@ footer form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 40%;
+    width: 70%;
     margin: 0 auto;
+}
+footer form .g-recaptcha > div {
+    margin: 0 auto;
+}
+footer form input[disabled] {
+    cursor: not-allowed;
+    filter: blur(1.5px);
 }
 .hidden {
     display: none;
@@ -411,8 +418,5 @@ footer form textarea {
 
     footer form {
         width: 90%;
-    }
-    footer form input[type="email"] +label {
-        background: #e2ebf2;
     }
 }

@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Jamie Vaughn Front End Web Developer Portfolio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="../assets/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css"/>
-        <link rel="stylesheet" type="text/css" media="screen" href="../css/stackedCards.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Signika:300,400,700" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jamie Vaughn Front End Web Developer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stackedCards.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Signika:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script type="text/javascript">
+        var recaptchaCallback = function(){
+            document.querySelector('footer form input[type=submit]').removeAttribute('disabled');
+        }
+    </script>
     <style>
         #gallery h1 {text-align: center;}
         #gallery div.flex {
@@ -87,7 +92,7 @@
                 <li>
                     <a href="https://moartraffic.com/tours/secret-device/1.0/">My Secret Device Tour</a>
                 </li>
-                <li style='dislay: none;'>
+                <li style='display: none;'>
                     <a href="">Zendesk Customer Support Tool</a>
                 </li>
                 <li>
@@ -110,8 +115,12 @@
             
             <textarea name="message" id="message" cols="30" rows="3" required></textarea>
             <label class="message" for="message">Tell me about your project:</label>
-
-            <input type="submit" onsubmit="postMsg">
+            <div class="g-recaptcha" 
+            data-sitekey="6Ldh-8kUAAAAAMYG8-BxodEZ4zxcn9uV8H4LKMOd"
+            data-callback="recaptchaCallback"
+            ></div>
+            <input type="submit" onsubmit="postMsg" disabled>
         </form>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
