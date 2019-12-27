@@ -129,11 +129,13 @@ const whiteboard = {
     makeChange: (str) => {
       const coins = {five: 500, dollar: 100, quarter: 25, dime: 10, nickel: 5, penny: 1}
       let amount = +(Math.abs(str).toFixed(2)) * 100
-      return Object.entries(coins).reduce((acc, cur) => {
+      return JSON.stringify(Object.entries(coins).reduce((acc, cur) => {
         var num = Math.floor(amount/cur[1])
         amount = amount%cur[1]
-        return acc += '<br>' + cur[0] + 's: ' + num;
-      }, '')
+        console.log(acc, cur)
+        acc[cur[0]] = num
+        return acc;
+      }, {five: 0, dollar: 0, quarter: 0, dime: 0, nickel: 0, penny: 0}))
     },
     maxStockProfit: (str) => {
       var arr = str.split(' ').map(i=> Number(i));
@@ -203,3 +205,9 @@ const whiteboard = {
       return mergeSort(array);
     },
   }
+
+try {
+  module.exports = whiteboard;
+} catch(err) {
+  console.log(err)
+}

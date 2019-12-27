@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "wjv.io portfolio pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamieVaughn/JamieVaughn.github.io.git"
+  },
+  "author": "Jamie Vaughn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamieVaughn/JamieVaughn.github.io/issues"
+  },
+  "homepage": "https://github.com/JamieVaughn/JamieVaughn.github.io#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

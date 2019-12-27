@@ -18,6 +18,10 @@
     padding: 2px;
     font-size: inherit;
   }
+  input[type=text]::placeholder {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 1.5rem;
+  }
   label > span {
     margin: 0 0.25rem;
     word-break: break-all;
