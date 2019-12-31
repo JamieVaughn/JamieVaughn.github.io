@@ -57,7 +57,7 @@ window.addEventListener('hashchange', function(){
     }
 }, false)
 pageLinks.forEach(item => item.addEventListener('click', function(e) {
-    if(!e.isTrusted) return
+    if(!e.isTrusted) return;
     history.pushState(null, null, "#" + this.id)
     switch(resetBreadcrumbs()) {
         case "#Skills":
