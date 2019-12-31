@@ -1,6 +1,7 @@
 html, body {
     font-family: 'Signika', sans-serif;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 body {
     background:  linear-gradient(0deg, #4286b400, #4286b4f0);

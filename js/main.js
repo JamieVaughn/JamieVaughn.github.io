@@ -20,6 +20,7 @@ var pageLinks = [
     document.querySelector("#Experience"),
     document.querySelector("#Education")
 ];
+
 function resetBreadcrumbs() {
     navLinks.forEach(function(item){
         item.classList.remove('selected');
@@ -55,7 +56,8 @@ window.addEventListener('hashchange', function(){
         break;
     }
 }, false)
-pageLinks.forEach(item => item.addEventListener('click', function() {
+pageLinks.forEach(item => item.addEventListener('click', function(e) {
+    if(!e.isTrusted) return
     history.pushState(null, null, "#" + this.id)
     switch(resetBreadcrumbs()) {
         case "#Skills":
@@ -70,7 +72,7 @@ pageLinks.forEach(item => item.addEventListener('click', function() {
         case "#Education":
         navLinks[3].classList.add('selected');
         break;
-        default:
+        default: 
         break;
     }
 }))
