@@ -8,7 +8,7 @@ function TodoForm (props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        props.setter([...props.list, input])
+        input.replace(/ /g,'') != '' ? props.setter(input) : ''
         setInput('')
     }
 
