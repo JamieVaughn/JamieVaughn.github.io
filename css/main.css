@@ -139,13 +139,13 @@ div.details span {
 }
 div.details h2 {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     top: 0;
 }
 div.details a, #Portfolio a {
     display: block;
     line-height: 1.5rem;
-    width: 120px;
+    width: 140px;
     border: 2px solid rgb(250, 200, 42);
     border-radius: 18px;
     margin: 0.5rem auto;
@@ -411,7 +411,7 @@ footer form textarea {
         display: inline;
         white-space: nowrap;
         letter-spacing: 0;
-        margin: 0 auto !important;
+        margin: 0.25rem auto !important;
     }
     div.details > * {
         margin: 0 auto;
