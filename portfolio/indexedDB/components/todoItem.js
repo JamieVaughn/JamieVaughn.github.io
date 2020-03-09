@@ -17,7 +17,7 @@ function TodoItem (props) {
             onBlur={handleSubmit}
             checked={item.done}
             />
-            <span className="timestamp">{props.todo.createdOn}</span>
+            <span className="timestamp">{props.todo.doneOn ? 'done: ':'created: '}{props.todo.doneOn || props.todo.createdOn}</span>
         </span>
     )
 }

@@ -52,7 +52,6 @@ h1, h2 {
 	padding: 0.5em;
 	background: #FFF;
 	border-bottom: 1px solid #EEE;
-	margin: 0.5em 0;
 	display: flex;
 }
 .todo-item {
@@ -60,23 +59,26 @@ h1, h2 {
 	flex-direction: column;
 	align-items: center;;
 	justify-content: center;
+	width: 100%;
 }
 .todo-text {
 	border: none;
 	font-size: inherit
 }
-.timestamp {
+.done input {
+	text-decoration: line-through;
+	color: lightgray;
+}
+span.timestamp {
 	font-size: 0.25rem;
 	color: gray;
 	align-self: flex-end;
+	margin: 0.5rem -2rem 0 0;
 }
 .delete {
 	cursor: pointer;
 	margin-left: auto;
 	font-size: inherit;
-}
-.done {
-	text-decoration: line-through;
 }
 
 input[type="checkbox"] {
