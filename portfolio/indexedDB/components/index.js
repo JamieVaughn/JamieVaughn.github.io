@@ -18,31 +18,30 @@ function TodoApp () {
         setTodos(newTodos)
     }
 
-    const modifyTodo = (action, id) => {
+    const modifyTodo = (action, id, payload) => {
         switch(action) {
             case 'delete':
                 setTodos(todos.filter(j => j.id !== id))
                 break;
-            case 'done':
+            case 'toggleDone':
                 setTodos(todos.map(j => {
                     if(j.id == id) {
-                        j.done = true
-                        j.doneOn = getDate()
+                        j.done = !j.done
+                        j.doneOn = j.done ? getDate() : ''
                     }
                     return j
                 }))
                 break;
-            case 'undone':
+            case 'update':
                 setTodos(todos.map(j => {
                     if(j.id == id) {
-                        j.done = false
-                        j.doneOn = ''
+                        j.text = payload
                     }
                     return j
                 }))
                 break;
             default:
-                console.log('default')
+                console.log('No action defined')
         }
     }
 
@@ -53,7 +52,8 @@ function TodoApp () {
             <TodoForm setter={appendTodo} list={todos}></TodoForm>
             <TodoList setter={modifyTodo} list={todos}></TodoList>
             <div className='footer'>
-                <span>total: {todos.length || 0}</span>
+                <span>Total: {todos.length || 0}</span>
+                <span>Remaining: {todos.filter(c => !c.done).length || 0}</span>
                 <button onClick={() => setTodos([])}>Clear All</button>
             </div>
         </div>

@@ -1,9 +1,9 @@
 function TodoItem (props) {
     const [text, setText] = React.useState(props.todo.text)
-    const [item, setItem] = React.useState(props.todo)
     const handleSubmit = e => {
-        console.log(e.target, props.text)
-        props.setter([...props.list.filter(j => j !== props.text), e.target.value])
+        if(e.which !== 13) return
+        props.setter('update', props.todo.id, text)
+        e.target.blur()
     }
 
     return (
@@ -14,10 +14,13 @@ function TodoItem (props) {
             value={text}
             placeholder={text}
             onChange={e=>setText(e.target.value)}
-            onBlur={handleSubmit}
-            checked={item.done}
+            onKeyDown={handleSubmit}
+            checked={props.todo.done}
             />
-            <span className="timestamp">{props.todo.doneOn ? 'done: ':'created: '}{props.todo.doneOn || props.todo.createdOn}</span>
+            <span className="timestamp">
+                {props.todo.doneOn ? 'done: ':'created: '}
+                {props.todo.doneOn || props.todo.createdOn}
+            </span>
         </span>
     )
 }

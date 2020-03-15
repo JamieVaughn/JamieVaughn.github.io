@@ -1,18 +1,14 @@
 function TodoList (props) {
-    const [list, setList] = React.useState(props.list)
     const handleDelete = (id) => {
         console.log(id)
         console.log(...props.list.filter(j => j.id == id), 'delete')
         props.setter('delete', id)
-        setList(list.filter(j => j.id !== id))
     }
     const handleComplete = (e, id) => {
         e.target.nextElementSibling.classList.toggle('done')
-        let action = e.target.checked ? 'done' : 'undone'
-        props.setter(action, id)
+        props.setter('toggleDone', id)
     }
     
-    // React.useEffect(() => console.log(props, list), [list])
     return (
     <ul className='todo-items'>
         {props.list.map ? props.list.map((i, index) => (
