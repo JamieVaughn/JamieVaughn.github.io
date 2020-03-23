@@ -1,0 +1,191 @@
+{
+    "name": "Regex",
+    "realm": "Dalaran",
+    "achievementPoints": 675, 
+    "battlegroup": "Test Battlegroup", 
+    "calcClass": "f", 
+    "class": 10, 
+    "gender": 1, 
+    "lastModified": 1348187981118, 
+    "level": 90, 
+    "race": 25,
+    "thumbnail": "./outlaw.png",
+    "items": {
+        "averageItemLevel": 562, 
+        "averageItemLevelEquipped": 494, 
+        "back": {
+            "icon": "inv_misc_cape_18", 
+            "id": 58524, 
+            "name": "ability_mount_magnificentflyingcarpet", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "shirt": {
+            "icon": "inv_chest_leather_03", 
+            "id": 58588, 
+            "name": "QA Combat Test Rogue Chest", 
+            "quality": 3, 
+            "tooltipParams": {
+                "reforge": 147
+            }
+        },
+        "chest": {
+            "icon": "inv_chest_leather_03", 
+            "id": 58588, 
+            "name": "QA Combat Test Rogue Chest", 
+            "quality": 3, 
+            "tooltipParams": {
+                "reforge": 147
+            }
+        }, 
+        "feet": {
+            "icon": "inv_boots_leather01", 
+            "id": 58716, 
+            "name": "QA Combat Test Rogue Boots", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "finger1": {
+            "icon": "inv_jewelry_ring_47", 
+            "id": 58519, 
+            "name": "QA Combat Test Agility DPS Ring", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "finger2": {
+            "icon": "inv_jewelry_ring_47", 
+            "id": 58636, 
+            "name": "QA Combat Test Agility DPS Ring 2", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "hands": {
+            "icon": "inv_gauntlets_06", 
+            "id": 58589, 
+            "name": "QA Combat Test Rogue Gloves", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "legs": {
+            "icon": "inv_pants_mail_07", 
+            "id": 58518, 
+            "name": "QA Combat Test Rogue Legs", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "mainHand": {
+            "icon": "inv_weapon_halberd_20", 
+            "id": 58703, 
+            "name": "QA Combat Test Agility Polearm", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "neck": {
+            "icon": "inv_jewelry_necklace_16", 
+            "id": 58538, 
+            "name": "QA Combat Test Agility DPS Neck", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "shoulder": {
+            "icon": "inv_shoulder_23", 
+            "id": 27816, 
+            "name": "Mindrage Pauldrons", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "trinket1": {
+            "icon": "inv_misc_bone_08", 
+            "id": 58504, 
+            "name": "QA Combat Test Agility DPS Trinket", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "trinket2": {
+            "icon": "inv_misc_bone_08", 
+            "id": 58603, 
+            "name": "QA Combat Test Agility DPS Trinket 2", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "waist": {
+            "icon": "inv_belt_14", 
+            "id": 58601, 
+            "name": "QA Combat Test Rogue Belt", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }, 
+        "wrist": {
+            "icon": "inv_bracer_02", 
+            "id": 58661, 
+            "name": "QA Combat Test Rogue Bracer", 
+            "quality": 3, 
+            "tooltipParams": {}
+        },
+        "head": {
+            "icon": "inv_bracer_02", 
+            "id": 58661, 
+            "name": "QA Combat Test Rogue Bracer", 
+            "quality": 3, 
+            "tooltipParams": {}
+        }
+    }, 
+    "stats": {
+        "agi": 22478, 
+        "armor": 16422, 
+        "attackPower": 45201, 
+        "block": 0.0, 
+        "blockRating": 0, 
+        "crit": 37.998177, 
+        "critRating": 7603, 
+        "dodge": 19.125492, 
+        "dodgeRating": 0, 
+        "expertiseRating": 1121, 
+        "haste": 8373, 
+        "health": 529219, 
+        "hitPercent": 13.508823, 
+        "hitRating": 4593, 
+        "int": 197, 
+        "mainHandDmgMax": 56789.0, 
+        "mainHandDmgMin": 42508.0, 
+        "mainHandDps": 23113.977, 
+        "mainHandExpertise": 3.297059, 
+        "mainHandSpeed": 2.148, 
+        "mana5": 0.0, 
+        "mana5Combat": 0.0, 
+        "mastery": 26.427334, 
+        "masteryRating": 6526, 
+        "offHandDmgMax": 3875.0, 
+        "offHandDmgMin": 3874.0, 
+        "offHandDps": 3248.0178, 
+        "offHandExpertise": 3.297059, 
+        "offHandSpeed": 1.193, 
+        "parry": 8.0095, 
+        "parryRating": 0, 
+        "power": 100, 
+        "powerType": "energy", 
+        "pvpPower": 0.0, 
+        "pvpPowerRating": 0, 
+        "pvpResilience": 40.0, 
+        "pvpResilienceRating": 0, 
+        "rangedAttackPower": 22468, 
+        "rangedCrit": 37.998177, 
+        "rangedCritRating": 7603, 
+        "rangedDmgMax": -1.0, 
+        "rangedDmgMin": -1.0, 
+        "rangedDps": -1.0, 
+        "rangedExpertise": 3.297059, 
+        "rangedHitPercent": 13.508823, 
+        "rangedHitRating": 4593, 
+        "rangedSpeed": -1.0, 
+        "spellCrit": 14.599421, 
+        "spellCritRating": 7603, 
+        "spellHitPercent": 13.508823, 
+        "spellHitRating": 4593, 
+        "spellPen": 10, 
+        "spellPower": 187, 
+        "spr": 192, 
+        "sta": 27344, 
+        "str": 95
+    } 
+}

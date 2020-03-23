@@ -23,6 +23,7 @@ Vue.component('searchform', {
         return {
             response: {},
             baseUrl: 'https://us.api.battle.net/wow/character/',
+            exampleUrl: './example.json',
             realm: '',
             char: '',
             field: 'stats,items',
@@ -50,6 +51,7 @@ Vue.component('searchform', {
     },
     computed: {
         getUrl() {
+            if(this.exampleUrl) return this.exampleUrl
             return this.baseUrl+(this.realm || 'dalaran') +'/'
             +(this.char || 'regex')+'?fields='+this.field+this.locale+this.k;
         },

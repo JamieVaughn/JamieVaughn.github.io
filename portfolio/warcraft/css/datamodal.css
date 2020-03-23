@@ -35,11 +35,19 @@
     border: 1px solid #fafafa;
     border-radius: 8px;
 }
-#datamodal .stats-grid {
+ .stats-grid {
     grid-area: stats;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-areas: 'attr def' 'attack enhance' 'spell enhance' 'img img';
+    grid-template-rows: 1fr 0.5fr 0.5fr 2.25fr;
+    grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 555px) {
+    #datamodal .stats-grid {
+        grid-template-areas: 'attr def img' 'attack enhance img' 'spell enhance img' !important;
+        grid-template-rows: 1fr .5fr 0.5fr;
+        grid-template-columns: 1fr 1fr .75fr;
+    }
 }
 #datamodal .stats-block {
     text-align: center;
@@ -49,6 +57,33 @@
     padding: 3px;
     margin: 3px;
     min-width: 120px;
+    background-color: rgba(50, 50, 50, 0.75);
+    z-index: 2;
+}
+#attack {grid-area: attack;}
+#attributes {grid-area: attr;}
+#defense {grid-area: def;}
+#enhancements {grid-area: enhance;}
+#spell {grid-area: spell;}
+#portrait {
+    max-width: 300px;
+    height: auto;
+    align-self: end;
+    margin: 0 auto;
+    grid-area: img;
+}
+#portrait > img {
+    width: calc(75px + 100%);
+    margin-left: -75px;
+}
+#portrait > div {
+    display: flex;
+    justify-content: space-around;
+    padding: 14px 14px 0 14px
+}
+#portrait > div > img {
+    max-height: 125px;
+    width: auto;
 }
 #datamodal .attribute {
     color: #d6a131;
@@ -63,6 +98,15 @@
     list-style: none;
     padding: 0;
     margin: 0;
+}
+#datamodal .stats-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    border-top: 1px solid #d6a131;
+}
+#datamodal .stats-list li:last-child {
+    border-bottom: 1px solid #d6a131;
 }
 #datamodal .item-grid {
     grid-area: items;
