@@ -1,0 +1,46 @@
+body {
+    background: linear-gradient(135deg, yellow, coral);
+    height: 100vh;
+}
+* {
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 400px;
+    margin: 0 auto;
+
+}
+.restart {
+    margin: 1rem;
+    background: steelblue;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+[data-id] {
+    border: 1px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    pointer-events: none;
+}
+.backside {
+    background: linear-gradient(45deg, violet, steelblue);
+    pointer-events: all !important;
+}
