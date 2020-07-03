@@ -1,70 +1,62 @@
-let emojis = [
-    '🧝','🗡️','🛡️','🪓','⚔️','🏹','🐉','🧙','🧚','🧛','🧜','🧟','🧞','🐎',
-    '💎','💍','👑','📜','🗝','⚗','🩸','🚪','⚰','⚱','🍺','🥖','🍄','💧','🔥'
-]
-
-let cardsChosen = []
-let cardsChosenId = []
-let cardsWon = []
 const grid = document.querySelector('.grid')
 const restart = document.querySelector('.restart')
 const score = document.querySelector('h3')
+restart.addEventListener('change', (e) => createBoard(e))
 
-restart.addEventListener('click', () => createBoard(randomEmojis()))
-
-function randomEmojis () {
-    return new Array(6).fill(Math.floor(Math.random() * emojis.length - 1))
-    .flatMap(i => {
-        let piece = emojis.splice(i, 1)
-        return [piece, piece]
-    })
-    .sort(() => Math.random() < 0.5 ? 1 : -1)
+const state = {
+    useEmojis: [],
+    selection: [],
+    matches: []
 }
 
-function createBoard (emojis) {
+function createBoard (e) {
     grid.innerHTML = ''
-    emojis.forEach( (e, i) => {
-        var card = document.createElement('div')
-        card.textContent = ''
-        card.classList.add('backside')
-        card.setAttribute('data-id', i)
-        card.addEventListener('click', () => flipCard(emojis, card, i))
-        grid.appendChild(card)
+    console.log(e, e.target)
+    grid.classList = 'grid '+e.target.selectedOptions[0].id
+    for(key in state) { state[key] = []}
+    state.useEmojis = getRandomEmojis(e.target.value)
+    state.useEmojis.forEach( (e, i) => {
+        e.found = false
+        e.position = i
+        grid.innerHTML += `
+        <div class='backside' 
+        data-match=${e.icon} 
+        data-id=${i}
+        onclick='flipCard(event)'>
+            <span>${e.icon}</span>
+        </div>`
     })
+    console.log(state.useEmojis)
 }
 
-function flipCard (emojis, card, id) {
-    cardsChosen.push(emojis[id])
-    cardsChosenId.push(id)
-    card.classList.remove('backside')
-    card.textContent = emojis[id]
-    if(cardsChosen.length === 2) {
-        setTimeout(() => checkForMatch(emojis), 200)
+function flipCard (event) {
+    console.log(state.useEmojis)
+    let emoji = state.useEmojis.filter((i, idx) => idx === +event.currentTarget.dataset.id)[0]
+    console.log('emoji', emoji)
+    state.selection.push(emoji)
+    event.currentTarget.classList.remove('backside')
+    if(state.selection.length === 2) {
+        setTimeout(() => checkForMatch(event), 100)
     }
 }
 
-function checkForMatch (emojis) {
-    let cards = document.querySelectorAll('[data-id]')
-    const optionOneId = cardsChosenId[0]
-    const optionTwoId = cardsChosenId[1]
-    if(cardsChosen[0] === cardsChosen[1]) {
+function checkForMatch () {
+    let currentCards = state.selection
+        .map(c => document.querySelector(`[data-id="${c.position}"]`))
+    console.log(currentCards)
+    if(state.selection[0].ref === state.selection[1].ref) {
         alert('You\'ve found a match')
-        cards[optionOneId].textContent = '✅'
-        cards[optionTwoId].textContent = '✅'
-        cardsWon.push(cardsChosen)
+        currentCards.forEach(c => c.textContent = '✅')
+        state.matches.push(state.selection)
     } else {
         alert('Sorry, try again.')
-        cards[optionOneId].classList.add('backside')
-        cards[optionTwoId].classList.add('backside')
-        cards[optionOneId].textContent = ''
-        cards[optionTwoId].textContent = ''
+        currentCards.forEach(c => (c.classList.add('backside')))
     }
-    cardsChosen = []
-    cardsChosenId = []
-    score.textContent = 'Score: ' + cardsWon.length
-    if(cardsWon.length === emojis.length/2) {
+    state.selection = []
+    score.textContent = 'Score: ' + state.matches.length
+    if(state.matches.length === state.useEmojis.length / 2) {
         score.textContent = 'Congratulations! You\'ve won!'
     }
 }
 
-createBoard(randomEmojis())
+createBoard({target: {value: 6, selectedOptions: [{id: 'easy'}]}})
