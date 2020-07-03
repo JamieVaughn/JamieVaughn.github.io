@@ -1,0 +1,60 @@
+body {
+    background: linear-gradient(forestgreen 15%, sienna 35%);
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+    color: white;
+}
+nav, section {
+    margin: 0.25rem auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+h2 {
+    margin: 0.5rem
+}
+.grid {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 450px;
+    height: 450px;
+}
+.grid.paused {
+    pointer-events: none;
+}
+.square {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #555;
+    font-size: 75px;
+    position: relative;
+    background: linen;
+    cursor: pointer;
+}
+.square:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mole:after {
+    content: '🐭';
+}
+.missed:after {
+    content: '🚫';
+}
+.hit:after {
+    content: '🎯';
+}

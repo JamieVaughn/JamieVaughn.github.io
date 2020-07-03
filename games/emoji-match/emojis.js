@@ -27,8 +27,19 @@ let emojis = [
     { ref: 25, icon: '🥖' },
     { ref: 26, icon: '🍄' },
     { ref: 27, icon: '💧' },
-    { ref: 28, icon: '🔥' }
+    { ref: 28, icon: '🔥' },
+    { ref: 29, icon: '🧄' },
+    { ref: 30, icon: '🍗' },
+    { ref: 31, icon: '⚡' },
+    { ref: 32, icon: '❄' },
+    { ref: 33, icon: '☄' },
+    { ref: 34, icon: '✨' },
+    { ref: 35, icon: '💀' },
+    { ref: 36, icon: '🏺' },
+    { ref: 37, icon: '⛏' },
+    
 ]
+
 
 function getRandomEmojis (level) {
     return new Array(+level).fill(null)
