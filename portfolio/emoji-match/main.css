@@ -39,6 +39,7 @@ nav {
     height: 100px;
     cursor: pointer;
     pointer-events: none;
+    background: lavender;
 }
 .backside {
     background: linear-gradient(45deg, violet, steelblue);
