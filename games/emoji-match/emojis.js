@@ -42,7 +42,7 @@ let emojis = [
 
 
 function getRandomEmojis (level) {
-    return new Array(+level).fill(null)
+    return [...Array(+level).keys()]
     .map(() => Math.floor(Math.random() * emojis.length))
     .flatMap(i => {
         let dupe = Object.assign({}, emojis[i])

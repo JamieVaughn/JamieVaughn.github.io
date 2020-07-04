@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+body {
+    background: linear-gradient(yellow, steelblue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.restart {
+    display: block;
+    margin: 0.25rem auto;
+}
+h3 {
+    text-align: center;
+}
+.inert {
+    pointer-events: none;
+}
+.grid {
+    border: 1px solid #444;
+    background: wheat;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(7, 1fr);
+    height: 248px;
+    width: 295px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.grid div {
+    height: 40px;
+    width: 40px;
+    outline: 1px solid #bbb;
+    position: relative;
+}
+[class*=player]{
+    border-radius: 100%;
+    transition: transform 200ms;
+}
+.taken {
+    opacity: 0;
+}
+.player-one {
+    background-color: crimson;
+}
+.player-two {
+    background-color: blue;
+}
