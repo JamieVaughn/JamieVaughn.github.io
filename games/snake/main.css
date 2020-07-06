@@ -1,0 +1,88 @@
+:root {
+    --board-width: 14em;
+    --board-gap: 1px;
+    --board-columns: 14;
+}
+* {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 2em;
+    box-sizing: border-box;
+  }
+  img {
+      margin: 0 auto;
+      width: 200px;
+      display: block;
+      border-radius: 22%;
+  }
+  h2, h5 {
+      text-align: center;
+  }
+  #container {
+    height: calc(var(--board-width) + calc(var(--board-gap) * var(--board-columns)));
+    width: calc(var(--board-width) + calc(var(--board-gap) * var(--board-columns)));
+    display: grid;
+    grid-template-rows: repeat(var(--board-columns), 1fr);
+    grid-template-columns: repeat(var(--board-columns), 1fr);
+    grid-gap: var(--board-gap);
+    margin: 0 auto;
+  }
+  .cell {
+    background-color: lightgray;
+    height: 1em;
+    width: 1em;
+    transition: scale 1000ms;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bread:after{
+    content: "" attr(data-icon) "";
+    font-size: 0.9rem;
+  }
+  .snake {
+    background-color: #bad80a;
+    border-radius: 0.25em;
+    box-shadow: inset 0 0 0 2px darkseagreen;
+    animation: slide 300ms 1 ease-out;
+  }
+  .controls {
+      width: calc(var(--board-width) + calc(var(--board-gap) * var(--board-columns)));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+  }
+  button:focus{
+    outline: 0;
+  }
+  button {
+    margin-top: 2em;
+    font-size: 1em;
+    background-color: floralwhite;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  #play{
+    border: 3px solid seagreen;
+    color: seagreen;
+  }
+  #pause{ 
+    border: 3px solid indigo;
+    color: indigo;
+  }
+  #reset{
+    border: 3px solid crimson;
+    color: crimson;
+  }
+  @keyframes slide {
+    0% {
+      transform: scale(0.2);
+    }
+    100% {
+       transform: scale(1);
+    }
+  }
