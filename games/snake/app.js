@@ -1,5 +1,6 @@
 // Board setup
 const state = {
+    score: 0,
     timer: 350,
     interval: undefined,
     edge: 14,
@@ -17,7 +18,7 @@ function setupBoard(dimension) { // dimension is length of one side of square gr
         data-icon="${state.loot[Math.floor(Math.random() * state.loot.length)]}">
         </div>`;
     })
-    state.breadLocation = bread(rand([37, 38]));
+    state.breadLocation = bread([37, 38]);
 }
 function initClock (tick) {
     state.timer = tick
@@ -25,15 +26,17 @@ function initClock (tick) {
     state.interval = setInterval(update, tick)
 }
 setupBoard(state.edge)
-//buttons
-document.getElementById("play").addEventListener("click", () => initClock(350))
-document.getElementById("pause").addEventListener("click", () => initClock(9999999999))
-document.getElementById("reset").addEventListener("click", reload)
+//UI
+let scoreUI = document.querySelector('.score')
+let play = document.getElementById("play").addEventListener("click", () => initClock(350))
+let pause = document.getElementById("pause").addEventListener("click", () => initClock(9999999999))
+let restart = document.getElementById("reset").addEventListener("click", reload)
 function reload() {
     grid.innerHTML = ''
     setupBoard(state.edge)
     state.snake = [37, 38];
     state.direction = "left";
+    state.score = 0
     initClock(350)
 }
 document.onkeydown = function(e) {
@@ -45,20 +48,18 @@ document.onkeydown = function(e) {
   }
 };
 //utils
-function rand(arr) {
-    let num;
-    do { num = Math.floor(Math.random() * (state.edge**2));
-    } while (arr.includes(num))
+function bread (arr) {
+  let num;
+  do { num = Math.floor(Math.random() * (state.edge**2));
+  } while (arr.includes(num))
+  document.getElementById(num).classList.add("bread")
   return num;
-}
-function bread (cell) {
-  document.getElementById(cell).classList.add("bread")
-  return cell;
 }
 var eat = function (tail, breadPos) {
     document.getElementById(breadPos).classList.remove("bread");
+    state.score++
     state.snake.push(tail);
-    return bread(rand(state.snake));
+    return bread(state.snake);
 }
 function slither(dir, h) {
   document.getElementById(state.snake.pop())?.classList.remove("snake");
@@ -74,14 +75,16 @@ function slither(dir, h) {
 function checkCollision(pos, size, arr){
   let selfCollision = arr.slice(1, arr.length-1).includes(pos)
   let vertCollision = pos === undefined || pos < 0 || pos > size 
-  let lateralCollision = arr[1]%14 === 0 && (pos+1)%14 === 0 || (arr[1]+1)%14 === 0 && pos%14 === 0
+  let lateralCollision = arr[1]%14 === 0 && (pos+1)%14 === 0 ||
+                        (arr[1]+1)%14 === 0 && pos%14 === 0
   if( lateralCollision || vertCollision || selfCollision) {
     gameOver(selfCollision)
   }
 }
 function gameOver(cause) {
-    document.getElementById("container").innerHTML = `
-        <h1> Game Over </h1><h5>You collided with ${cause ? 'yourself' : 'the edge'}`;
+    let msg = `<h1> Game Over </h1><h5>You collided with ${cause ? 'yourself' : 'the edge'}`
+    if(cause === 'win') msg = `<h1> You Win </h1><h5>Congratulations</h5>`
+    document.getElementById("container").innerHTML = msg;
     clearInterval(state.interval)
 }
 //update loop
@@ -91,5 +94,7 @@ function update () {
     checkCollision(head, state.edge**2, state.snake);
     slither(state.direction, head)
     if(head == state.breadLocation) state.breadLocation = eat(tail, state.breadLocation);
+    scoreUI.innerHTML = state.score
+    if(state.score > 99) gameOver('win')
 }
 state.interval = setInterval(update, state.timer);
