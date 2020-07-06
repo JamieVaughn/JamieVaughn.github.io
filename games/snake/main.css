@@ -1,7 +1,8 @@
 :root {
-    --board-width: 14em;
-    --board-gap: 1px;
-    --board-columns: 14;
+    --grid-width: 14em;
+    --grid-gap: 1px;
+    --grid-columns: 14;
+    --grid-lines: 15;
 }
 * {
     box-sizing: border-box;
@@ -17,17 +18,20 @@ html, body {
       display: block;
       border-radius: 22%;
   }
-  h2, h5 {
+  h1, h2, h5 {
       text-align: center;
+      grid-column: 1 / -1;
   }
   #container {
-    height: calc(var(--board-width) + calc(var(--board-gap) * var(--board-columns)));
-    width: calc(var(--board-width) + calc(var(--board-gap) * var(--board-columns)));
+    height: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-lines)));
+    width: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-lines)));
     display: grid;
-    grid-template-rows: repeat(var(--board-columns), 1fr);
-    grid-template-columns: repeat(var(--board-columns), 1fr);
-    grid-gap: var(--board-gap);
+    grid-template-rows: repeat(var(--grid-columns), 1fr);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    grid-gap: var(--grid-gap);
     margin: 0 auto;
+    border: 1px solid #888;
+    overflow: hidden;
   }
   .cell {
     background-color: lightgray;
@@ -50,7 +54,7 @@ html, body {
     animation: slide 300ms 1 ease-out;
   }
   .controls {
-      width: calc(var(--board-width) + calc(var(--board-gap) * var(--board-columns)));
+      width: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-columns)));
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
