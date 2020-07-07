@@ -1,0 +1,83 @@
+:root {
+    --grid-width: calc(15em - 2px);
+    --grid-gap: 1px;
+    --grid-columns: 15;
+    --grid-lines: 16;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    height: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-lines)));
+    width: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-lines)));
+    display: grid;
+    grid-template-rows: repeat(var(--grid-columns), 1fr);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    grid-gap: var(--grid-gap);
+    margin: 0 auto;
+    border: 1px solid #888;
+    overflow: hidden;
+}
+.cell {
+    background-color: skyblue;
+    width: 1rem;
+    height: 1rem;
+    transition: all 400ms;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.cell:nth-child(n + 211) {
+    background-color: yellowgreen;
+}
+.defender:after{
+    content: '📡';
+    transform: rotate(-45deg) scale(1.5);
+    z-index: 3;
+}
+.invader:after{
+    content: '👾';
+}
+.blast:after {
+    content: '🔥';
+    transform: rotate(180deg);
+}
+.laser:after {
+    content: '⚡';
+}
+.boom:after {
+    content: '💥';
+}
+
+.controls {
+    width: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-columns)));
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+button:focus{
+  outline: 0;
+}
+button {
+  margin-top: 2em;
+  font-size: 1em;
+  background-color: floralwhite;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#play{
+  border: 3px solid seagreen;
+  color: seagreen;
+}
+#pause{ 
+  border: 3px solid indigo;
+  color: indigo;
+}
+#reset{
+  border: 3px solid crimson;
+  color: crimson;
+}
