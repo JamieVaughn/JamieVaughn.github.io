@@ -1,0 +1,35 @@
+.invader:after{
+    content: '👾';
+}
+.blast:after {
+    content: '🔥';
+    transform: rotate(180deg);
+}
+.laser:after {
+    content: '⚡';
+}
+.astro:after {
+    content: '🧑‍🚀';
+}
+.legs:after {
+    content: '👖';
+}
+.arm:after {
+    content: '🦾';
+    transform: scale(0.4);
+    align-self: normal;
+}
+.sparkle:after {
+    content: '✨';
+}
+.firework:after {
+    content: '🎆';
+}
+.defender:after{
+    content: '📡';
+    transform: rotate(-45deg) scale(1.5);
+    z-index: 3;
+}
+.boom:after {
+    content: '💥';
+}
