@@ -4,9 +4,10 @@ const state = {
     timer: 350,
     interval: undefined,
     edge: 14,
-    snake: [37, 38],
+    snake: [39, 40],
     direction: 'left',
     breadLocation: undefined,
+    playing: true,
     loot: ['🍞', '🥖', '🥪', '🥐', '🥯', '🥟', '🥨', '🥞', '🧇'],
     enemies: ['🦡', '🦅', '🐒', '🦉', '🐊']
 }
@@ -28,13 +29,13 @@ function initClock (tick) {
 setupBoard(state.edge)
 //UI
 let scoreUI = document.querySelector('.score')
-let play = document.getElementById("play").addEventListener("click", () => initClock(350))
-let pause = document.getElementById("pause").addEventListener("click", () => initClock(9999999999))
+let play = document.getElementById("play").addEventListener("click", () => state.playing = true)
+let pause = document.getElementById("pause").addEventListener("click", () => state.playing = false)
 let restart = document.getElementById("reset").addEventListener("click", reload)
 function reload() {
     grid.innerHTML = ''
     setupBoard(state.edge)
-    state.snake = [37, 38];
+    state.snake = [39, 40];
     state.direction = "left";
     state.score = 0
     initClock(350)
@@ -86,9 +87,11 @@ function gameOver(cause) {
     if(cause === 'win') msg = `<h1> You Win </h1><h5>Congratulations</h5>`
     document.getElementById("container").innerHTML = msg;
     clearInterval(state.interval)
+    state.playing = false
 }
 //update loop
 function update () {
+    if(!state.playing) return
     let head = state.snake[0];
     let tail = state.snake[state.snake.length - 1]
     checkCollision(head, state.edge**2, state.snake);

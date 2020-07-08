@@ -58,7 +58,7 @@ html, body {
     text-align: center;
   }
   .controls {
-      width: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-columns)));
+      width: calc(var(--grid-width) + calc(var(--grid-gap) * 50));
       margin: 0 auto;
       display: flex;
       justify-content: space-between;

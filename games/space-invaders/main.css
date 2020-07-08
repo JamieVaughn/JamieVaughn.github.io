@@ -33,11 +33,6 @@ h1, h3 {
 .cell:nth-child(n + 211) {
     background-color: yellowgreen;
 }
-.defender:after{
-    content: '📡';
-    transform: rotate(-45deg) scale(1.5);
-    z-index: 3;
-}
 .invader:after{
     content: '👾';
 }
@@ -48,10 +43,31 @@ h1, h3 {
 .laser:after {
     content: '⚡';
 }
+.astro:after {
+    content: '🧑‍🚀';
+}
+.legs:after {
+    content: '👖';
+}
+.arm:after {
+    content: '🦾';
+    transform: scale(0.4);
+    align-self: normal;
+}
+.sparkle:after {
+    content: '✨';
+}
+.firework:after {
+    content: '🎆';
+}
+.defender:after{
+    content: '📡';
+    transform: rotate(-45deg) scale(1.5);
+    z-index: 3;
+}
 .boom:after {
     content: '💥';
 }
-
 .controls {
     width: calc(var(--grid-width) + calc(var(--grid-gap) * var(--grid-columns)));
     margin: 0 auto;
