@@ -43,7 +43,7 @@ function initClock (tick) {
     clearInterval(state.interval)
     state.interval = setInterval(update, tick)
 }
-initClock(350)
+initClock(400)
 
 const resume = document.querySelector('#resume')
 const pause = document.querySelector('#pause')
@@ -58,7 +58,7 @@ reset.addEventListener('click', () => {
     state.invaderPos = []
     state.direction = 1
     setupInvaders()
-    initClock(350)
+    initClock(400)
     state.playing = true
 })
 
@@ -74,7 +74,7 @@ function shoot(e){
             clearInterval(laser)
             cells[laserPos].classList.value = 'cell boom'
             state.invaderPos = state.invaderPos.filter(p => p !== laserPos)
-            setTimeout(() => cells[laserPos].classList.remove('boom'), 350)
+            setTimeout(() => cells[laserPos].classList.remove('boom'), 200)
         }
         if(laserPos <= -state.edge) {
             cells[laserPos]?.classList.remove('laser')
