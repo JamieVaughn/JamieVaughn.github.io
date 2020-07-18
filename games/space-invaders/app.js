@@ -52,7 +52,7 @@ const reset = document.querySelector('#reset')
 resume.addEventListener('click', () => state.playing = true)
 pause.addEventListener('click', () => state.playing = false)
 reset.addEventListener('click', () => {
-    clearInterval(state.interval)
+    // clearInterval(state.interval)
     cells.forEach(c => c.classList.value = 'cell')
     cells[state.defender].classList.add('defender')
     state.invaderPos = []
@@ -81,7 +81,7 @@ function shoot(e){
             clearInterval(laser)
         }
     }
-    laser = setInterval(moveLaser, 75)
+    laser = setInterval(moveLaser, 75)   
 }
 function strafe(e){
     if(!state.playing) return
@@ -110,8 +110,8 @@ function moveInvaders() {
 
 function gameOver(){
     let defended = state.invaderPos.length === 0
-    let destroyed = Array.from(cells).filter(c => c.classList.contains('invader') && c.classList.contains('defender')).length
-    let landing = state.invaderPos.filter(p => p > 211).length
+    let destroyed = state.invaderPos.find(p => p === state.defender)
+    let landing = state.invaderPos.filter(p => p > 209).length
     return defended || landing || destroyed
 }
 
@@ -123,21 +123,23 @@ function update() {
         state.playing = false
         let msg = 'Game Over'
         if(state.invaderPos.length === 0) msg = 'You Win!'
-        resultUI.innerHTML = msg
-        cells[state.defender].classList.add( msg == 'You Win!' ? 'astro' : 'boom')
         cells[state.defender].classList.remove( 'defender')
-        cells[state.defender + state.edge].classList.add(msg == 'You Win!' ? 'legs' : '')
-        cells[state.defender -1].classList.add(msg == 'You Win!' ? 'arm' : '')
-        initClock(999999999)
         if(msg === 'You Win!') {
+            cells[state.defender].classList.add('astro')
+            cells[state.defender + state.edge]?.classList.add('legs')
+            cells[state.defender -1]?.classList.add('arm')
+
             state.invaders[0].forEach(i => {
                 state.invaders[1].forEach(j => {
                     cells[i + j*state.edge + state.offset].classList.add(Math.random() > 0.5 ? 'firework' : 'sparkle')
                     Math.random() > 0.7 ? state.offset++ : ''
                 })
             })
+        } else {
+            cells[state.defender].classList.add( 'boom')
         }
-        
+        resultUI.innerHTML = msg
+        initClock(999999999)
     }
 }
 
