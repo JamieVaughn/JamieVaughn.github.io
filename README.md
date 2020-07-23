@@ -12,13 +12,14 @@ My HTML resume featuring my prior work experience, education and my web dev core
 [See the portfolio here](https://wjv.io/portfolio)
 * Variation on Classic Tic Tac Toe Game
 * Todo App coded with Vue.js
-* Searchable Blog Post Landing Page
+* Bookmarks Organization App
 * Javascript Calculator
 * JS Canvas Tetris Game
 * Whiteboard Javascript Exercises
 * SVG data viz design concepts
 * Searchable Map using ESRI ArcGIS API
 * Mobile App Responsive Design Mockup
-* Flock Roster App
-* Personal Blog about energy at heliocrat.com
-* Some of the Websites I've developed for Businesses
+* Zendesk Customer Support Tool
+* Personal Blog about programming at wjv.io/blog
+* Some of the Websites/Apps I've developed for Businesses
+* And more...
