@@ -235,6 +235,10 @@ ul li {
     margin-top: 0;
     margin: 1.33rem;
 }
+#Portfolio section h4:first-of-type {
+    margin-top: 0;
+}
+
 #Experience h1,
 #Experience h2,
 #Experience h4,
