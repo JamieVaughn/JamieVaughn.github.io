@@ -421,7 +421,9 @@ footer form textarea {
     div.details > * {
         margin: 0 auto;
     }
-
+    #Portfolio section {
+        columns: 1;
+    }
     footer form {
         width: 90%;
     }
