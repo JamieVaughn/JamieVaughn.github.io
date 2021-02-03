@@ -82,9 +82,9 @@ pageLinks.forEach(item => item.addEventListener('click', function(e) {
  function getParam(param) {
     return new URLSearchParams(window.location.search).get(param);
 }
-
  if(getParam('submit') === 'success') {
      formMsg.classList.remove('hidden');
+     setTimeout(() => window.scrollTo(0, window.innerHeight), 100);
  }
 
 // add recaptcha and akismet
@@ -95,6 +95,8 @@ pageLinks.forEach(item => item.addEventListener('click', function(e) {
 
  var email = document.querySelector('#email');
  var msg = document.querySelector('#message');
+ var live = document.querySelector('#time');
+ live.value = new Date();
 
 // https://stackoverflow.com/questions/11661187/form-serialize-javascript-no-framework
 //  https://plainjs.com/javascript/ajax/serialize-form-data-into-an-array-46/

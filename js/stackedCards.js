@@ -47,7 +47,6 @@
             Array.prototype.forEach.call(els, function(el) {
                 el.style.transformOrigin = me.config.transformOrigin;
                 el.addEventListener("click", function() {
-                    console.log(el);
                     var clickedEl = el;
                     var nextCnt = 0;
                     var prevCnt = 0;
