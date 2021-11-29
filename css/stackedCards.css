@@ -46,20 +46,20 @@ body {
 }
 
 .stacked-cards li:nth-child(2) {
-    border-left: 25px solid #e61b77;
-    border-right: 25px solid #e61b77;
-}
-.stacked-cards li:nth-child(2).active {
-    border-left: 25px solid #e61b77;
-    border-right: none;
-}
-.stacked-cards li:nth-child(3) {
     border-left: 25px solid #8E4497;
     border-right: 25px solid #8E4497;
 }
+.stacked-cards li:nth-child(2).active {
+    border-left: 25px solid #8E4497;
+    border-right: none;
+}
+.stacked-cards li:nth-child(3) {
+    border-left: 25px solid #e61b77;
+    border-right: 25px solid #e61b77;
+}
 .stacked-cards li:nth-child(3).active {
     border-left: none;
-    border-right: 25px solid #8E4497;
+    border-right: 25px solid #e61b77;
 }
 .stacked-cards li:nth-child(4) {
     border-right: 25px solid rgb(250, 200, 42);
