@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <script type="module" src="index.mjs"></script>
+    <script type="module" src="utils.mjs"></script> -->
+    <link rel="stylesheet" href="style.module.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // board Map
+      //  0 |1 |2 |3
+      //  4 |5 |6 |7
+      //  8 |9 |10|11
+      //  12|13|14|15
+      function calculateWinner(squares) {
+        const winConditions = [
+          //all boxes
+          [0, 1, 4, 5],
+          [1, 2, 5, 6],
+          [2, 3, 6, 7],
+          [4, 5, 8, 9],
+          [5, 6, 9, 10],
+          [6, 7, 10, 11],
+          [8, 9, 12, 13],
+          [9, 10, 13, 14],
+          [10, 11, 14, 15],
+          //all vertical lines
+          [0, 4, 8, 12],
+          [1, 5, 9, 13],
+          [2, 6, 10, 14],
+          [3, 7, 11, 15],
+          //all horizontal lines
+          [0, 1, 2, 3],
+          [4, 5, 6, 7],
+          [8, 9, 10, 11],
+          [12, 13, 14, 15],
+          //all diagonals
+          [0, 5, 10, 15],
+          [3, 6, 9, 12]
+        ];
+        // lines.find()
+        for (let i = 0; i < winConditions.length; i++) {
+          const [a, b, c, d] = winConditions[i];
+          if (
+            squares[a] &&
+            squares[a] === squares[b] &&
+            squares[a] === squares[c] &&
+            squares[a] === squares[d]
+          ) {
+            return {
+              winner: squares[a],
+              squares: winConditions[i]
+            }
+          }
+        }
+        return null;
+      }
+
+      const Square = ({ onClick, value, isWinner }) => (
+        <button className={`square ${isWinner ? 'winning' : ''}`} onClick={onClick}>
+          {value}
+        </button>
+      );
+
+      const Board = ({ onClick, squares, winner }) => {
+        console.log('winner', winner)
+        return (
+          <div className="board">
+            {squares.map((s, i) => (
+              <Square key={i} value={s} isWinner={winner?.includes(i)} onClick={() => onClick(i)} />
+            ))}
+          </div>
+        )
+      };
+
+      const Game = (props) => {
+        const [history, setHistory] = React.useState([Array(16).fill(null)]);
+        const [step, setStep] = React.useState(0);
+        const [xIsNext, setXIsNext] = React.useState(true);
+        const winner = calculateWinner(history[step]);
+
+        const handleClick = (i) => {
+          const timeInHistory = history.slice(0, step + 1);
+          const current = timeInHistory[step];
+          const squares = [...current];
+          if (winner?.winner || squares[i]) return;
+          squares[i] = xIsNext ? "X" : "O";
+          setHistory([...timeInHistory, squares]);
+          setStep(timeInHistory.length);
+          setXIsNext(!xIsNext);
+        };
+
+        const jumpTo = (step) => {
+          setStep(step);
+          if (step === 0) setHistory([Array(16).fill(null)]);
+          setXIsNext(step % 2 === 0);
+        };
+
+        const renderMoves = () => {
+          return history.map((_step, move) => {
+            const destination = move ? `Go to move #${move}` : "Reset";
+            return (
+              <li key={move} style={{ listStyle: "none" }}>
+                <button onClick={() => jumpTo(move)}>{destination}</button>
+              </li>
+            );
+          });
+        };
+
+        return (
+          <>
+            <Board onClick={handleClick} squares={history[step]} winner={winner?.squares}/>
+            <div className="players">
+              <p>
+                {winner?.winner
+                  ? "Winner: " + winner?.winner
+                  : "Next Player: " + (xIsNext ? "Xs" : "Os")}
+              </p>
+              {!!step && renderMoves()}
+            </div>
+          </>
+        );
+      };
+
+      function TicTacToe() {
+        return (
+          <>
+            <h1 className='center'>Tic Quad Toe</h1>
+            <h2 className='center'>Place <strong>FOUR</strong> pieces in a <strong>LINE</strong> or a <strong>BOX</strong> to win (2 Players).</h2>
+            <Game />
+          </>
+        )
+      }
+
+      ReactDOM.render(<TicTacToe />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
