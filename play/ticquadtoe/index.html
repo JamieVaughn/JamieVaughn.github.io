@@ -47,6 +47,7 @@
         const [step, setStep] = React.useState(0);
         const [xIsNext, setXIsNext] = React.useState(true);
         const winner = calculateWinner(history[step]);
+
         if(!winner && oneplayer && !xIsNext) {
           const timeInHistory = history.slice(0, step + 1);
           const current = timeInHistory[step];
@@ -63,6 +64,7 @@
           setStep(timeInHistory.length);
           setXIsNext(!xIsNext);
         }
+        
         const handleClick = (i) => {
           if(oneplayer && !xIsNext) return
           const timeInHistory = history.slice(0, step + 1);
