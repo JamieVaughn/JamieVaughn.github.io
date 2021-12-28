@@ -10,9 +10,10 @@
       crossorigin
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./quadai.js"></script>
     <!-- <script type="module" src="index.mjs"></script>
     <script type="module" src="utils.mjs"></script> -->
-    <link rel="stylesheet" href="style.module.css" />
+    <link rel="stylesheet" href="tictactoe/style.module.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -23,49 +24,6 @@
       //  4 |5 |6 |7
       //  8 |9 |10|11
       //  12|13|14|15
-      function calculateWinner(squares) {
-        const winConditions = [
-          //all boxes
-          [0, 1, 4, 5],
-          [1, 2, 5, 6],
-          [2, 3, 6, 7],
-          [4, 5, 8, 9],
-          [5, 6, 9, 10],
-          [6, 7, 10, 11],
-          [8, 9, 12, 13],
-          [9, 10, 13, 14],
-          [10, 11, 14, 15],
-          //all vertical lines
-          [0, 4, 8, 12],
-          [1, 5, 9, 13],
-          [2, 6, 10, 14],
-          [3, 7, 11, 15],
-          //all horizontal lines
-          [0, 1, 2, 3],
-          [4, 5, 6, 7],
-          [8, 9, 10, 11],
-          [12, 13, 14, 15],
-          //all diagonals
-          [0, 5, 10, 15],
-          [3, 6, 9, 12]
-        ];
-        // lines.find()
-        for (let i = 0; i < winConditions.length; i++) {
-          const [a, b, c, d] = winConditions[i];
-          if (
-            squares[a] &&
-            squares[a] === squares[b] &&
-            squares[a] === squares[c] &&
-            squares[a] === squares[d]
-          ) {
-            return {
-              winner: squares[a],
-              squares: winConditions[i]
-            }
-          }
-        }
-        return null;
-      }
 
       const Square = ({ onClick, value, isWinner }) => (
         <button className={`square ${isWinner ? 'winning' : ''}`} onClick={onClick}>
@@ -84,13 +42,29 @@
         )
       };
 
-      const Game = (props) => {
+      const Game = ({oneplayer}) => {
         const [history, setHistory] = React.useState([Array(16).fill(null)]);
         const [step, setStep] = React.useState(0);
         const [xIsNext, setXIsNext] = React.useState(true);
         const winner = calculateWinner(history[step]);
-
+        if(!winner && oneplayer && !xIsNext) {
+          const timeInHistory = history.slice(0, step + 1);
+          const current = timeInHistory[step];
+          const squares = [...current];
+          let i = squares.reduce((acc, cur, index) => {
+            console.log('i', acc, cur, index, 'step', step)
+            if(cur === null) acc.push(index)
+            return acc
+          }, [])[Math.floor(Math.random() * (16 - step))]
+          console.log('o', squares, i)
+          if (winner?.winner || squares[i]) return;
+          squares[i] = xIsNext ? "X" : "O";
+          setHistory([...timeInHistory, squares]);
+          setStep(timeInHistory.length);
+          setXIsNext(!xIsNext);
+        }
         const handleClick = (i) => {
+          if(oneplayer && !xIsNext) return
           const timeInHistory = history.slice(0, step + 1);
           const current = timeInHistory[step];
           const squares = [...current];
@@ -123,9 +97,11 @@
             <Board onClick={handleClick} squares={history[step]} winner={winner?.squares}/>
             <div className="players">
               <p>
-                {winner?.winner
+                {step <= 16 && winner?.winner
                   ? "Winner: " + winner?.winner
-                  : "Next Player: " + (xIsNext ? "Xs" : "Os")}
+                  : step === 16 && !winner?.winner 
+                      ? "Draw!" 
+                      : "Next Player: " + (xIsNext ? "Xs" : "Os")}
               </p>
               {!!step && renderMoves()}
             </div>
@@ -134,11 +110,17 @@
       };
 
       function TicTacToe() {
+        const [oneplayer, setOneplayer] = React.useState(false)
         return (
           <>
             <h1 className='center'>Tic Quad Toe</h1>
             <h2 className='center'>Place <strong>FOUR</strong> pieces in a <strong>LINE</strong> or a <strong>BOX</strong> to win (2 Players).</h2>
-            <Game />
+            <label style={{display: 'flex', justifyContent: 'center'}}>
+              Two Players
+              <input style={{width: '30px'}} value={Number(oneplayer)} onClick={() => setOneplayer(!oneplayer)} type="range" min="0" max="1" />
+              One Player
+            </label>
+            <Game oneplayer={oneplayer}/>
           </>
         )
       }
