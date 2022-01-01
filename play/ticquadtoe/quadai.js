@@ -75,6 +75,21 @@ const findThreats = async (squares, symbol) => {
   }
   return surrounded
 }
+const findSetup = async (squares) => {
+  let setup = []
+  for(let i = 1; i < squares.length - 1; i++) {
+    let pieces = [squares[i - 4], squares[i - 1], squares[i + 1], squares[i + 4]]
+    let Opieces = pieces.filter(s => s === "O")
+    let indices = [i - 4, i - 1, i + 1, i + 4]
+    if(
+      squares[i] === null &&
+      Opieces.length === 2
+    ) { 
+      setup.push(...indices.filter((j, k) => pieces[k] === null))
+    }
+  }
+  return setup
+}
 
 function calculateWinner(squares, symbol) {
   if (getMoveCount(squares) < 7){
@@ -123,6 +138,8 @@ function calculateNearWin(squares, symbol) {
   }
 }
 
+
+// the below function is not being used, but was an attempt at using a recursive minmax tree traversal algo
 function getBestMove (squares, symbol){
   // Receives a board, and next player's symbol 
   // Returns move position & expected value (1-for winning, 0 for tie, and -1 for losing)

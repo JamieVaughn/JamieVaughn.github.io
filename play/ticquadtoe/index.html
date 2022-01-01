@@ -62,12 +62,23 @@
             block = await findNearWins(history[step], "X");
             let winningMove = await findNearWins(history[step], "O");
             let threats = await findThreats(history[step], "X")
+            let tactical = await findThreats(history[step], "O")
+            let setup = await findSetup(history[step])
             const timeInHistory = history.slice(0, step + 1);
             const current = timeInHistory[step];
             const squares = [...current];
             let j = getAvailableMoves(squares)[Math.floor(Math.random() * (16 - step))]
-            let nextMove = winningMove?.move ?? block?.move ?? threats[0] ?? j
-            console.table({ai: 'O', win: winningMove?.move, block: block?.move, threats: threats.join(', ') || null, default: j, nextMove})
+            let nextMove = winningMove?.move ?? block?.move ?? threats[0] ?? tactical[0] ?? setup[0] ?? j
+            console.table({
+              ai: 'O', 
+              win: winningMove?.move, 
+              block: block?.move, 
+              threats: threats.join(', '), 
+              tactical: tactical.join(', '), 
+              setup: setup.join(', '), 
+              default: j, 
+              nextMove
+            })
             // if(getMoveCount(squares) >= 5) {
             //   i = getBestMove(squares, xIsNext ? "O" : "X").move
             // }
