@@ -58,14 +58,23 @@ const findNearWins = async (squares, symbol) => {
       moves.push(...open)
     }
   })
-  console.log('nearWins', {moves})
   return Promise.resolve({
     move: moves[0] ?? null,
     nearWins
   })
 }
 
-const findThreats = squares => null
+const findThreats = async (squares, symbol) => {
+  let surrounded = []
+  for(let i = 1; i < squares.length - 1; i++) {
+    if(
+      squares[i] === null &&
+      [squares[i - 1], squares[i + 1], squares[i - 4], squares[i + 4]]
+        .filter(s => s === symbol).length >= 3
+    ) { surrounded.push(i)}
+  }
+  return surrounded
+}
 
 function calculateWinner(squares, symbol) {
   if (getMoveCount(squares) < 7){

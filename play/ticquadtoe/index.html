@@ -59,13 +59,15 @@
           Ai(buffer).then(move => console.log('Ai played ' + move))
         }
         async function Ai (block) {
-            block = await findNearWins(history[step], xIsNext ? "O" : "X");
+            block = await findNearWins(history[step], "X");
+            let winningMove = await findNearWins(history[step], "O");
+            let threats = await findThreats(history[step], "X")
             const timeInHistory = history.slice(0, step + 1);
             const current = timeInHistory[step];
             const squares = [...current];
             let j = getAvailableMoves(squares)[Math.floor(Math.random() * (16 - step))]
-            let nextMove = block?.move ?? j
-            console.log('ai', `block: ${block?.move}, j: ${j}, => ${nextMove}`)
+            let nextMove = winningMove?.move ?? block?.move ?? threats[0] ?? j
+            console.table({ai: 'O', win: winningMove?.move, block: block?.move, threats: threats.join(', ') || null, default: j, nextMove})
             // if(getMoveCount(squares) >= 5) {
             //   i = getBestMove(squares, xIsNext ? "O" : "X").move
             // }
@@ -132,7 +134,7 @@
                 {!!step && renderMoves()}
               </div>
               <pre>{winner?.winner && JSON.stringify(winner, null, 2)}</pre>
-              <pre>{JSON.stringify(history[step], null, 2)}</pre>
+              <pre>{false && JSON.stringify(history[step], null, 2)}</pre>
             </div>
           </ErrorBoundary>
         );
