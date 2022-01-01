@@ -20,6 +20,10 @@
       }
       .flex {
         display: flex;
+        flex-direction: column;
+      }
+      .flex p {
+        text-align: center;
       }
     </style>
   </head>
@@ -122,9 +126,10 @@
         const renderMoves = () => {
           return history.map((_step, move) => {
             const destination = move ? `Go to move #${move}` : "Reset";
+            if(!move) return null // this skips rendering the Reset button here
             return (
               <li key={move} style={{ listStyle: "none" }}>
-                <button onClick={() => jumpTo(move)}>{destination}</button>
+                <button className='move' onClick={() => jumpTo(move)}>{destination}</button>
               </li>
             );
           });
@@ -134,16 +139,17 @@
           <ErrorBoundary>
             <Board onClick={handleClick} squares={history[step]} winningSquares={winner?.squares}/>
             <div className="flex">
-              <div className="players">
-                <p>
-                  {step <= 16 && winner?.winner
-                    ? "Winner: " + winner?.winner
-                    : step === 16 && !winner?.winner 
-                        ? "Draw!" 
-                        : "Next Player: " + (xIsNext ? "Xs" : "Os")}
-                </p>
+              <p>
+                {step <= 16 && winner?.winner
+                  ? "Winner: " + winner?.winner
+                  : step === 16 && !winner?.winner 
+                      ? "Draw!" 
+                      : "Next Player: " + (xIsNext ? "Xs" : "Os")}
+              </p>
+              <p>{!!step && <button onClick={() => jumpTo(0)}>Reset</button>}</p>
+              <ul className="players">
                 {!!step && renderMoves()}
-              </div>
+              </ul>
               <pre>{winner?.winner && JSON.stringify(winner, null, 2)}</pre>
               <pre>{false && JSON.stringify(history[step], null, 2)}</pre>
             </div>
