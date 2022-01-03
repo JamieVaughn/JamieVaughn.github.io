@@ -10,42 +10,15 @@
       crossorigin
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="./quadai.js"></script>
+    <script src="./opt.js"></script>
     <!-- <script type="module" src="index.mjs"></script>
     <script type="module" src="utils.mjs"></script> -->
     <link rel="stylesheet" href="tictactoe/style.module.css" />
-    <style>
-      input[type="range"] {
-        width: 30px;
-      }
-      .flex {
-        display: flex;
-      }
-    </style>
   </head>
   <body>
     <div id="root"></div>
 
     <script type="text/babel">
-      // board Map
-      //  0 |1 |2 |3
-      //  4 |5 |6 |7
-      //  8 |9 |10|11
-      //  12|13|14|15
-
-      // refactor with different data structure for X & O's
-      const optBoard = {
-        X: [0,1],
-        O: [3,4],
-        taken: [0,1,3,4],
-        open: [2,5,6,7,8,9,10,11,12,13,14,15],
-        wins: [...winConditions]
-      }
-      // use diff, symDiff, union etc to quickly find AI next move with finding threats or nearWins
-      // instead of random starting spots, try to create the T geometry
-      // X _ X  ==> X X X
-      // _ X _      _ X _
-
       const Square = ({ onClick, value, isWinner }) => (
         <button className={`square ${isWinner ? 'winning' : ''}`} onClick={onClick}>
           {value}
@@ -53,6 +26,7 @@
       );
 
       const Board = ({ onClick, squares, winningSquares }) => {
+        console.log({squares, winningSquares})
         return (
           <div className="board">
             {squares.map((s, i) => (
@@ -66,37 +40,50 @@
         const [history, setHistory] = React.useState([Array(16).fill(null)]);
         const [step, setStep] = React.useState(0);
         const [xIsNext, setXIsNext] = React.useState(true);
-        const winner = calculateWinner(history[step], xIsNext ? "O" : "X");
+
+        const [xs, setXs] = React.useState([])
+        const [os, setOs] = React.useState([])
+        const [taken, setTaken] = React.useState([])
+        const [open, setOpen] = React.useState(range(16))
+        React.useEffect(() => {
+          setTaken(getUnion(xs, os))
+        }, [xs, os])
+        React.useEffect(() => {
+          setOpen(getDifference(open, taken))
+        }, [taken])
+        const winner = calculateWinner(xIsNext ? os : xs, xIsNext ? "O" : "X");
         if(!winner?.winner && oneplayer && !xIsNext && step%2 === 1) {
           let buffer
           Ai(buffer).then(move => console.log('Ai played ' + move))
         }
         async function Ai (block) {
-            block = await findNearWins(history[step], xIsNext ? "O" : "X");
+            block = await findNearWins(history[step], "X");
+            let winningMove = await findNearWins(history[step], "O");
+            let threats = await findThreats(history[step], "X")
+            let tactical = await findThreats(history[step], "O")
+            let setup = await findSetup(history[step])
             const timeInHistory = history.slice(0, step + 1);
             const current = timeInHistory[step];
             const squares = [...current];
             let j = getAvailableMoves(squares)[Math.floor(Math.random() * (16 - step))]
-            let nextMove = block?.move ?? j
-            console.log('ai', `block: ${block?.move}, j: ${j}, => ${nextMove}`)
-            // if(getMoveCount(squares) >= 5) {
-            //   i = getBestMove(squares, xIsNext ? "O" : "X").move
-            // }
-            // let nextMove
-            // if(block?.move) {
-            //   nextMove = block?.move
-            // } else if(i && squares[i] === null) {
-            //   console.log(i)
-            //   nextMove = i
-            // } else {
-            //   console.log('bestMove fail', i)
-            //   nextMove = j
-            // }
+            let nextMove = winningMove?.move ?? block?.move ?? threats[0] ?? tactical[0] ?? setup[0] ?? j
+            console.table({
+              ai: 'O', 
+              win: winningMove?.move, 
+              block: block?.move, 
+              threats: threats.join(', '), 
+              tactical: tactical.join(', '), 
+              setup: setup.join(', '), 
+              default: j, 
+              nextMove
+            })
+
             if (winner?.winner) return;
             squares[nextMove] = xIsNext ? "X" : "O";
             setHistory([...timeInHistory, squares]);
             setStep(timeInHistory.length);
             setXIsNext(!xIsNext)
+            setOs(os.concat(nextMove))
             return nextMove
         }
         
@@ -111,6 +98,7 @@
           setHistory([...timeInHistory, squares]);
           setStep(timeInHistory.length);
           setXIsNext(!xIsNext);
+          xIsNext ? setXs(xs.concat(i)) : setOs(os.concat(i))
         };
 
         const jumpTo = (step) => {
@@ -122,30 +110,33 @@
         const renderMoves = () => {
           return history.map((_step, move) => {
             const destination = move ? `Go to move #${move}` : "Reset";
+            if(!move) return null // this skips rendering the Reset button here
             return (
               <li key={move} style={{ listStyle: "none" }}>
-                <button onClick={() => jumpTo(move)}>{destination}</button>
+                <button className='move' onClick={() => jumpTo(move)}>{destination}</button>
               </li>
             );
           });
         };
+        console.table({xs, os, taken, open})
 
         return (
           <ErrorBoundary>
             <Board onClick={handleClick} squares={history[step]} winningSquares={winner?.squares}/>
             <div className="flex">
-              <div className="players">
-                <p>
-                  {step <= 16 && winner?.winner
-                    ? "Winner: " + winner?.winner
-                    : step === 16 && !winner?.winner 
-                        ? "Draw!" 
-                        : "Next Player: " + (xIsNext ? "Xs" : "Os")}
-                </p>
+              <p>
+                {step <= 16 && winner?.winner
+                  ? "Winner: " + winner?.winner
+                  : step === 16 && !winner?.winner 
+                      ? "Draw!" 
+                      : "Next Player: " + (xIsNext ? "Xs" : "Os")}
+              </p>
+              <p>{!!step && <button onClick={() => jumpTo(0)}>Reset</button>}</p>
+              <ul className="players">
                 {!!step && renderMoves()}
-              </div>
+              </ul>
               <pre>{winner?.winner && JSON.stringify(winner, null, 2)}</pre>
-              <pre>{JSON.stringify(history[step], null, 2)}</pre>
+              <pre>{false && JSON.stringify(history[step], null, 2)}</pre>
             </div>
           </ErrorBoundary>
         );
