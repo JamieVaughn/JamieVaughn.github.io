@@ -25,46 +25,52 @@
         </button>
       );
 
-      const Board = ({ onClick, squares, winningSquares }) => {
-        console.log({squares, winningSquares})
+      const Board = ({ onClick, sequence, winningSquares }) => {
+        console.log({sequence, winningSquares})
+        const empty = range(16)
         return (
           <div className="board">
-            {squares.map((s, i) => (
-              <Square key={i} value={s} isWinner={winningSquares?.includes(i)} onClick={() => onClick(i)} />
-            ))}
+            {empty.map((_, i) => {
+              let piece = sequence.filter(move => move.pos === i)[0]?.piece ?? null
+              return <Square key={i} value={piece} isWinner={winningSquares?.includes(i)} onClick={() => piece ? null : onClick(i)} />
+            })}
           </div>
         )
       };
 
       const Game = ({oneplayer}) => {
-        const [history, setHistory] = React.useState([Array(16).fill(null)]);
-        const [step, setStep] = React.useState(0);
-        const [xIsNext, setXIsNext] = React.useState(true);
+        const [history, setHistory] = React.useState([Array(16).fill(null)])
+        const [step, setStep] = React.useState(0)
+        const [xIsNext, setXIsNext] = React.useState(true)
 
+        const [sequence, setSequence] = React.useState([])
         const [xs, setXs] = React.useState([])
         const [os, setOs] = React.useState([])
         const [taken, setTaken] = React.useState([])
         const [open, setOpen] = React.useState(range(16))
         React.useEffect(() => {
-          setTaken(getUnion(xs, os))
-        }, [xs, os])
-        React.useEffect(() => {
-          setOpen(getDifference(open, taken))
-        }, [taken])
-        const winner = calculateWinner(xIsNext ? os : xs, xIsNext ? "O" : "X");
+          const x = sequence.filter(move => move.piece === 'X').map(move => move.pos)
+          const o = sequence.filter(move => move.piece === 'O').map(move => move.pos)
+          setXs(x)
+          setOs(o)
+          setTaken(getUnion(x, o))
+          setOpen(getDifference(range(16), taken))
+        }, [sequence])
+        const winner = calculateWinner(sequence, xIsNext ? "O" : "X");
         if(!winner?.winner && oneplayer && !xIsNext && step%2 === 1) {
           let buffer
           Ai(buffer).then(move => console.log('Ai played ' + move))
         }
         async function Ai (block) {
-            block = await findNearWins(history[step], "X");
+            block = await findNearWins(history[step], "X")
             let winningMove = await findNearWins(history[step], "O");
             let threats = await findThreats(history[step], "X")
             let tactical = await findThreats(history[step], "O")
             let setup = await findSetup(history[step])
-            const timeInHistory = history.slice(0, step + 1);
-            const current = timeInHistory[step];
-            const squares = [...current];
+            const timeInHistory = history.slice(0, step + 1)
+            const stepInSequence = sequence.slice(0, step + 1)
+            const current = timeInHistory[step]
+            const squares = [...current]
             let j = getAvailableMoves(squares)[Math.floor(Math.random() * (16 - step))]
             let nextMove = winningMove?.move ?? block?.move ?? threats[0] ?? tactical[0] ?? setup[0] ?? j
             console.table({
@@ -81,34 +87,39 @@
             if (winner?.winner) return;
             squares[nextMove] = xIsNext ? "X" : "O";
             setHistory([...timeInHistory, squares]);
-            setStep(timeInHistory.length);
+            setStep(timeInHistory.length)
             setXIsNext(!xIsNext)
-            setOs(os.concat(nextMove))
+            setSequence(sequence.concat({O: nextMove, pos: nextMove, piece: 'O'}))
             return nextMove
         }
         
         const handleClick = (i) => {
           if(oneplayer && !xIsNext) return
           console.log('You played ' + i)
-          const timeInHistory = history.slice(0, step + 1);
+          const timeInHistory = history.slice(0, step + 1)
+          const stepInSequence = sequence.slice(0, step + 1)
           const current = timeInHistory[step];
           const squares = [...current];
           if (winner?.winner || squares[i]) return;
           squares[i] = xIsNext ? "X" : "O";
           setHistory([...timeInHistory, squares]);
-          setStep(timeInHistory.length);
-          setXIsNext(!xIsNext);
-          xIsNext ? setXs(xs.concat(i)) : setOs(os.concat(i))
+          setStep(timeInHistory.length)
+          setXIsNext(!xIsNext)
+          setSequence(sequence.concat(xIsNext ? {X: i, pos: i, piece: 'X'} : {O: i, pos: i, piece: 'O'}))
         };
 
         const jumpTo = (step) => {
           setStep(step);
-          if (step === 0) setHistory([Array(16).fill(null)]);
+          setSequence(sequence.slice(0, step))
+          if (step === 0) {
+            setHistory([Array(16).fill(null)]);
+            setSequence([])
+          }
           setXIsNext(step % 2 === 0);
         };
 
         const renderMoves = () => {
-          return history.map((_step, move) => {
+          return sequence.map((_step, move) => {
             const destination = move ? `Go to move #${move}` : "Reset";
             if(!move) return null // this skips rendering the Reset button here
             return (
@@ -119,10 +130,11 @@
           });
         };
         console.table({xs, os, taken, open})
+        console.table(sequence)
 
         return (
           <ErrorBoundary>
-            <Board onClick={handleClick} squares={history[step]} winningSquares={winner?.squares}/>
+            <Board onClick={handleClick} squares={history[step]} sequence={sequence} winningSquares={winner?.squares}/>
             <div className="flex">
               <p>
                 {step <= 16 && winner?.winner

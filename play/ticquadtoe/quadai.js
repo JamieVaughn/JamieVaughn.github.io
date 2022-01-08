@@ -46,6 +46,7 @@ const getUnion = (a, b) => [...new Set([...a, ...b])]
 const getIntersection = (a, b) => a.filter(i => b.includes(i))
 const getDifference = (a, b) => a.filter(i => !b.includes(i))
 const getSymetricDif = (a, b) => a.filter(i => !b.includes(i)).concat(b.filter(j => !a.includes(j))) // XOR
+// findNearWins looks for immediate winning opportunities that must be blocked with current move
 const findNearWins = async (squares, symbol) => {
   let nearWins = []
   let moves = []
@@ -64,6 +65,10 @@ const findNearWins = async (squares, symbol) => {
   })
 }
 
+// for now findThreats looks for  X _ X  (triple fork)
+//                                _ X _
+// but needs to also find;  X _ X _   and   X _ _ X  (double forks)
+//                          _ _ X _         _ _ _ X
 const findThreats = async (squares, symbol) => {
   let surrounded = []
   for(let i = 1; i < squares.length - 1; i++) {
@@ -75,6 +80,7 @@ const findThreats = async (squares, symbol) => {
   }
   return surrounded
 }
+// findSetup looks for the precursor piece arrangement for the triple fork above
 const findSetup = async (squares) => {
   let setup = []
   for(let i = 1; i < squares.length - 1; i++) {

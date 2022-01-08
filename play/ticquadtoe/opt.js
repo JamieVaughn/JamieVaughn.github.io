@@ -32,17 +32,12 @@ const winConditions = [
 
 // refactor with different data structure for X & O's
 const gameState = {
-  X: [],
-  O: [],
-  taken: [],
-  open: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+  sequence: [], // Array<move: {pos: number, piece: 'X' | 'O'}>
   wins: [...winConditions],
-  compileBoard() {
-    return Array(16).fill(null).map((_, i) => {
-     if(this.X.includes(i)) return "X"
-     if(this.O.includes(i)) return "O"
-   })
-  }
+  // X: [],
+  // O: [],
+  // taken: [],
+  // open: range(16),
 }
 // use diff, symDiff, union etc to quickly find AI next move with finding threats or nearWins
 // instead of random starting spots, try to create the T geometry
@@ -111,8 +106,10 @@ const findSetup = async (squares) => {
   return setup
 }
 
-function calculateWinner(squares, symbol) {
-  if (getMoveCount(squares) < 4) return null
+function calculateWinner(sequence, symbol) {
+  if (getMoveCount(sequence) < 4) return null
+  const squares = sequence.filter(move => move.piece === symbol).map(i => i.pos)
+  console.log('sq', squares)
   let condition = winConditions.filter(w => contains(w, squares))
   let winner = null
   if (condition.length) winner = symbol
