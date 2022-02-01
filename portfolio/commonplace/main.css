@@ -1,0 +1,319 @@
+* {
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  vertical-align: baseline;
+  transition: all 300ms;
+}
+:root {
+  --theme1: #DC143C;
+  --theme2: dodgerblue;
+}
+
+.quoteBox {
+  border: 1px solid gray;
+  margin: 20px 20px 300px 20px;
+  width: 445px;
+  max-width: 100%;
+  padding: 20px;
+  background-color: #ededed;
+}
+.author {
+  text-align: right;
+}
+.trumpet{
+  max-width: 100%;
+}
+.btn-block {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex: 1 1 50%;
+}
+
+.btn-block button h4 {
+  text-align: center;
+  color: white;
+
+}
+body {
+  padding: 4rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-image: url(https://s-media-cache-ak0.pinimg.com/736x/10/14/7b/10147b43d77ddd26feee89e838a29835.jpg); */
+  /* -webkit-mask-image: linear-gradient(to bottom, transparent 5%, crimson 20%); */
+  /* mask-image: linear-gradient(to bottom, var(--theme) 5%, var(--theme) 20%); */
+  background-color: var(--theme1);
+  /* background-image: linear-gradient(to bottom, var(--theme1), var(--theme2)); */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+}
+
+/* (modified) tacit css framework copied below: */
+input,
+button,
+html,
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 29.7px;
+}
+
+input,
+textarea,
+select,
+button {
+  display: block;
+  max-width: 100%;
+  padding: 9.9px
+}
+
+label {
+  display: block;
+  margin-bottom: 14.76px
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+  background: #f2f2f2;
+  border-radius: 3.6px;
+  color: #8c8c8c;
+  cursor: pointer;
+  display: inline;
+  margin: 18px;
+  margin-right: 7.2px;
+  padding: 6.525px 23.4px;
+  text-align: center;
+  border-bottom: 2px solid transparent
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover {
+  background: #d9d9d9;
+  color: #000
+}
+
+input[type="submit"][disabled],
+input[type="reset"][disabled],
+button[disabled] {
+  background: #e6e6e6;
+  color: #b3b3b3;
+  cursor: not-allowed
+}
+
+input[type="submit"],
+button[type="submit"] {
+  background: var(--theme1);
+  color: #fff
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 6px black;
+  border-bottom: 2px solid white;
+}
+
+pre,
+code {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 16.2px;
+  margin: 20px;
+  padding: 20px;
+}
+
+pre {
+  border-left: 1.8px solid #96bbe2;
+  line-height: 25.2px;
+  margin-top: 29.7px;
+  overflow: auto;
+  padding-left: 18px
+}
+
+pre code {
+  background: none;
+  border: 0;
+  line-height: 29.7px;
+  padding: 0
+}
+
+code {
+  background: #ededed;
+  border: 1.8px solid #ccc;
+  border-radius: 3.6px;
+  display: inline-block;
+  line-height: 18px;
+  width: 445px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 500;
+  margin-top: 36px
+}
+
+h2 {
+  font-size: 25.2px;
+  font-weight: 400;
+  /*   margin-top: 27px */
+  margin: 20px;
+}
+
+h3 {
+  font-size: 21.6px;
+  margin-top: 21.6px
+}
+
+h4 {
+  font-size: 18px;
+  margin-top: 18px
+}
+
+h5 {
+  font-size: 14.4px;
+  font-weight: bold;
+  margin-top: 18px;
+  text-transform: uppercase
+}
+
+h6 {
+  color: #ffffaa;
+  font-size: 14.4px;
+  font-weight: bold;
+  /*   margin-top: 18px; */
+  margin: 20px;
+  text-transform: uppercase
+}
+
+i {
+  color: #ccc;
+  font-size: 14.4px;
+  font-weight: bold;
+}
+
+a {
+  color: white;
+  text-decoration: none
+}
+
+a:hover {
+  text-shadow: 0 0 6px black;
+  text-decoration: underline;
+}
+
+hr {
+  border-bottom: 1px solid #ccc
+}
+
+small {
+  font-size: 15.3px
+}
+
+em,
+i {
+  font-style: italic
+}
+
+strong,
+b {
+  font-weight: 600
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%
+}
+
+section {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 900px
+}
+
+article {
+  background: #fff;
+  border: 1.8px solid #d9d9d9;
+  border-radius: 7.2px;
+  padding: 43.2px
+}
+
+header {
+  margin-bottom: 36px
+}
+
+footer {
+  margin-top: 36px
+}
+
+nav {
+  text-align: center
+}
+
+nav ul {
+  list-style: none;
+  margin-left: 0;
+  text-align: center
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 9px;
+  margin-right: 9px
+}
+
+nav ul li:first-child {
+  margin-left: 0
+}
+
+nav ul li:last-child {
+  margin-right: 0
+}
+
+ol,
+ul {
+  margin-left: 29.7px
+}
+
+li ol,
+li ul {
+  margin-bottom: 0
+}
+
+@media (max-width: 767px) {
+  article {
+    border-radius: 0;
+    margin: -18px;
+    padding: 18px
+  }
+  textarea,
+  input,
+  select {
+    max-width: 100%
+  }
+}
