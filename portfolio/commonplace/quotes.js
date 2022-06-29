@@ -22,6 +22,7 @@ const quotes =[
   {quote: "Man can do what he wants but he cannot want what he wants.", author: "Arthur Schopenhauer"},
   {quote: "As soil goes, so goes civilizaiton.", author: "Woody Tasch"},
   {quote: "There are two ways to be rich: one is by acquiring much, the other is by desiring little.", author: "Jackie French Koller"},
+  {quote: "Think about what must go right, instead of what could possibly go wrong.", author: "Leslie Lamport"}
 ]
 
 const colors = [
