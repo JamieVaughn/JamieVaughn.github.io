@@ -14,17 +14,15 @@ My HTML resume featuring my prior work experience, education and my web dev core
 
 [See the portfolio here](https://wjv.io/portfolio)
 
-- Variation on Classic Tic Tac Toe Game
 - Bookmarks Organization App
-- Javascript Calculator
-- Tetris
-- JS Canvas Tetris Game
-- Whiteboard Javascript Exercises
-- SVG data viz design concepts
+- SVG data viz with d3.js
 - Mobile App Responsive Design Mockup
 - Zendesk Customer Support Tool
-- Personal Blog about programming at wjv.io/blog
+- Personal Blog about programming at wjv.io/log
 - Moaroffers.com
 - Learning Management System for MCC course
+- Restaurant Feedback data visualization dashboard
+- Web components embeddable survey npm package.
 - Public Data Dashboard at NI4AI.org
+- Various games
 - And more...
