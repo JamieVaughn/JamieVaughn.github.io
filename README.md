@@ -24,5 +24,5 @@ My HTML resume featuring my prior work experience, education and my web dev core
 - Restaurant Feedback data visualization dashboard
 - Web components embeddable survey npm package.
 - Public Data Dashboard at NI4AI.org
-- Various games
+- [Various games](https://wjv.io/play/)
 - And more...
