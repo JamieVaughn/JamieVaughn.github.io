@@ -1,231 +1,371 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Jamie Vaughn Front End Web Developer Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="assets/img/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/normalize.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/stackedCards.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Signika:300,400,700" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="css/normalize.min.css"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="css/stackedCards.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Signika:300,400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
     <script type="text/javascript">
-        var recaptchaCallback = function(){
-            document.querySelector('footer form input[type=submit]').removeAttribute('disabled');
-        }
+      var recaptchaCallback = function () {
+        document
+          .querySelector("footer form input[type=submit]")
+          .removeAttribute("disabled");
+      };
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162434857-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-162434857-1"
+    ></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    gtag('config', 'UA-162434857-1');
+      gtag("config", "UA-162434857-1");
     </script>
-
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <span class="breadcrumbs">
-            <a href="#Skills">Tech Skills</a> /
-            <a href="#Experience">Experience</a> / 
-            <a href="#Portfolio">Portfolio</a> / 
-            <a href="#Education">Education</a>
-        </span>
-        <span class="resume">
-            <a href="https://docs.google.com/document/d/1GXqE-F3CcwW7Sy0FJ7-dYeL8EILMfMBGAQhF4oU8Ozk/edit?usp=sharing" target="_blank"><i class="fa fa-eye"></i> Preview Resume</a>
-            <a href="/assets/wJamieVaughn_ReactDev_2021.pdf"><i class="fa fa-cloud-download"></i> Download Resume</a>
-        </span>
+      <span class="breadcrumbs">
+        <a href="#Skills">Tech Skills</a> /
+        <a href="#Experience">Experience</a> /
+        <a href="#Portfolio">Portfolio</a> /
+        <a href="#Education">Education</a>
+      </span>
+      <span class="resume">
+        <a
+          href="https://docs.google.com/document/d/1GXqE-F3CcwW7Sy0FJ7-dYeL8EILMfMBGAQhF4oU8Ozk/edit?usp=sharing"
+          target="_blank"
+          ><i class="fa fa-eye"></i> Preview Resume</a
+        >
+        <a href="/assets/wJamieVaughn_SoftwareEngr_2023.pdf"
+          ><i class="fa fa-cloud-download"></i> Download Resume</a
+        >
+      </span>
     </nav>
-    
+
     <main>
-        <section class="business-card">
-            <div class="me">
-                <img id="portrait" src="./assets/img/HDprofile.jpeg" alt="Portrait Picture">
-                <h1>Jamie Vaughn</h1>
-                <h3>Front End Developer</h3>
+      <section class="business-card">
+        <div class="me">
+          <img
+            id="portrait"
+            src="./assets/img/HDprofile.jpeg"
+            alt="Portrait Picture"
+          />
+          <h1>Jamie Vaughn</h1>
+          <h3>Front End Developer</h3>
+        </div>
+        <hr />
+        <div class="details">
+          <h2><i class="fa fa-id-card"></i> Contact Info</h2>
+          <p><i class="fa fa-envelope"></i> wxv6@case.edu</p>
+          <!-- <p><i class="fa fa-mobile"></i> 585-773-3268</p> -->
+          <p><i class="fa fa-map-marker"></i> Rochester, NY</p>
+          <p><i class="fa fa-globe"></i> Citizenship: USA</p>
+          <span>
+            <a href="https://www.linkedin.com/in/wjamievaughn" target="_blank">
+              <i class="fa fa-linkedin-square"></i> Linkedin</a
+            >
+            <a href="https://github.com/JamieVaughn" target="_blank">
+              <i class="fa fa-github"></i> Github</a
+            >
+            <!-- <a href="www.twitter.com/vaughn4"> <i class="fa fa-twitter"></i>  Twitter</a> -->
+            <a href="http://wjv.io/log/" target="_blank">
+              <i class="fa fa-rss-square"></i> Blog</a
+            >
+          </span>
+        </div>
+        <hr class="hr-right" />
+      </section>
+      <hr />
+      <section class="container-fixed stacked-cards stacked-cards-slide">
+        <ul
+          title="This carousel component was created from the open source stackedCards.js library, which I contribute to."
+        >
+          <li id="Skills" class="tile">
+            <h3><i class="fa fa-code"></i> Technologies</h3>
+            <p>
+              <span class="subtitle">Frontend: </span>HTML5, CSS, Javascript, ES
+              2022, Web Components
+            </p>
+            <p>
+              <span class="subtitle">Libraries: </span>React, Redux, Svelte,
+              React Query, D3.js, Styled-Components
+            </p>
+            <p>
+              <span class="subtitle">Tools: </span>Git, npm, Typescript,
+              Next.js, Vite, Sass
+            </p>
+            <p>
+              <span class="subtitle">Tech: </span>AWS, Vercel, Docker, Firebase,
+              Github Actions
+            </p>
+            <p>
+              <span class="subtitle">Backend: </span>GraphQL, REST, Node.js,
+              Express, Deno
+            </p>
+            <h3><i class="fa fa-tasks"></i> Skills</h3>
+            <p>Teaching, Mentoring, Communication, Technical Documentation</p>
+            <p>Single Page App & Progressive Web Apps using React/Redux</p>
+            <p>Component Architecture and MVC/MV* Architecture</p>
+            <p>Functional Paradigm and Functional Reactive Programming</p>
+            <p>Algorithms, Databases, HTTPS/2, AJAX, SOLID</p>
+            <p>Mobile Responsiveness, UI/UX, Animations, Design</p>
+            <p>Data Visualization, Statistics and Linear Optimization</p>
+          </li>
+
+          <li id="Experience" class="tile">
+            <h3><i class="fa fa-desktop"></i> Experience</h3>
+            <div>
+              <div><a href="https://altana.ai/">Altana.ai</a></div>
+              <div class="role">
+                Lead Front End Engineer, <span>Dec 2021 - Present</span>
+              </div>
+              <p>
+                Dashboard & Data Visualization of global supply chain, logistics
+                and trade data.
+              </p>
             </div>
-            <hr>
-            <div class="details">
-                <h2><i class="fa fa-id-card"></i> Contact Info</h2>
-                              <p><i class="fa fa-envelope"></i> wxv6@case.edu</p>
-                            <!-- <p><i class="fa fa-mobile"></i> 585-773-3268</p> -->
-                          <p><i class="fa fa-map-marker"></i> Rochester, NY</p>
-                        <p><i class="fa fa-globe"></i> Citizenship: USA</p>    
-                        <span>     
-                            <a href="https://www.linkedin.com/in/wjamievaughn" target="_blank"> <i class="fa fa-linkedin-square"></i>  Linkedin</a>
-                        <a href="https://github.com/JamieVaughn" target="_blank"> <i class="fa fa-github"></i>  Github</a>
-                    <!-- <a href="www.twitter.com/vaughn4"> <i class="fa fa-twitter"></i>  Twitter</a> -->
-                    <a href="http://wjv.io/log/" target="_blank"> <i class="fa fa-rss-square"></i>  Blog</a>
-                </span>
+            <div>
+              <div>
+                <a
+                  href="https://workforceforward.com/about-mcc-corporate-college/"
+                  >Monroe Community College</a
+                >, <span>Rochester, NY</span>
+              </div>
+              <div class="role">
+                Lead Instructor of Front End Development,
+                <span>Oct 2019 - Present</span>
+              </div>
+              <p>
+                Teach night classes on front end development training beginners
+                on the modern MERN stack.
+              </p>
             </div>
-            <hr class="hr-right">
+            <div>
+              <div><a href="https://www.pingthings.io/">PingThings.io</a></div>
+              <div class="role">
+                Front End Engineer, <span>Oct 2020 - Oct 2021</span>
+              </div>
+              <p>
+                Data Visualization of real-time, high-sample-rate Electric Grid
+                Data.
+              </p>
+            </div>
+            <div>
+              <div>
+                <a href="https://get.tattleapp.com/">Tattle Inc</a>,
+                <span>Rochester, NY</span>
+              </div>
+              <div class="role">
+                Software Engineer, <span>Nov 2019 - Oct 2020</span>
+              </div>
+              <p>
+                Full stack development on a dashboard web app for customer
+                feedback and data insights.
+              </p>
+            </div>
+            <div>
+              <div>
+                <a href="https://mad.io">Mad.io</a>, <span>Rochester, NY</span>
+              </div>
+              <div class="role">
+                Front End Software Developer, <span>Sept 2017 - Nov 2019</span>
+              </div>
+              <p>Develop subscription-based HTML/CSS/JS web products & apps</p>
+            </div>
+            <div>
+              <div>Freelance Web Developer, <span>Remote</span></div>
+              <div class="role">
+                Freelance Web Developer, <span>Dec 2016 - Nov 2018</span>
+              </div>
+              <p>
+                Build HTML/CSS/JS products for clients: AddictionResource.com,
+                NR-systems.net, CustomerDevLabs.com
+              </p>
+            </div>
+            <div>
+              <div>NRG Home Solar, <span>Rochester, NY</span></div>
+              <div class="role">
+                Solar Site Analyst, <span>Nov 2015 - Aug 2016</span>
+              </div>
+              <p>
+                Forecast life-cycle energy output using data/software tools.
+              </p>
+            </div>
+            <div>
+              <div>Ambrell Induction Heating, <span>Scottsville, NY</span></div>
+              <div class="role">
+                Applications Engineer, <span>May 2014 - Oct 2015</span>
+              </div>
+              <p>Develop thermal induction applications</p>
+            </div>
+          </li>
+
+          <li id="Portfolio" class="tile">
+            <h3><i class="fa fa-briefcase"></i> Portfolio Projects</h3>
+            <a href="https://wjv.io/portfolio" target="_blank"
+              >Visit My Portfolio Gallery <i class="fa fa-external-link"></i
+            ></a>
+            <section>
+              <h4>
+                NPM Packages:
+                <a href="https://www.npmjs.com/package/tttl-embed-survey"
+                  >tttl-embed-survey</a
+                >
+                <a href="https://www.npmjs.com/package/tttl-redirect-survey"
+                  >tttl-redirect-survey</a
+                >
+              </h4>
+              <hr />
+              <h4>Personal</h4>
+              <h4>
+                <a href="https://wjv.io/play">
+                  <strong>Web Games: </strong>
+                  Tetris, TicQuadToe w/ A.I., Turn-Based Strategy and more...
+                </a>
+              </h4>
+              <h4>
+                <a href="https://wjv.io/mtg/">Magic: The Gathering Apps</a>
+              </h4>
+              <h4>Skimpala Chrome Extension</h4>
+              <h4>Flock Roster App</h4>
+              <!-- <hr /> -->
+              <h4>Professional</h4>
+              <h4 style="transform: translateY(1px)">
+                <a href="https://ni4ai.org">NI4AI.org Dashboard</a>
+              </h4>
+              <h4><a href="https://moaroffers.com/">MoarOffers</a></h4>
+              <h4>
+                <a href="https://monroecc-dev.web.app/">MCC Curriculum App</a>
+              </h4>
+              <h4>
+                <a href="https://rf-bookmarks.web.app"
+                  >Link Bookmark App Solution</a
+                >
+              </h4>
+              <h4>
+                <a href="https://bookmarks-app-9ea49.web.app/"
+                  >MCC Student Project Solution Key</a
+                >
+              </h4>
             </section>
-        <hr>
-        <section class="container-fixed stacked-cards stacked-cards-slide">
-            <ul title="This carousel component was created from the open source stackedCards.js library, which I contribute to.">
-                <li id="Skills" class="tile">
-                    <h3><i class="fa fa-code"></i> Technologies</h3>
-                    <p><span class="subtitle">Frontend: </span>HTML5, CSS, Javascript, ES 2022, Web Components</p>
-                    <p><span class="subtitle">Libraries: </span>React, Redux, Svelte, React Query, D3.js, Styled-Components </p>
-                    <p><span class="subtitle">Tools: </span>Git, npm, Typescript, Next.js, Vite, Sass</p>
-                    <p><span class="subtitle">Tech: </span>AWS, Vercel, Docker, Firebase, Github Actions</p>
-                    <p><span class="subtitle">Backend: </span>GraphQL, REST, Node.js, Express, Deno </p>
-                    <h3><i class="fa fa-tasks"></i>  Skills</h3>
-                    <p>Teaching, Mentoring, Communication, Technical Documentation</p>
-                    <p>Single Page App & Progressive Web Apps using React/Redux</p>
-                    <p>Component Architecture and MVC/MV* Architecture</p>
-                    <p>Functional Paradigm and Functional Reactive Programming</p>
-                    <p>Algorithms, Databases, HTTPS/2, AJAX, SOLID</p>
-                    <p>Mobile Responsiveness, UI/UX, Animations, Design</p>
-                    <p>Data Visualization, Statistics and Linear Optimization</p>
-                </li>
+          </li>
 
-                <li id="Experience" class="tile">
-                    <h3><i class="fa fa-desktop"></i> Experience</h3>
-                    <div>
-                        <div><a href="https://altana.ai/">Altana.ai</a></div>
-                        <div class="role">Lead Front End Engineer, <span>Dec 2021 - Present</span></div>
-                        <p>
-                            Dashboard & Data Visualization of global supply chain, logistics and trade data.
-                        </p>
-                    </div>
-                    <div>
-                        <div><a href="https://workforceforward.com/about-mcc-corporate-college/">Monroe Community College</a>, <span>Rochester, NY</span></div>
-                        <div class="role">Lead Instructor of Front End Development, <span>Oct 2019 - Present</span></div>
-                        <p>
-                            Teach night classes on front end development training beginners on the modern MERN stack.
-                        </p>
-                    </div>
-                    <div>
-                        <div><a href="https://www.pingthings.io/">PingThings.io</a></div>
-                        <div class="role">Front End Engineer, <span>Oct 2020 - Oct 2021</span></div>
-                        <p>
-                            Data Visualization of real-time, high-sample-rate Electric Grid Data.
-                        </p>
-                    </div>
-                    <div>
-                        <div><a href="https://get.tattleapp.com/">Tattle Inc</a>, <span>Rochester, NY</span></div>
-                        <div class="role">Software Engineer, <span>Nov 2019 - Oct 2020</span></div>
-                        <p>
-                            Full stack development on a dashboard web app for customer feedback and data insights.
-                        </p>
-                    </div>
-                    <div>
-                        <div><a href="https://mad.io">Mad.io</a>, <span>Rochester, NY</span></div>
-                        <div class="role">Front End Software Developer, <span>Sept 2017 - Nov 2019</span></div>
-                        <p>
-                            Develop subscription-based HTML/CSS/JS web products & apps
-                        </p>
-                    </div>
-                    <div>
-                        <div>Freelance Web Developer, <span>Remote</span></div>
-                        <div class="role">Freelance Web Developer, <span>Dec 2016 - Nov 2018</span></div>
-                        <p>
-                            Build HTML/CSS/JS products for clients: AddictionResource.com, NR-systems.net, CustomerDevLabs.com 
-                        </p>
-                    </div>
-                    <div>
-                        <div>NRG Home Solar, <span>Rochester, NY</span></div>
-                        <div class="role">Solar Site Analyst, <span>Nov 2015 - Aug 2016</span></div>
-                        <p>
-                            Forecast life-cycle energy output using data/software tools.
-                        </p>
-                    </div>
-                    <div>
-                        <div>Ambrell Induction Heating, <span>Scottsville, NY</span></div>
-                        <div class="role">Applications Engineer, <span>May 2014 - Oct 2015</span></div>
-                        <p>
-                            Develop thermal induction applications
-                        </p>
-                    </div>
-                </li>
+          <li id="Education" class="tile">
+            <h3>
+              <i class="fa fa-certificate"></i> Professional Certifications
+            </h3>
+            <div>
+              Monroe Community College, <span>July 2017 - Dec 2017</span>
+            </div>
+            <p class="emphasize">Sofware Engineering</p>
+            <div>
+              <i class="fa fa-free-code-camp"></i> FreeCodeCamp.com,
+              <span>2016 - 2017</span>
+            </div>
+            <p class="emphasize">Front End Development</p>
 
-                <li id="Portfolio" class="tile">
-                    <h3><i class="fa fa-briefcase"></i> Portfolio Projects</h3>
-                    <a href="https://wjv.io/portfolio" target="_blank">Visit My Portfolio Gallery <i class="fa fa-external-link"></i></a>
-                    <section>
-                        <h4>NPM Packages: <a href="https://www.npmjs.com/package/tttl-embed-survey">tttl-embed-survey</a> <a href="https://www.npmjs.com/package/tttl-redirect-survey">tttl-redirect-survey</a></h4>
-                        <hr />
-                        <h4>Personal</h4>
-                        <h4>
-                            <a href="https://wjv.io/play">
-                            <strong>Web Games: </strong>
-                            Tetris, TicQuadToe w/ A.I., Turn-Based Strategy and more...
-                            </a>
-                        </h4>
-                        <h4><a href="https://wjv.io/mtg/">Magic: The Gathering Apps</a></h4>
-                        <h4>Skimpala Chrome Extension</h4>
-                        <h4>Flock Roster App</h4>
-                        <!-- <hr /> -->
-                        <h4>Professional</h4>
-                        <h4 style='transform: translateY(1px);'><a href="https://ni4ai.org">NI4AI.org Dashboard</a></h4>
-                        <h4><a href="https://moaroffers.com/">MoarOffers</a></h4>
-                        <h4><a href="https://monroecc-dev.web.app/">MCC Curriculum App</a></h4>
-                        <h4><a href="https://rf-bookmarks.web.app">Link Bookmark App Solution</a></h4>
-                        <h4><a href="https://bookmarks-app-9ea49.web.app/">MCC Student Project Solution Key</a></h4>
-                    </section>
-                </li>
-                
-                <li id="Education" class="tile">
-                    <h3><i class="fa fa-certificate"></i> Professional Certifications</h3>
-                    <div>Monroe Community College, <span>July 2017 - Dec 2017</span></div>
-                    <p class="emphasize">Sofware Engineering</p>
-                    <div><i class="fa fa-free-code-camp"></i> FreeCodeCamp.com, <span>2016 - 2017</span></div>
-                    <p class="emphasize">Front End Development</p>
-                    
-                    <h3><i class="fa fa-graduation-cap"></i> Education</h3>
-                    <div>Rochester Institute of Technology, <span>2010 - 2012</span></div>
-                    <p>Finished course requirements for M.S., Systems Engineering</p>
-                    <div>Case Western Reserve, <span>2004 - 2009</span></div>
-                    <p>
-                        B.S., Materials Engineering<br>
-                        Fuel Cell Student Researcher during 2005
-                    </p>
-                    <p></p>
+            <h3><i class="fa fa-graduation-cap"></i> Education</h3>
+            <div>
+              Rochester Institute of Technology, <span>2010 - 2012</span>
+            </div>
+            <p>Finished course requirements for M.S., Systems Engineering</p>
+            <div>Case Western Reserve, <span>2004 - 2009</span></div>
+            <p>
+              B.S., Materials Engineering<br />
+              Fuel Cell Student Researcher during 2005
+            </p>
+            <p></p>
 
-                    <h3><i class="fa fa-cubes"></i> Internships</h3>
-                    <div>Logos Energy, <span>2008 - 2009</span></div>
-                    <p>Fuel Cell Engineer - Electrode Corrosion & Electrolyte Decomposition</p>
-                    <div>General Electric, <span>2007 - 2008</span></div>
-                    <p>Halogen Engineer - Optical Coatings for IR+ products</p>
-                </li>
-            </ul>
-        </section>
+            <h3><i class="fa fa-cubes"></i> Internships</h3>
+            <div>Logos Energy, <span>2008 - 2009</span></div>
+            <p>
+              Fuel Cell Engineer - Electrode Corrosion & Electrolyte
+              Decomposition
+            </p>
+            <div>General Electric, <span>2007 - 2008</span></div>
+            <p>Halogen Engineer - Optical Coatings for IR+ products</p>
+          </li>
+        </ul>
+      </section>
     </main>
-    <hr>
+    <hr />
     <footer href="#ContactMe">
-        
-        <form id="ajax-contact" action="https://mailthis.to/jvaughn4h@gmail.com" method="POST">
-            <input type='hidden' name='redirect_to' value='https://jamievaughn.github.io/?submit=success#ContactMe' />
-            <input type='hidden' name="time" id="time" />
-            <h3>Need a Developer? Let's Connect!</h3>
-            <div id="form-feedback" class="hidden">Submitted successfully! Thank you! I'll be in touch shortly.</div>
+      <form
+        id="ajax-contact"
+        action="https://mailthis.to/jvaughn4h@gmail.com"
+        method="POST"
+      >
+        <input
+          type="hidden"
+          name="redirect_to"
+          value="https://jamievaughn.github.io/?submit=success#ContactMe"
+        />
+        <input type="hidden" name="time" id="time" />
+        <h3>Need a Developer? Let's Connect!</h3>
+        <div id="form-feedback" class="hidden">
+          Submitted successfully! Thank you! I'll be in touch shortly.
+        </div>
 
-            <input name="name" type="name" id="name" required>
-            <label class="name" for="name">Your Name:</label>
-            
-            <input name="email" type="email" id="email" pattern=".+@+.+\.[a-z]{2,5}$" required>
-            <label class="email" for="email">Your Email:</label>
-            
-            <textarea name="message" id="message" cols="30" rows="3" required></textarea>
-            <label class="message" for="message">Tell me about your project:</label>
-            <div class="g-recaptcha" 
-            data-sitekey="6Ldh-8kUAAAAAMYG8-BxodEZ4zxcn9uV8H4LKMOd"
-            data-callback="recaptchaCallback"
-            ></div>
-            <input type="submit" onsubmit="postMsg" disabled>
-        </form>
-        
+        <input name="name" type="name" id="name" required />
+        <label class="name" for="name">Your Name:</label>
+
+        <input
+          name="email"
+          type="email"
+          id="email"
+          pattern=".+@+.+\.[a-z]{2,5}$"
+          required
+        />
+        <label class="email" for="email">Your Email:</label>
+
+        <textarea
+          name="message"
+          id="message"
+          cols="30"
+          rows="3"
+          required
+        ></textarea>
+        <label class="message" for="message">Tell me about your project:</label>
+        <div
+          class="g-recaptcha"
+          data-sitekey="6Ldh-8kUAAAAAMYG8-BxodEZ4zxcn9uV8H4LKMOd"
+          data-callback="recaptchaCallback"
+        ></div>
+        <input type="submit" onsubmit="postMsg" disabled />
+      </form>
     </footer>
-    
 
-    <script src="js/stackedCards.js"></script>  
+    <script src="js/stackedCards.js"></script>
     <script src="js/main.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-</body>
+  </body>
 </html>
