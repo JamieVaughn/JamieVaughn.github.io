@@ -48,4 +48,9 @@ const colors = [
   'rebeccapurple',
   'seagreen',
   'lightseagreen',
+  'cornflowerblue',
+  'aquamarine',
+  'slateblue',
+  'tomato',
+  'plum'
 ];
