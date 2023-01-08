@@ -22,7 +22,10 @@ const quotes =[
   {quote: "Man can do what he wants but he cannot want what he wants.", author: "Arthur Schopenhauer"},
   {quote: "As soil goes, so goes civilizaiton.", author: "Woody Tasch"},
   {quote: "There are two ways to be rich: one is by acquiring much, the other is by desiring little.", author: "Jackie French Koller"},
-  {quote: "Think about what must go right, instead of what could possibly go wrong.", author: "Leslie Lamport"}
+  {quote: "Think about what must go right, instead of what could possibly go wrong.", author: "Leslie Lamport"},
+  {quote: "We fail more often because we solve the wrong problem than because we get the wrong solution to the right problem.", author: "Russell L. Ackoff"},
+  {quote: "It isn't that they cannot find the solution. It is that they cannot see the problem.", author: "G.K Chesterton"},
+  {quote: "If you are unable to understand the cause of a problem, it is impossible to solve it.", author: "Naoto Kan"},
 ]
 
 const colors = [
