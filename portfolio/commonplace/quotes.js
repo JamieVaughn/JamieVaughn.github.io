@@ -50,7 +50,6 @@ const colors = [
   'seagreen',
   'lightseagreen',
   'cornflowerblue',
-  'aquamarine',
   'slateblue',
   'tomato',
   'plum'
