@@ -26,6 +26,7 @@ const quotes =[
   {quote: "We fail more often because we solve the wrong problem than because we get the wrong solution to the right problem.", author: "Russell L. Ackoff"},
   {quote: "It isn't that they cannot find the solution. It is that they cannot see the problem.", author: "G.K Chesterton"},
   {quote: "If you are unable to understand the cause of a problem, it is impossible to solve it.", author: "Naoto Kan"},
+  {quote: "We shape our tools, and thereafter our tools shape us.", author: "Marshall McLuhan"},
 ]
 
 const colors = [
