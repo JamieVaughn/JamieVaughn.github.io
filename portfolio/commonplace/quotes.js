@@ -27,6 +27,11 @@ const quotes =[
   {quote: "It isn't that they cannot find the solution. It is that they cannot see the problem.", author: "G.K Chesterton"},
   {quote: "If you are unable to understand the cause of a problem, it is impossible to solve it.", author: "Naoto Kan"},
   {quote: "We shape our tools, and thereafter our tools shape us.", author: "Marshall McLuhan"},
+  {
+    quote: "Life is not a maintenance or restoration of equilibrium but is essentially the maintenance of diequilibria, as the doctrine of the organism as open system reveals. Reaching equilibrium means death and consequent decay.",
+    author: "Ludwig von Bertalanffy",
+    annotation: "Maybe the concept of Buddhist Nirvana is not reaching an equilibrium, but rather a steady state, so as to extract oneself from being buffetted by dynamical ebbs and flows, which are the more common form that disequilibria will naturally take. So, while equilibrium means death, disequilibria may be occupied in two formats: the chaos of dynamical system and the relative calmness of steady state."
+  },
 ]
 
 const colors = [

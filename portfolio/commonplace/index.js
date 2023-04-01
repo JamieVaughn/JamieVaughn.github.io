@@ -1,10 +1,12 @@
   const quote = document.querySelector('.quote')
   const author = document.querySelector('.change.author')
+  const annotation = document.querySelector('.annotation')
   const colorPair = ['crimson']
   function randomQuote(){
     let rand = Math.floor(Math.random() * quotes.length)
     quote.innerText = quotes[rand].quote
     author.innerText = quotes[rand].author
+    annotation.innerText = quotes[rand]?.annotation ?? ''
     randomColor()
   }
   randomQuote()
