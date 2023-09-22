@@ -32,6 +32,10 @@ const quotes =[
     author: "Ludwig von Bertalanffy",
     annotation: "Maybe the concept of Buddhist Nirvana is not reaching an equilibrium, but rather a steady state, so as to extract oneself from being buffetted by dynamical ebbs and flows, which are the more common form that disequilibria will naturally take. So, while equilibrium means death, disequilibria may be occupied in two formats: the chaos of dynamical system and the relative calmness of steady state."
   },
+  {
+    quote: "Be ruthless to systems, but be kind to people.",
+    author: "Michael Brooks",
+  }
 ]
 
 const colors = [
