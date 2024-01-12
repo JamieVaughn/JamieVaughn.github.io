@@ -35,7 +35,11 @@ const quotes =[
   {
     quote: "Be ruthless to systems, but be kind to people.",
     author: "Michael Brooks",
-  }
+  },
+  {
+    quote: "You will continue to suffer if you have an emotional reaction to everything that is said to you. True power is sitting back and observing things with logic. True power is restraint. If words control you that means everyone else can control you. Breathe and allow things to pass.",
+    author: "Warren Buffet",
+  },
 ]
 
 const colors = [
