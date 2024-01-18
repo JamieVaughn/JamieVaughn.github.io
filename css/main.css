@@ -340,7 +340,8 @@ footer form textarea {
     border-bottom-right-radius: 5px;
     margin: 1rem 0 0;
 }
-footer form input[type="submit"] {
+footer form input[type="submit"],
+footer form button {
     background: transparent;
     border: 2px solid steelblue;
     border-radius: 28px;

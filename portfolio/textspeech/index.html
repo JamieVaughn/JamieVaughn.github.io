@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jamie Vaughn Front End Web Developer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../assets/img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css"/>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Signika:300,400,700" rel="stylesheet"> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+    <script type="text/javascript">
+      
+        
+        function textToSpeech(e) {
+          console.log(e)
+          e.preventDefault()
+          const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+        const oscillator = audioContext.createOscillator()
+        oscillator.frequency.setValueAtTime(440, audioContext.currentTime)
+        
+        const text = "Hello There"
+        const utterance = new SpeechSynthesisUtterance(text)
+
+          window.speechSynthesis.speak(utterance)
+          setTimeout(() => {
+            oscillator.connect(audioContext.destination)
+            oscillator.start()
+            oscillator.stop(audioContext.currentTime + 0.5)
+          }, 3000)
+          Notification.requestPermission().then((permission) => new Notification('Testing Notifications!')).then(() => setTimeout(() => new Notification('Testing'), 5000))
+        }
+
+    </script>
+
+    <style>
+        #gallery form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+    </style>
+</head>
+</head>
+<body>
+    <footer id='gallery'>
+      <form id="text-to-speech">
+        <h3>Text to Speech</h3>
+        <hr/>
+        <label class="message" for="message">Paste the text to be read:</label>
+
+        <textarea
+          name="message"
+          id="message"
+          cols="30"
+          rows="8"
+        ></textarea>
+        <hr/>
+        <input type="submit" onclick="textToSpeech(event)"/>
+      </form>
+    </footer>
+</body>
+</html>
