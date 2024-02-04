@@ -10,7 +10,7 @@ test('object assignment', () => {
         properties.push(property)
     }
     expect(properties).toEqual([
-        "isPalindrome", "clipRansomNote", "strMode", "getRange", "reverseArray", 
+        "isPalindrome", "clipRansomNote", "mostCommonChar", "getRange", "reverseArray", 
         "caesarCypher", "fizzBuzz", "sumMultsOf3n5", "maxSumNonAdjacent", "twoSum",
         "fibonacci", "pascalsTriangle", "isPrime", "listPrimes", "makeChange", 
         "maxStockProfit", "binarySearch", "bubbleSort", "mergeSort"

@@ -18,13 +18,17 @@ const whiteboard = {
        return noteArr.every(word => !!hmap[word]--)
   // returns false if any of the hmap[word] are undefined or 0; true if all hmap[word] are positive
     },
-    strMode: (str) => {
+    mostCommonChar: (str) => {
       var census = str.split('').reduce((acc, cur) => {
-        acc[cur] == null ? acc[cur] = 1 : acc[cur]++;
+        if(acc[cur]) { acc[cur]++
+        } else { acc[cur] = 1 }
         return acc
       }, {})
-      var mode = Object.keys(census).reduce((a, b) => census[a] > census[b] ? a : b)
-      return mode + ' (Char Code: ' + mode.charCodeAt() + ')';
+      var most = Object.entries(census)[0][1]
+      var mode =  Object.keys(census)
+        .filter(key => census[key] >= most)
+          .map(key => key + ' (Char Code: ' + key.charCodeAt() + ')').join(' and ')
+      return `Appearing ${most} times: ${mode}`;
     },
     // Given a 50,000 word dictionary, find me an efficient way to find anagrams. The answer is simple:
   
@@ -127,15 +131,15 @@ const whiteboard = {
       return [...seed, ...sieved.filter(k => whiteboard.isPrime(k))]
     },
     makeChange: (str) => {
-      const coins = {five: 500, dollar: 100, quarter: 25, dime: 10, nickel: 5, penny: 1}
-      let amount = +(Math.abs(str).toFixed(2)) * 100
+      const coins = {twenty: 2000, ten: 1000, five: 500, dollar: 100, quarter: 25, dime: 10, nickel: 5, penny: 1}
+      let amount = Math.round( Math.abs(+'.20') * 100)
       return JSON.stringify(Object.entries(coins).reduce((acc, cur) => {
         var num = Math.floor(amount/cur[1])
         amount = amount%cur[1]
         console.log(acc, cur)
         acc[cur[0]] = num
         return acc;
-      }, {five: 0, dollar: 0, quarter: 0, dime: 0, nickel: 0, penny: 0}))
+      }, {twenty: 0, ten: 0, five: 0, dollar: 0, quarter: 0, dime: 0, nickel: 0, penny: 0}))
     },
     maxStockProfit: (str) => {
       var arr = str.split(' ').map(i=> Number(i));
