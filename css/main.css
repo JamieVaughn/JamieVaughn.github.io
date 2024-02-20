@@ -263,9 +263,9 @@ ul li {
 #Experience p, #Education p {
     font-weight: 400;
     font-size: 11px;
-    margin: 0 auto 1rem;
+    margin: 0 auto 0.5rem;
     letter-spacing: 0.5px;
-    line-height: 15px;
+    line-height: 14px;
     margin-left: 0.75rem;
 }
 #Education .emphasize {
