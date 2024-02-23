@@ -44,6 +44,14 @@ const quotes =[
     quote: "Not only is it easy to lie with maps, it's essential... To avoid hiding critical information in a fog of detail, the map must offer a selective, incomplete view of reality.",
     author: "Mark Monmonier - How to lie with maps",
   },
+  {
+    quote: "90% of what I say in public I’ve written down before. Whenever I say something that sounds elegant, it’s just because I’ve written it. I’ve structured the ideas, I’ve done the hard work.",
+    author: "Neil DeGrasse Tyson"
+  },
+  {
+    quote: "There are no such thing as rules, only consequences.",
+    author: "Brian S. Glick, CEO, Chain.io"
+  }
 ]
 
 const colors = [
