@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="drag.js" defer></script>
+    <script src="todo.js" defer></script>
+  </head>
+  <body>
+    <div class="board">
+      <form id="todo-form">
+        <input type="text" placeholder="new todo" id="todo-input" />
+        <button type="submit">Add +</button>
+      </form>
+      <div class="lanes">
+        <div class="lane" id="todo-lane">
+          <h2 class="heading">Todo</h2>
+          <p class="task" draggable="true">Learn Golang</p>
+          <p class="task" draggable="true">Learn Erlang</p>
+          <p class="task" draggable="true">Learn Prologue</p>
+        </div>
+        <div class="lane" id="doing-lane">
+          <h2>Doing</h2>
+          <p class="task" draggable="true">Learn WebAssembly</p>
+        </div>
+        <div class="lane" id="done-lane">
+          <h2>Done</h2>
+
+          <p class="task" draggable="true">Learn Javascript</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
