@@ -68,14 +68,17 @@ h2 {
   padding: 12px;
   border-radius: 4px;
   font-size: 16px;
-  cursor: move;
-  transition: all 0.1s;
+  transition: transform 0.5s;
+  cursor: grab;
 }
-
 .dragging {
-  scale: 1.1;
-  background-color: indigo;
+  background-color: rgb(75, 0, 130);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   color: white;
-  transform: rotate(3deg);
+  transform: rotate(3deg) scale(1.1);
+}
+
+.dragover {
+  background-color: linen;
+  outline: 2px dotted white;
 }
