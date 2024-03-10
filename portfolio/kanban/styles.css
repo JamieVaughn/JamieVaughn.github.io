@@ -71,6 +71,14 @@ h2 {
   transition: transform 0.5s;
   cursor: grab;
 }
+.task:active {
+  cursor: grabbing;
+}
+.task:hover {
+  background-color: rgb(75, 0, 130);
+  color: white;
+  transform: rotate(3deg);
+}
 .dragging {
   background-color: rgb(75, 0, 130);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
