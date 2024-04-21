@@ -51,7 +51,15 @@ const quotes =[
   {
     quote: "There are no such thing as rules, only consequences.",
     author: "Brian S. Glick, CEO, Chain.io"
-  }
+  },
+  {
+    quote: "Humility is not about thinking less of yourself, but rather thinking of yourself less",
+    author: "C.S. Lewis (apocryphal)"
+  },
+  {
+    quote: "A toolmaker succeds as, and only as, the users of his tool succeed with his aid. However shiny the blade, however jeweled thee hilt, however perfect the heft, a sword is tested only by cutting. That sword smith is successful whose clients die of old age.",
+    author: "Frederick Brooks (Computer Scientist As Toolsmith)"
+  },
 ]
 
 const colors = [
