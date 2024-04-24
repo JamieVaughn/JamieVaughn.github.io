@@ -27,29 +27,29 @@
             }
         };
         stackedCards.prototype.getHeight = function() {
-            var els = this.nodelistToArray(this.els);
-            var elHeights = els.map(item => item.scrollHeight).sort((a, b)=>b-a);
-            var maxHeight = elHeights[0];
+            let els = this.nodelistToArray(this.els);
+            let elHeights = els.map(item => item.scrollHeight).sort((a, b)=>b-a);
+            let maxHeight = elHeights[0];
             return {heights: elHeights, max: maxHeight};
         }
         stackedCards.prototype.draw = function() {
-            var me = this;
-            var selector = this.config.selector;
+            let me = this;
+            let selector = this.config.selector;
             this.els = document.querySelectorAll(selector + " li");
-            var els = this.els;
+            let els = this.els;
             this.parent = els[0].parentNode;
-            var getItemHeight = me.getHeight().max; 
+            let getItemHeight = me.getHeight().max; 
             els.forEach(item => item.style.height = parseInt(getItemHeight) + "px");
-            var lenAdjust = els.length % 2 == 0 ? -2 : -1;
-            var oneHalf = (els.length + lenAdjust) / 2;
-            var activeTransform = "translate(" + -50 + "%, 0%)  scale(1)";
+            let lenAdjust = els.length % 2 == 0 ? -2 : -1;
+            let oneHalf = (els.length + lenAdjust) / 2;
+            let activeTransform = "translate(" + -50 + "%, 0%)  scale(1)";
             this.detectSwipe();            
             Array.prototype.forEach.call(els, function(el) {
                 el.style.transformOrigin = me.config.transformOrigin;
                 el.addEventListener("click", function() {
-                    var clickedEl = el;
-                    var nextCnt = 0;
-                    var prevCnt = 0;
+                    let clickedEl = el;
+                    let nextCnt = 0;
+                    let prevCnt = 0;
                     do {
                         nextCnt = nextCnt + 1
                     } while (clickedEl = clickedEl.nextElementSibling);
@@ -74,29 +74,29 @@
             els[oneHalf].click()
         };
         stackedCards.prototype.reCalculateTransformsOnClick = function(nextCnt, prevCnt) {
-            var me = this;
-            var z = 10;
-            var els = this.nodelistToArray(this.els);
-            var maxHeight = parseInt(me.getHeight().max);
-            var vertOffsets = me.getHeight().heights.map(item=> Math.round((( 1 - ( item / maxHeight )) * -100) ));
+            let me = this;
+            let z = 10;
+            let els = this.nodelistToArray(this.els);
+            let maxHeight = parseInt(me.getHeight().max);
+            let vertOffsets = me.getHeight().heights.map(item=> Math.round((( 1 - ( item / maxHeight )) * -100) ));
             els[0].parentNode.style.height = String(maxHeight) + "px";
-            var scale = 1,
+            let scale = 1,
                 translateX = 0,
                 translateY = 0,
                 rotateVal = 0,
                 rotate = "";
-            var layout = this.config.layout;
-            var maxCntDivisor = Math.max(prevCnt, nextCnt);
-            var prevDivisor = 100 / maxCntDivisor;
-            var nextDivisor = 100 / maxCntDivisor;
+            let layout = this.config.layout;
+            let maxCntDivisor = Math.max(prevCnt, nextCnt);
+            let prevDivisor = 100 / maxCntDivisor;
+            let nextDivisor = 100 / maxCntDivisor;
             if (prevCnt > nextCnt) {
                 scale = 0 + 100 / (prevCnt + 1) / 100
             } else {
                 scale = 1 - prevCnt * (1 / (nextCnt + 1))
             }
-            var rotatePrevStart = prevCnt * 10 / prevCnt * prevCnt * -1;
-            var rotateNextStart = nextCnt * 10 / nextCnt;
-            for (var i = 0; i < prevCnt; i++) {
+            let rotatePrevStart = prevCnt * 10 / prevCnt * prevCnt * -1;
+            let rotateNextStart = nextCnt * 10 / nextCnt;
+            for (let i = 0; i < prevCnt; i++) {
                 switch (layout) {
                     case "slide":
                         if (i > 0) {
@@ -119,16 +119,16 @@
                         translateX = (150 - prevDivisor * 2 * i) * -1;
                         rotate = "rotate(0deg)"
                 }
-                var styleStr = "translate(" + translateX + "%, " + translateY + "%)  scale(" + scale + ") " + rotate;
+                let styleStr = "translate(" + translateX + "%, " + translateY + "%)  scale(" + scale + ") " + rotate;
                 z = z + 1;
                 els[i].style.transform = styleStr;
                 els[i].style.zIndex = z
             }
             z = z - 1;
-            var j = 0;
+            let j = 0;
             rotateNegStart = 0;
             scale = 1;
-            for (var i = prevCnt + 1; i < nextCnt + prevCnt + 1; i++) {
+            for (let i = prevCnt + 1; i < nextCnt + prevCnt + 1; i++) {
                 j = j + 1;
                 switch (layout) {
                     case "slide":
@@ -149,16 +149,16 @@
                         rotate = "rotate(0deg)"
                 }
                 z = z - 1;
-                var styleStr = "translate(" + translateX + "%, "+ translateY + "%)  scale(" + scale + ") " + rotate;
+                let styleStr = "translate(" + translateX + "%, "+ translateY + "%)  scale(" + scale + ") " + rotate;
                 els[i].style.transform = styleStr;
                 els[i].style.zIndex = z
             }
         };
         stackedCards.prototype.detectSwipe = function() {
-            var me = this;
-            var regionEl = document.querySelector(me.config.selector);
+            let me = this;
+            let regionEl = document.querySelector(me.config.selector);
             me.detectSwipeDir(regionEl, function(swipedir) {
-                var activeEl = document.querySelector(me.config.selector + " li.active");
+                let activeEl = document.querySelector(me.config.selector + " li.active");
                 if (swipedir == "left") {
                     activeEl.nextElementSibling.click()
                 } else if (swipedir == "right") {
@@ -167,7 +167,7 @@
             })
         };
         stackedCards.prototype.extend = function(custom, defaults) {
-            var key, value;
+            let key, value;
             for (key in defaults) {
                 value = defaults[key];
                 if (custom[key] == null) {
@@ -177,8 +177,8 @@
             return custom
         };
         stackedCards.prototype.nodelistToArray = function(nodelist) {
-            var results = [];
-            var i, element;
+            let results = [];
+            let i, element;
             for (i = 0; i < nodelist.length; i++) {
                 element = nodelist[i];
                 results.push(element)
@@ -186,33 +186,33 @@
             return results
         };
         stackedCards.prototype.loopNodeList = function(els, callback, scope) {
-            for (var i = 0; i < els.length; i++) {
-                callback.call(scope, els[i])
+            for (let el of els) {
+                callback.call(scope, el)
             }
         };
         stackedCards.prototype.scrolledIn = function(el) {
             if (typeof el == "undefined") return;
-            var elemTop = el.getBoundingClientRect().top;
-            var scrolledInEl = elemTop >= 0 && elemTop <= window.innerHeight;
+            let elemTop = el.getBoundingClientRect().top;
+            let scrolledInEl = elemTop >= 0 && elemTop <= window.innerHeight;
             return scrolledInEl
         };
         stackedCards.prototype.detectSwipeDir = function(el, callback) {
-            var touchsurface = el,
+            let touchsurface = el,
                 swipedir, startX, startY, distX, distY, threshold = 75,
                 restraint = 100,
                 allowedTime = 300,
                 elapsedTime, startTime, handleswipe = callback || function(swipedir) {};
             touchsurface.addEventListener("touchstart", function(e) {
-                var touchobj = e.changedTouches[0];
-                swipedir = "none";
-                dist = 0;
-                startX = touchobj.pageX;
-                startY = touchobj.pageY;
-                startTime = (new Date).getTime();
+                let touchobj = e.changedTouches[0];
+                let swipedir = "none";
+                let dist = 0;
+                let startX = touchobj.pageX;
+                let startY = touchobj.pageY;
+                let startTime = (new Date).getTime();
             }, false);
             touchsurface.addEventListener("touchmove", function(e) {}, false);
             touchsurface.addEventListener("touchend", function(e) {
-                var touchobj = e.changedTouches[0];
+                let touchobj = e.changedTouches[0];
                 distX = touchobj.pageX - startX;
                 distY = touchobj.pageY - startY;
                 elapsedTime = (new Date).getTime() - startTime;

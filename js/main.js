@@ -1,20 +1,20 @@
 
 // Courtesy of https://github.com/junedchhipa/stacked-cards
-var stackedCard = new stackedCards({
+let StackedCard = new stackedCards({
     selector: '.stacked-cards-slide',
     layout: "slide",
     transformOrigin: "center",
 });
-stackedCard.init();
+StackedCard.init();
 
 // Linking up the stacked cards to the nav bar links
-var navLinks = [
+let navLinks = [
     document.querySelector("a[href='#Skills']"),
     document.querySelector("a[href='#Portfolio']"),
     document.querySelector("a[href='#Experience']"),
     document.querySelector("a[href='#Education']")
 ]
-var pageLinks = [ 
+let pageLinks = [ 
     document.querySelector("#Skills"),
     document.querySelector("#Portfolio"),
     document.querySelector("#Experience"),
@@ -28,9 +28,9 @@ function resetBreadcrumbs() {
     return window.location.hash;
 }
 
-var scrollDest = window.innerWidth < 820 ? "end" : "center";
+let scrollDest = window.innerWidth < 820 ? "end" : "center";
 window.addEventListener('hashchange', function(){
-    var obj = {block: scrollDest};
+    let obj = {block: scrollDest};
     switch(resetBreadcrumbs()){
         case "#Skills":
         navLinks[0].classList.add('selected');
@@ -77,8 +77,8 @@ pageLinks.forEach(item => item.addEventListener('click', function(e) {
     }
 }))
  // Form Handler
- var form = document.querySelector('#ajax-contact');
- var formMsg = document.querySelector('#form-feedback');
+ let form = document.querySelector('#ajax-contact');
+ let formMsg = document.querySelector('#form-feedback');
  function getParam(param) {
     return new URLSearchParams(window.location.search).get(param);
 }
@@ -93,29 +93,26 @@ pageLinks.forEach(item => item.addEventListener('click', function(e) {
 //     event.preventDefault;
 //  })
 
- var email = document.querySelector('#email');
- var msg = document.querySelector('#message');
- var live = document.querySelector('#time');
+ let email = document.querySelector('#email');
+ let msg = document.querySelector('#message');
+ let live = document.querySelector('#time');
  live.value = new Date();
 
 // https://stackoverflow.com/questions/11661187/form-serialize-javascript-no-framework
 //  https://plainjs.com/javascript/ajax/serialize-form-data-into-an-array-46/
  function serializeArray(form) {
-    var field, l, s = [];
-    if (typeof form == 'object' && form.nodeName == "FORM") {
-        var len = form.elements.length;
-        for (var i=0; i<len; i++) {
-            field = form.elements[i];
-            if (field.name && !field.disabled && field.type != 'file' && field.type != 'reset' && field.type != 'submit' && field.type != 'button') {
-                if (field.type == 'select-multiple') {
-                    l = form.elements[i].options.length; 
-                    for (j=0; j<l; j++) {
-                        if(field.options[j].selected)
-                            s[s.length] = { name: field.name, value: field.options[j].value };
-                    }
-                } else if ((field.type != 'checkbox' && field.type != 'radio') || field.checked) {
-                    s[s.length] = { name: field.name, value: field.value };
+    let field, s = [];
+    if (typeof form !== 'object' && form.nodeName !== "FORM") return s
+    for (let i=0; i<form.elements.length; i++) {
+        field = form.elements[i];
+        if (field.name && !field.disabled && !['file', 'reset', 'submit', 'button'].includes(field.type)) {
+            if (field.type == 'select-multiple') {
+                for (let j=0; j<form.elements[i].options.length; j++) {
+                    if(field.options[j].selected)
+                        s[s.length] = { name: field.name, value: field.options[j].value };
                 }
+            } else if (!['checkbox', 'radio'].includes(field.type) || field.checked) {
+                s[s.length] = { name: field.name, value: field.value };
             }
         }
     }

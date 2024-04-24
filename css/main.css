@@ -90,7 +90,7 @@ section.business-card:hover {
 }
 div.me h1::selection, div.me h3::selection,
 div.details h2::selection, div.details p::selection {
-    background: rgb(250, 200, 42);;
+    background: rgb(250, 200, 42);
 }
 div.me {
     position: absolute;
@@ -212,7 +212,6 @@ ul li {
 #Skills span.subtitle {
     font-size: 16px;
     font-weight: 700;
-    /* display: block; */
 }
 #Portfolio a {
     cursor: pointer;
@@ -232,7 +231,6 @@ ul li {
 }
 #Portfolio section h4 {
     text-align: center;
-    margin-top: 0;
     margin: 1.33rem;
 }
 #Portfolio section h4:first-of-type {
@@ -329,7 +327,7 @@ footer form textarea:valid +label {
 footer form input[type="email"], 
 footer form input[type="name"],
 footer form textarea {
-    /* transform: translate(-5px, -35px); */
+    transform: translate(0, 0); /* transform: translate(-5px, -35px); */
     color: #333 !important;
     padding: 0.25rem 0.5rem;
     outline: none;

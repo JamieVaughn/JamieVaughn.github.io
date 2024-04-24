@@ -57,7 +57,7 @@ h1, h2 {
 .todo-item {
 	display: flex;
 	flex-direction: column;
-	align-items: center;;
+	align-items: center;
 	justify-content: center;
 	width: 100%;
 	animation: fadeIn forwards 350ms ease-in;

@@ -1,9 +1,6 @@
 *, *:before, *:after {
     box-sizing: border-box;
 }
-body {
-    color: #444;
-}
 html {
     background-color: #fcfcfc;
 }
@@ -13,6 +10,7 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: #fcfcfc;
+    color: #444;
 }
 .stacked-cards h2 {
     text-align: center;
@@ -33,12 +31,6 @@ body {
 }
 .stacked-cards-fanOut li img {
     max-height: 200px;
-}
-.stacked-cards li {
-    height: auto;
-}
-.stacked-cards li {
-    background: #f9f9fa;
 }
 
 .stacked-cards li:nth-child(1) {
@@ -77,6 +69,8 @@ body {
 }
 
 .stacked-cards li {
+    height: auto;
+    background: #f9f9fa;
     margin-top: 5px;
     padding: 1rem 0 1rem 1rem;
     cursor: pointer;
@@ -114,9 +108,5 @@ body {
 @media (max-width: 767px) {
     .stacked-cards ul {
         max-width: 95%;
-    }
-    .stacked-cards li {
-        /* height: 500px;
-        overflow-y: scroll; */
     }
 }
