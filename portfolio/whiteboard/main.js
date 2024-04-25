@@ -84,7 +84,7 @@ const whiteboard = {
       var array = str.split(' ').map(i=>Number(i))
       var pairs = []
       array.reduce((acc, cur) => {
-        acc.includes(10 - cur) ? pairs.push([10-cur, cur]) : ''
+        if (acc.includes(10 - cur)) pairs.push([10-cur, cur])
         acc.push(cur)
         return acc;
       }, [])

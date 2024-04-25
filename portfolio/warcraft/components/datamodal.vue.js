@@ -45,7 +45,6 @@ Vue.component('datamodal', {
             thumbPrefix: (false ? 'https://render-us.worldofwarcraft.com/character/' : ''),
             iconPrefix: 'https://wow.zamimg.com/images/wow/icons/medium/',
             thumb: '',
-            items: {},
             stats: {
                 attributes: {},
                 attack: {},
@@ -75,7 +74,7 @@ Vue.component('datamodal', {
     },
     methods: {
         resetModal() {
-            this.$refs.datamodal.$remove
+            this.$refs.datamodal.$remove()
             this.display = false;
         },
         displayData(obj){
