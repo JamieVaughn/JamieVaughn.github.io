@@ -101,11 +101,11 @@ function calculateWinner(squares, symbol) {
   if (getMoveCount(squares) < 7){
     return null
   }
-  for (let i = 0; i < winConditions.length; i++) {
-    if (winConditions[i].every(pos => squares[pos] === symbol)) {
+  for (let condition of winConditions) {
+    if (condition.every(pos => squares[pos] === symbol)) {
       return {
         winner: symbol,
-        squares: winConditions[i]
+        squares: condition
       }
     } 
   }
@@ -124,13 +124,13 @@ function calculateNearWin(squares, symbol) {
     return acc
   }, [])
   let blocks = []
-  for (let i = 0; i < winConditions.length; i++) {
-    for(let j = 0; j < threats.length; j++) {
+  for (let condition of winConditions) {
+    for(let threat of threats) {
       if (
-        winConditions[i].includes(j) 
-        && winConditions[i].every(pos => squares[pos] === symbol || squares[pos] === null)
+        condition.includes(threat) 
+        && condition.every(pos => squares[pos] === symbol || squares[pos] === null)
       ) {
-        blocks = winConditions[i].filter(pos => squares[pos] === null)
+        blocks = condition.filter(pos => squares[pos] === null)
         return {
           move: blocks[0],
           score: 1

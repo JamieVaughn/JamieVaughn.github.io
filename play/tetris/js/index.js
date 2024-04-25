@@ -206,12 +206,12 @@ const drawBoard = (board, flag = 1) => {
 const blankNext = () => [0,1,2,3].forEach(i => [0,1,2,3].forEach(j => drawSquare(j,i, ' ')));
 // Key events
 document.addEventListener('keydown', (e) => {
-  if (e.which === 80) playing = !playing;
-  switch (e.which) {
-    case 37: STATE = State.moveLeft(STATE);  break
-    case 39: STATE = State.moveRight(STATE); break
-    case 40: STATE = State.moveDown(STATE);  break
-    case 38: STATE = State.rotate(STATE);    break
+  if (e.key === 'p') playing = !playing;
+  switch (e.key) {
+    case 'ArrowLeft': STATE = State.moveLeft(STATE);  break
+    case 'ArrowRight': STATE = State.moveRight(STATE); break
+    case 'ArrowDown': STATE = State.moveDown(STATE);  break
+    case 'ArrowUp': STATE = State.rotate(STATE);    break
   }
 });
 

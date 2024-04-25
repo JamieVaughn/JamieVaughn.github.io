@@ -1,5 +1,4 @@
 import {
-  useEffect,
   useState,
 } from "react";
 
@@ -13,7 +12,7 @@ const Square = ({ onClick, value }) => (
 
 const Board = ({ onClick, squares }) => (
   <div className={styles.board}>
-    {squares.map((s, i) => <Square key={i} value={s} onClick={() => onClick(i)} />)}
+    {squares.map((s, i) => <Square key={s+i} value={s} onClick={() => onClick(i)} />)}
   </div>
 )
 
@@ -45,7 +44,7 @@ const Game = props => {
     return history.map((_step, move) => {
       const destination = move ? `Go to move #${move}` : 'Reset'
       return (
-        <li key={move} style={{listStyle: 'none'}}>
+        <li key={_step+move} style={{listStyle: 'none'}}>
           <button onClick={() => jumpTo(move)}>{destination}</button>
         </li>
       )

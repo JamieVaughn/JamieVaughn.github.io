@@ -98,9 +98,9 @@ document.addEventListener('keydown', strafe)
 function moveInvaders() {
     const left = state.invaderPos[0] % state.edge === 0
     const right = state.invaderPos.slice(-1) % state.edge === state.edge - 1
-    if((left && state.direction === -1) || (right && state.direction === 1)) {
+    if((left && (state.direction === -1)) || (right && (state.direction === 1))) {
         state.direction = state.edge
-    } else if(state.direction === state.edge) {
+    } else if(state.direction == state.edge) {
         state.direction = left ? 1 : -1
     }
     cells.forEach(c => c.classList.remove('invader'))
@@ -132,7 +132,7 @@ function update() {
             state.invaders[0].forEach(i => {
                 state.invaders[1].forEach(j => {
                     cells[i + j*state.edge + state.offset].classList.add(Math.random() > 0.5 ? 'firework' : 'sparkle')
-                    Math.random() > 0.7 ? state.offset++ : ''
+                    state.offset += Math.random() > 0.7 ? 1 : 0
                 })
             })
         } else {
