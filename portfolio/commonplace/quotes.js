@@ -60,6 +60,10 @@ const quotes =[
     quote: "A toolmaker succeds as, and only as, the users of his tool succeed with his aid. However shiny the blade, however jeweled thee hilt, however perfect the heft, a sword is tested only by cutting. That sword smith is successful whose clients die of old age.",
     author: "Frederick Brooks (Computer Scientist As Toolsmith)"
   },
+  {
+    quote: "It is through logic that we prove, but through intuition that we discover.",
+    author: "Henri Poincaré"
+  }
 ]
 
 const colors = [
