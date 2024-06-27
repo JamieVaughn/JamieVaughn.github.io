@@ -63,7 +63,11 @@ const quotes =[
   {
     quote: "It is through logic that we prove, but through intuition that we discover.",
     author: "Henri Poincaré"
-  }
+  },
+  {
+    quote: "I’m a comedian, so I’ll speak about justice, no matter how hard it is on your ears..",
+    author: "Aristophanes"
+  },
 ]
 
 const colors = [
