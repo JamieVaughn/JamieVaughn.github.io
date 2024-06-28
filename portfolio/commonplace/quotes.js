@@ -53,7 +53,7 @@ const quotes =[
     author: "Brian S. Glick, CEO, Chain.io"
   },
   {
-    quote: "Humility is not about thinking less of yourself, but rather thinking of yourself less",
+    quote: "Humility is not about thinking less of yourself, but rather thinking of yourself less.",
     author: "C.S. Lewis (apocryphal)"
   },
   {
@@ -65,9 +65,14 @@ const quotes =[
     author: "Henri Poincaré"
   },
   {
-    quote: "I’m a comedian, so I’ll speak about justice, no matter how hard it is on your ears..",
+    quote: "I’m a comedian, so I’ll speak about justice, no matter how hard it is on your ears.",
     author: "Aristophanes"
   },
+  {
+    quote: "If you try to change it, you will ruin it. If you try to hold it, you will lose it.",
+    author: "Lao Tzu, Tao Te Ching, 29"
+  },
+  
 ]
 
 const colors = [
