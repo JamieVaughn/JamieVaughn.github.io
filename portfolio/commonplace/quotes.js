@@ -72,6 +72,10 @@ const quotes =[
     quote: "If you try to change it, you will ruin it. If you try to hold it, you will lose it.",
     author: "Lao Tzu, Tao Te Ching, 29"
   },
+  {
+    quote: "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.",
+    author: "Douglas Adams, Hitchhiker's Guide to the Galaxy"
+  },
   
 ]
 
