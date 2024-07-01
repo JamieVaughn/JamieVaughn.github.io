@@ -76,7 +76,10 @@ const quotes =[
     quote: "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.",
     author: "Douglas Adams, Hitchhiker's Guide to the Galaxy"
   },
-  
+  {
+    quote: "Economics is too important to leave to the economists.",
+    author: "Steve Keen"
+  },
 ]
 
 const colors = [
