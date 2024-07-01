@@ -80,6 +80,10 @@ const quotes =[
     quote: "Economics is too important to leave to the economists.",
     author: "Steve Keen"
   },
+  {
+    quote: "If economists wished to study the horse, they wouldn't go and look at horses. They'd sit in their studies and say to themselves, 'What would I do if I were a horse?'",
+    author: "Ely Devons"
+  },
 ]
 
 const colors = [
