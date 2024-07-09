@@ -84,6 +84,10 @@ const quotes =[
     quote: "If economists wished to study the horse, they wouldn't go and look at horses. They'd sit in their studies and say to themselves, 'What would I do if I were a horse?'",
     author: "Ely Devons"
   },
+  {
+    quote: "The first principle is that you must not fool yourself — and you are the easiest person to fool.",
+    author: "Richard Feynman"
+  }
 ]
 
 const colors = [
