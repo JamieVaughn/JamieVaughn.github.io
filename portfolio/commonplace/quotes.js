@@ -87,6 +87,10 @@ const quotes =[
   {
     quote: "The first principle is that you must not fool yourself — and you are the easiest person to fool.",
     author: "Richard Feynman"
+  },
+  {
+    quote: "I like to pay taxes. With them, I buy civilization.",
+    author: "Oliver Wendell Homes Jr."
   }
 ]
 
