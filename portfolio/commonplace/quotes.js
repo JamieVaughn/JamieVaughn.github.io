@@ -91,7 +91,11 @@ const quotes =[
   {
     quote: "I like to pay taxes. With them, I buy civilization.",
     author: "Oliver Wendell Homes Jr."
-  }
+  },
+  {
+    quote: "The universe is not only queerer than we suppose, but queerer than we can suppose. I have read and heard many attempts at a systematic account of it... I have always felt that they were much too simple. I suspect that there are more things in heaven and earth than are dreamed of, or can be dreamed of, in any philosophy.",
+    author: "J. B. S. Haldane, 'Possible Worlds' (1927)"
+  },
 ]
 
 const colors = [
