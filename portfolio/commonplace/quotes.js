@@ -96,6 +96,14 @@ const quotes =[
     quote: "The universe is not only queerer than we suppose, but queerer than we can suppose. I have read and heard many attempts at a systematic account of it... I have always felt that they were much too simple. I suspect that there are more things in heaven and earth than are dreamed of, or can be dreamed of, in any philosophy.",
     author: "J. B. S. Haldane, 'Possible Worlds' (1927)"
   },
+  {
+    quote: "Hope and goodness is a direct rebuttal to the brutality of the world.",
+    author: "Susan Kaye Quinn"
+  },
+  {
+    quote: "Hope is definitely not the same thing as optimism. It is not the conviction that something will turn out well, but the certainty that something is worth doing, regardless of how it turns out.",
+    author: "Václav Havel"
+  }
 ]
 
 const colors = [
