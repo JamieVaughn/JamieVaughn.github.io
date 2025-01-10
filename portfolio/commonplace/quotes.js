@@ -103,6 +103,10 @@ const quotes =[
   {
     quote: "Hope is definitely not the same thing as optimism. It is not the conviction that something will turn out well, but the certainty that something is worth doing, regardless of how it turns out.",
     author: "Václav Havel"
+  },
+  {
+    quote: "Words bend our thinking to infinite paths of self-delusion. And the fact that we spend most of our mental lives in brain mansions built of words means that we lack the objectivity necessary to see the terrible distortion of reality which language brings.",
+    author: "Dan Simmons, Hyperion"
   }
 ]
 
@@ -129,5 +133,7 @@ const colors = [
   'cornflowerblue',
   'slateblue',
   'tomato',
+  'orangered',
+  'darkorange',
   'plum'
 ];
