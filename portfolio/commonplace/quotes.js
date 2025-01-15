@@ -107,6 +107,10 @@ const quotes =[
   {
     quote: "Words bend our thinking to infinite paths of self-delusion. And the fact that we spend most of our mental lives in brain mansions built of words means that we lack the objectivity necessary to see the terrible distortion of reality which language brings.",
     author: "Dan Simmons, Hyperion"
+  },
+  {
+    quote: "Between stimulus and response, there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.",
+    author: "Victor Frankl"
   }
 ]
 
