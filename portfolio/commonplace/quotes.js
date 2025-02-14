@@ -1,4 +1,4 @@
-const quotes =[
+export const quotes = [
   {quote: "What you leave behind is not what is engraved in stone monuments, but what is woven into the lives of others.", authoer:"Pericles"},
   {quote: "Education consists mainly of what we have unlearned.", author: "Mark Twain"},
   {quote: "I've never let my schooling interfere with my education.", author: "Mark Twain"},
@@ -114,7 +114,7 @@ const quotes =[
   }
 ]
 
-const colors = [
+export const colors = [
   '#16a085',
   '#27ae60',
   '#2c3e50',

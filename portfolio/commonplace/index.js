@@ -1,3 +1,4 @@
+  import { quotes, colors } from './quotes.js'
   const quote = document.querySelector('.quote')
   const author = document.querySelector('.change.author')
   const annotation = document.querySelector('.annotation')
@@ -10,6 +11,7 @@
     randomColor()
   }
   randomQuote()
+  window.randomQuote = randomQuote
 
   function randomColor() {
     let rand = Math.floor(Math.random() * colors.length)
