@@ -3,8 +3,12 @@
   const author = document.querySelector('.change.author')
   const annotation = document.querySelector('.annotation')
   const colorPair = ['crimson']
+  let prevQuote
+  let prevColor
   function randomQuote(){
     let rand = Math.floor(Math.random() * quotes.length)
+    if(rand === prevQuote) rand = quotes.length - rand
+    prevQuote = rand
     quote.innerText = quotes[rand].quote
     author.innerText = quotes[rand].author
     annotation.innerText = quotes[rand]?.annotation ?? ''
@@ -15,6 +19,7 @@
 
   function randomColor() {
     let rand = Math.floor(Math.random() * colors.length)
+    if(rand === prevColor) rand = colors.length - rand
     // const styles = getComputedStyle(document.documentElement)
     // const themeColor = styles.getPropertyValue('--theme')
     if(colorPair.length > 1) colorPair.shift()
