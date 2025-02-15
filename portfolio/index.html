@@ -16,6 +16,8 @@
             document.querySelector('footer form input[type=submit]').removeAttribute('disabled');
         }
     </script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162434857-1"></script>
     <script>
@@ -65,14 +67,35 @@
                 margin-left: 0;
             }
         }
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        a {
+            text-decoration: none;
+        }
+        a.link:hover {
+            fill: dodgerblue;
+            outline: 1px solid dodgerblue;
+            ;
+            /* -webkit-filter: url(#f1);
+            filter: url(#f1); */
+        }
     </style>
-</head>
 </head>
 <body>
     <main id='gallery'>
         <a href='https://wjv.io'>Go Back</a>
-        <h1>Portfolio Gallery</h1>
-        <div class="flex">
+        <h1>Portfolio Gallery Link Word Clouds</h1>
+        <h2>Professional Projects</h2>
+        <svg class="professional"></svg>
+        <h2>Personal Projects</h2>
+        <svg class="personal"></svg>
+        <div class="flex" style="display: none">
             <ul class='personal'>Personal Projects
                 <li>
                     <a href="https://wjv.io/play/tetris">Tetris game using functional programming style</a>
@@ -166,6 +189,83 @@
             <input type="submit" onsubmit="postMsg" disabled>
         </form>
     </footer>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0">
+        <defs>
+          <filter id="f1">
+            <feGaussianBlur stdDeviation="3"/>
+          </filter>
+        </defs>
+      </svg>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        const personalProjectLinks = [
+    { text: "Tetris game using functional programming style", url: "https://wjv.io/play/tetris" },
+    { text: "React TodoApp w/ Async, In-Memory Database", url: "https://wjv.io/portfolio/indexedDB/" },
+    { text: "World of Warcraft character search widget", url: "https://wjv.io/portfolio/warcraft" },
+    { text: "Magic: The Gathering Card Showcase", url: "https://github.com/JamieVaughn/mtg" },
+    { text: "My AstroJS blog: Make 🏗️ Devs", url: "https://wjv.io/blog" },
+    { text: "My archived NextJS blog", url: "https://wjv.io/log" },
+    { text: "JS Whiteboarding Exercises", url: "https://wjv.io/portfolio/whiteboard" },
+    { text: "SVG & React Periodic Table", url: "https://wjv.io/periodic-table/" },
+    { text: "Vanilla Javascript Fractal", url: "https://wjv.io/portfolio/fractal" },
+    { text: "Emoji Matching Game", url: "https://wjv.io/play/emoji-match" },
+    { text: "Connect Four Game", url: "https://wjv.io/play/connect-four" },
+    { text: "Space Invaders", url: "https://wjv.io/play/space-invaders" },
+    { text: "Snake Game", url: "https://wjv.io/play/snake" },
+    { text: "Gatsby Blog", url: "https://wjv-gatsby.netlify.app/" },
+    { text: "Quotes", url: "https://wjv.io/portfolio/commonplace" }
+];
+const professionalProjectLinks = [
+    { text: "Moaroffers.com", url: "https://Moaroffers.com" },
+    { text: "MCC Course Resource App", url: "https://monroecc.dev" },
+    { text: "Published NPM Redirect Survey Package", url: "https://www.npmjs.com/package/tttl-redirect-survey" },
+    { text: "Published NPM Embedded Survey Package", url: "https://www.npmjs.com/package/tttl-embed-survey" },
+    { text: "MCC React + Supabase reference solution", url: "https://supabase-bookmarks.vercel.app/" },
+    { text: "MCC React + Firebase reference solution", url: "https://rf-bookmarks.web.app/signin" }
+];
+        
+        const svg = d3.select("svg.personal")
+        const svg2 = d3.select("svg.professional"),
+              width = window.innerWidth,
+              height = window.innerHeight;
+        
+        const layout = d3.layout.cloud()
+            .size([width/1.5, height/1.5])
+            .words(personalProjectLinks.map(text => ({ text: text.text, url: text.url, size: Math.random() * 10 + 20 })))
+            .padding(5)
+            .rotate(() => Math.random() * 40 - 20)
+            .fontSize(d => d.size)
+            .on("end", words => draw(words, svg, 700));
+        
+        layout.start();
+
+        const layout2 = d3.layout.cloud()
+            .size([width/1.5, height/1.25])
+            .words(professionalProjectLinks.map(text => ({ text: text.text, url: text.url, size: Math.random() * 10 + 20 })))
+            .padding(5)
+            .rotate(() => Math.random() * 40 - 20)
+            .fontSize(d => d.size)
+            .on("end", words => draw(words, svg2, 450));
+        
+        layout2.start();
+        
+        function draw(words, svg, height) {
+            svg.attr('height', `${height}px`).attr('width', width)
+                .append("g")
+                .attr("transform", `translate(${width / 2},${height / 2})`)
+                .selectAll("text")
+                .data(words)
+                .enter().append("a")
+                .attr("xlink:href", d => d.url)
+                .attr("target", "_blank")
+                .attr("class", "link")
+                .append("text")
+                .style("font-size", d => `${d.size}px`)
+                .style("fill", () => d3.schemePaired[Math.ceil(Math.random() * 11)])
+                .attr("text-anchor", "middle")
+                .attr("transform", d => `translate(${d.x},${d.y/1.1 - 50}) rotate(${d.rotate})`)
+                .text(d => d.text);
+        }
+    </script>
 </body>
 </html>
