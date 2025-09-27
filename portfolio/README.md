@@ -5,10 +5,10 @@ checkout my projects at [JamieVaughn.github.io/portforlio](JamieVaughn.github.io
 ## Project Titles:
 
 - [Frontend Developer LMS](monroecc.dev)
-- [Programming Blog](https://wjv.io/blog)
+- [Programming Blog](https://jamievaughn.github.io/blog)
 - [Supabase Bookmarks App](https://supabase-bookmarks.vercel.app/)
 - [Firebase Bookmarks App](https://bookmarks-app-9ea49.web.app/)
-- [Periodic Table](https://wjv.io/periodic-table/)
+- [Periodic Table](https://jamievaughn.github.io/periodic-table/)
 
 #### JS Games
 

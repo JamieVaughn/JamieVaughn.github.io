@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "wjv.io portfolio pages",
+  "description": "my portfolio pages",
   "main": "index.js",
   "repository": {
     "type": "git",

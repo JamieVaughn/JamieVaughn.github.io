@@ -1,6 +1,6 @@
 # JamieVaughn.github.io
 
-This is the repo for my personal website and portfolio. You can visit my web development portfolio site [here](https://wjv.io).
+This is the repo for my personal website and portfolio. You can visit my web development portfolio site [here](https://jamievaughn.github.io).
 
 ### Contact Card
 
@@ -12,17 +12,17 @@ My HTML resume featuring my prior work experience, education and my web dev core
 
 ### List of Portfolio Items:
 
-[See the portfolio here](https://wjv.io/portfolio)
+[See the portfolio here](https://jamievaughn.github.io/portfolio)
 
 - Bookmarks Organization App
 - SVG data viz with d3.js
 - Mobile App Responsive Design Mockup
 - Zendesk Customer Support Tool
-- Personal Blog about programming at wjv.io/log
+- Personal Blog about programming at jamievaughn.github.io/blog
 - Moaroffers.com
 - Learning Management System for MCC course
 - Restaurant Feedback data visualization dashboard
 - Web components embeddable survey npm package.
 - Public Data Dashboard at NI4AI.org
-- [Various games](https://wjv.io/play/)
+- [Various games](https://jamievaughn.github.io/play/)
 - And more...
