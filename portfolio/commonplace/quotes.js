@@ -1,6 +1,7 @@
 export const quotes = [
   {
-    quote: "What you leave behind is not what is engraved in stone monuments, but what is woven into the lives of others.",
+    quote:
+      "What you leave behind is not what is engraved in stone monuments, but what is woven into the lives of others.",
     author: "Pericles",
   },
   {
@@ -30,7 +31,8 @@ export const quotes = [
     author: "Hamlet",
   },
   {
-    quote: "It is the arrogance of every age to believe that yesterday was calm.",
+    quote:
+      "It is the arrogance of every age to believe that yesterday was calm.",
     author: "Tom Peters",
   },
   { quote: "Inquire within.", author: "Anonymous" },
@@ -42,7 +44,8 @@ export const quotes = [
     author: "Anonymous",
   },
   {
-    quote: "Some people become vandals in order to make the world a better looking place.",
+    quote:
+      "Some people become vandals in order to make the world a better looking place.",
     author: "Banksy",
   },
   { quote: "Strength is the outcome of need.", author: "H.G. Wells" },
@@ -203,6 +206,10 @@ export const quotes = [
     quote:
       "Between stimulus and response, there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.",
     author: "Victor Frankl",
+  },
+  {
+    quote: "We live in a world overflowing with words.",
+    author: "Alan Watts",
   },
 ];
 
